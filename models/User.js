@@ -17,9 +17,12 @@ const UserSchema = new Schema({
         minLength: 7,
         match: [/^[a-z0-9A-Z]+$/, "Password can only contain alphanumeric characters"]
     },
-    pets: {
-        type: Array
-    }
+    pets: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: "Dog"
+        }
+    ]
 });
 
 const User = mongoose.model("User", UserSchema);
