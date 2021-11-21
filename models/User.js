@@ -15,7 +15,7 @@ const UserSchema = new Schema({
         require: "Password is required",
         trim: true,
         minLength: 7,
-        match: [/^[a-z0-9A-Z]+$/]
+        match: [/^[a-z0-9A-Z]+$/, "Password can only contain alphanumeric characters"]
     },
     pets: {
         type: Array
