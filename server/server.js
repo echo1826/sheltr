@@ -2,7 +2,8 @@ const express = require("express");
 const logger = require("morgan");
 const db = require('./config/connection');
 const {ApolloServer} = require('apollo-server-express');
-const path = require('path');
+const {typeDefs, resolvers} = require('./schemas');
+// const path = require('path');
 // const routes = require('./controllers');
 
 
