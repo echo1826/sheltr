@@ -60,9 +60,13 @@ async function getDogDataFromPetfinderApi() {
 }
 
 db.once('open', async () => {
-    const dogArray = await getDogDataFromPetfinderApi();
-    await Dog.deleteMany({});
-    await Dog.create(dogArray);
-    console.log("Seeded Data!");
-    process.exit(0)
+    try{
+        const dogArray = await getDogDataFromPetfinderApi();
+        await Dog.deleteMany({});
+        await Dog.create(dogArray);
+        console.log("Seeded Data!");
+        process.exit(0)
+    }catch(err) {
+        console.log(err);
+    }
 })
