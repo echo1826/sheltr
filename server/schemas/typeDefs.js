@@ -3,7 +3,7 @@ const { gql } = require('apollo-server-express');
 const typeDefs = gql`
     type User {
         _id: ID
-        username
+        name: String
         email: String
         pasword: String
         pets: [Dog] 
@@ -30,12 +30,7 @@ const typeDefs = gql`
         }
         age: String
         size: String
-        photo: {
-            small: String
-            medium: String
-            large: String
-            full: String
-        }
+        photo: [{small: String, medium: String, large: String, full: String}]
         url: String
         location: String
         description: String
