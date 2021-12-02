@@ -1,4 +1,4 @@
-const {User, Dog} = require("../models");
+const {User, Dog, Settings} = require("../models");
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
@@ -11,6 +11,9 @@ const resolvers = {
         },
         user: async (parent, args) => {
             return await User.findById(args.id).populate('pets');
+        },
+        settings: async (parent, args) => {
+            return await Settings
         }
     },
     Mutation: {

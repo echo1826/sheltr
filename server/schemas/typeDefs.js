@@ -8,6 +8,16 @@ const typeDefs = gql`
         pasword: String
         pets: [Dog] 
     }
+
+    type Settings {
+        _id: ID
+        userId: User
+        age: String
+        size: String
+        spayed: Boolean
+        house_trained: Boolean
+
+    }
     
     type Dog {
         _id: ID
@@ -38,12 +48,15 @@ const typeDefs = gql`
     type Query {
         users: [User]
         dogs: [Dog]
-        user(id: ID!): User
+        user(_id: ID!): User
+        settings(userId: ID!): Settings
     }
 
     type Mutation {
         addUser(username: String!, email: String!, password: String!): User
         updateUserPets(_id: ID!, pet: [Dog]): User
+        updateSettings(userId: ID!): Settings
+
     }
     `;
 
