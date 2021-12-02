@@ -39,6 +39,11 @@ const typeDefs = gql`
         shots: Boolean
         organization: String
     }
+
+    type Auth {
+        token: ID
+        user: User
+    }
     
     type Query {
         users: [User]

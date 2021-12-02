@@ -1,10 +1,9 @@
 import React from "react";
 import Auth from "../../utils/auth";
 import { Link } from "react-router-dom";
-
+import Login from "../Login"
 
 export default function Navbar() {
-    if (Auth.loggedIn()) {
     return(
     <nav className='navContainer'>
         <ul>
@@ -35,7 +34,4 @@ export default function Navbar() {
         </ul>
     </nav>
     )
-    } else {
-        return (<Login />)
-    }
 }
