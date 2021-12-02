@@ -3,6 +3,7 @@ const logger = require("morgan");
 const db = require('./config/connection');
 const {ApolloServer} = require('apollo-server-express');
 const {typeDefs, resolvers} = require('./schemas');
+const { authMiddleware } = require("./utils/auth");
 // const path = require('path');
 // const routes = require('./controllers');
 
@@ -13,8 +14,10 @@ const PORT = process.env.PORT || 3000;
 const app = express();
 
 const server = new ApolloServer({
-  typeDefs, resolvers
-})
+  typeDefs,
+  resolvers,
+  context: authMiddleware,
+});
 
 server.applyMiddleware({app});
 app.use(logger("dev"));
