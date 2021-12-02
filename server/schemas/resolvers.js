@@ -11,6 +11,9 @@ const resolvers = {
         user: async (parent, args) => {
             return await User.findById(args.id).populate('dogs');
         }
+    },
+    Mutation: {
+
     }
 };
 
