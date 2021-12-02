@@ -27,6 +27,9 @@ const resolvers = {
             const petsArr = user.pets;
             petsArr.push(petId);
             return await User.findByIdAndUpdate(_id, { pets: petsArr }, { new:true });
+        },
+        updateSettings: async (parent, args) => {
+            return await User.findByIdAndUpdate(_id, { args }, { new:true });
         }
     }
 };
