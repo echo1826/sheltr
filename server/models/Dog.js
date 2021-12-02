@@ -7,19 +7,68 @@ const DogSchema = new Schema({
         type: String
     },
     breed: {
-        type: String
+        primary: {
+            type: String,
+            trim: true
+        },
+        secondary: {
+            type: String,
+            trim: true
+        },
+        mixed: {
+            type: Boolean
+        },
+        unknown: {
+            type: Boolean
+        }
     },
     age: {
-        type: Number
+        type: String
     },
-    gender: {
+    size: {
+        type: String
+    },
+    photo: [
+        {
+            small: {
+                type: String,
+                trim: true
+            },
+            medium: {
+                type: String,
+                trim: true
+            },
+            large: {
+                type: String,
+                trim: true
+            },
+            full: {
+                type: String,
+                trim: true
+            }
+        }
+    ],
+    url: {
+        type: String,
+        trim: true
+    },
+    location: {
         type: String
     },
     description: {
         type: String
     },
-    traits: {
-        type: Array
+    spayed: {
+        type: Boolean
+    },
+    house_trained: {
+        type: Boolean
+    },
+    shots: {
+        type: Boolean
+    },
+    organization: {
+        type: String
     }
 });
 
