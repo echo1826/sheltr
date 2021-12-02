@@ -3,8 +3,7 @@ const logger = require("morgan");
 const db = require('./config/connection');
 const {ApolloServer} = require('apollo-server-express');
 const {typeDefs, resolvers} = require('./schemas');
-// const path = require('path');
-// const routes = require('./controllers');
+
 
 
 
@@ -23,10 +22,6 @@ app.use(express.urlencoded({
   extended: true
 }));
 app.use(express.json());
-
-// app.use(express.static("public"));
-
-// app.use(routes);
 
 // Start the server
 db.once('open', () => {
