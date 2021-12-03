@@ -81,11 +81,11 @@ const userSettingsSeed = [{
 
 db.once('open', async () => {
     try{
-        // const dogArray = await getDogDataFromPetfinderApi();
-        // await Dog.deleteMany({});
-        // await Dog.create(dogArray);
-        // await User.deleteMany({});
-        // await User.create(userSeed);
+        const dogArray = await getDogDataFromPetfinderApi();
+        await Dog.deleteMany({});
+        await Dog.create(dogArray);
+        await User.deleteMany({});
+        await User.create(userSeed);
         await Settings.deleteMany({});
         await Settings.create(userSettingsSeed);
         console.log("Seeded Data!");
