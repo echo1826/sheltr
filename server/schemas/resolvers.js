@@ -188,17 +188,13 @@ const resolvers = {
       return user;
       return { token, user };
     },
-    // updateUserPets: async (parent, { _id, petId }) => {
-    //   const user = await User.findById(_id).populate("pets");
-    //   const petsArr = user.pets;
-    //   petsArr.push(petId);
-
-    //   return await User.findByIdAndUpdate(
-    //     _id,
-    //     { pets: petsArr },
-    //     { new: true }
-    //   );
-    // },
+    updateUserPets: async (parent, { _id, petId }) => {
+      return await User.findByIdAndUpdate(
+        _id,
+        { $push: { pets: petId } },
+        { new: true }
+      );
+    },
     login: async (parent, { email, password }) => {
       const user = await User.findOne(email);
 
@@ -210,6 +206,22 @@ const resolvers = {
 
       const token = signToken(user);
       return { token, user };
+    },
+    addSettings: async (parent, { userId }) => {
+      return await Settings.create({
+        userId: userId,
+        age: "Young",
+        size: "Medium",
+        spayed: "true",
+        house_trained: "true",
+      });
+    },
+    updateSettings: async (parent, args) => {
+      return await Settings.findByIdAndUpdate(
+        args._id,
+        { args },
+        { new: true }
+      );
     },
   },
 };
