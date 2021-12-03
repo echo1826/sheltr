@@ -196,25 +196,33 @@ const resolvers = {
             return user;
             return { token, user };
         },
-            updateUserPets: async (parent,{ _id, petId }) => {
-                const user = await User.findById(_id).populate('pets');
-                const petsArr = user.pets;
-                petsArr.push(petId);
+        updateUserPets: async (parent,{ _id, petId }) => {
+            const user = await User.findById(_id).populate('pets');
+            const petsArr = user.pets;
+            petsArr.push(petId);
 
-                return await User.findByIdAndUpdate(_id, { pets: petsArr }, { new:true });
-            },
-            login: async (parent, { email, password }) => {
-                const user = await User.findOne(email);
+            return await User.findByIdAndUpdate(_id, { pets: petsArr }, { new:true });
+        },
+        login: async (parent, { email, password }) => {
+            const user = await User.findOne(email);
 
-                if(!user) {
-                    throw new AuthenticationError('Incorrect email or password');
-                }
-
-                //Check user password
-
-                const token = signToken(user);
-                return { token, user };
+            if(!user) {
+                throw new AuthenticationError('Incorrect email or password');
             }
+
+            //Check user password
+
+            const token = signToken(user);
+            return { token, user };
+            },
+        addSettings: async (parent, {userId}) => {
+            return await Settings.create({
+                userId: userId,
+                age: 'Young',
+                size: 'Medium',
+                spayed: 'true',
+                house_trained: 'true'})
+        }
     }
 };
 
