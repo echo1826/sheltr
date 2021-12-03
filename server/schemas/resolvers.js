@@ -221,7 +221,10 @@ const resolvers = {
                 age: 'Young',
                 size: 'Medium',
                 spayed: 'true',
-                house_trained: 'true'})
+                house_trained: 'true'});
+        },
+        updateSettings: async (parent, args) => {
+            return await Settings.findByIdAndUpdate(args._id, { args }, { new:true });
         }
     }
 };
