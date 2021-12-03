@@ -37,10 +37,6 @@ export const ADD_SETTINGS = gql`
   ) {
     addSettings(
         userId: $userId,
-        age: 'Young',
-        size: 'Medium',
-        spayed: 'true',
-        house_trained: 'true'
     )
     }
   }
