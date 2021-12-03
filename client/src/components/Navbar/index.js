@@ -1,6 +1,7 @@
 import React from "react";
 import Auth from "../../utils/auth";
 import { Link } from "react-router-dom";
+
 import Box from '@mui/material/Box';
 import CssBaseline from '@mui/material/CssBaseline';
 import BottomNavigation from '@mui/material/BottomNavigation';
@@ -53,6 +54,7 @@ import Paper from '@mui/material/Paper';
 
 export default function Navbar() {
     // if (Auth.loggedIn()) {
+
     return(
     <nav className='navContainer'>
         <ul>
@@ -83,9 +85,11 @@ export default function Navbar() {
         </ul>
     </nav>
     )
+
     // } else {
     //     return (<Login />)
     // }
 }
 
 // position: 'fixed', bottom: 0, left: 0, right: 0
+
