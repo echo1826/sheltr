@@ -1,7 +1,7 @@
 import React from 'react';
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import { themeOptions } from '@material-ui/core/styles/createMuiTheme';
+// import { themeOptions } from '@material-ui/core/styles/createMuiTheme';
 import Header from './components/Header';
 import Cards  from './pages/Cards';
 import Login from './pages/Login';
@@ -15,7 +15,8 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
-export const ThemeProvider = themeOptions ( {
+// const theme = themeOptions ( {'
+const theme = ({
   palette: {
     type: 'light',
     primary: {
@@ -35,7 +36,7 @@ export const ThemeProvider = themeOptions ( {
 
 function App() {
   return (
-    <ThemeProvider>
+    <ThemeProvider theme={theme}>
     <ApolloProvider client={client}>
       <Router>
         <div className="flex-column justify-flex-start min-100-vh">
