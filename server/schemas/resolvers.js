@@ -197,11 +197,8 @@ const resolvers = {
             return { token, user };
         },
         updateUserPets: async (parent,{ _id, petId }) => {
-            const user = await User.findById(_id).populate('pets');
-            const petsArr = user.pets;
-            petsArr.push(petId);
 
-            return await User.findByIdAndUpdate(_id, { pets: petsArr }, { new:true });
+            return await User.findByIdAndUpdate(_id, {$push: {pets: petId}}, { new:true });
         },
         login: async (parent, { email, password }) => {
             const user = await User.findOne(email);

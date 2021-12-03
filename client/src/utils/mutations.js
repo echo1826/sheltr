@@ -63,3 +63,15 @@ export const UPDATE_SETTINGS = gql`
       )
   }
 `;
+
+export const UPDATE_USER_PETS = gql`
+  mutation updateUserPets(
+    $_id: ObjectId!
+    $petId: ObjectId!
+  ) {
+      updateUserPets (
+          _id: $_id
+          petId: $petId
+      )
+  }
+`;
