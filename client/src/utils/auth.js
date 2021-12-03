@@ -2,8 +2,8 @@ import decode from 'jwt-decode';
 
 class AuthService {
     //Saves user token
-    login() {
-        localStorage.setItem('id_token');
+    login(tokenId) {
+        localStorage.setItem('id_token', tokenId);
         
         window.location.assign('/');
     }
@@ -17,7 +17,7 @@ class AuthService {
         return localStorage.getItem('token_id');
     }
 
-    checkTokenExpiration() {
+    checkTokenExpiration(token) {
         try {
             const decoded = decode(token);
 
@@ -41,4 +41,4 @@ class AuthService {
     }
 };
 
-export default new ();
+export default new AuthService();
