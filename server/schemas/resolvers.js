@@ -3,6 +3,7 @@ const {
     Dog,
     Settings
 } = require("../models");
+const mongoose = require('mongoose');
 const {
     signToken
 } = require('../utils/auth.js');
@@ -15,7 +16,7 @@ const resolvers = {
         dogs: async () => {
             return await Dog.find({});
         },
-        user: async (parent, args) => {
+        user: async (parent, args, context) => {
             const user = await User.findOne(args.id).populate('pets');
 
             if (!user) {
@@ -160,8 +161,8 @@ const resolvers = {
         },
         size: async (parent, args) => {
             const dogData = await Dog.find({
-                    size: args.size
-                });
+                size: args.size
+            });
             if (!dogData) {
                 throw new Error("No dogs found!");
             }
@@ -176,24 +177,25 @@ const resolvers = {
             }
             return dogData;
         },
-        age: async(parent, args) => {
+        age: async (parent, args) => {
             const dogData = await Dog.find({
                 age: args.age
             });
-            if(!dogData) {
+            if (!dogData) {
                 throw new Error("No dogs found!");
             }
             return dogData;
         },
         settings: async (parent, args) => {
-            return await Settings;
+            return await Settings.findOne({
+                user:  args.user
+            }).populate('user');
         },
     },
     Mutation: {
         addUser: async (parent, args) => {
             const user = await User.create(args);
             const token = signToken(user);
-            return user;
             return { token, user };
         },
         updateUserPets: async (parent,{ _id, petId }) => {
