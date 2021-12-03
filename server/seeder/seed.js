@@ -1,6 +1,6 @@
 const db = require('../config/connection');
 const {
-    Dog
+    Dog, User, Settings
 } = require('../models');
 const axios = require('axios');
 require('dotenv').config();
@@ -33,7 +33,6 @@ async function getDogDataFromPetfinderApi() {
                     'Authorization': `Bearer ${token}`
                 }
             });
-
             const dogObject = {
                 name: dog.name,
                 breed: dog.breeds,
@@ -59,11 +58,36 @@ async function getDogDataFromPetfinderApi() {
 
 }
 
+const userSeed = {
+    username: 'Testing',
+    email: 'test@me.com',
+    password: '12345678',
+}
+
+const userSettingsSeed = [{
+    user: '61a984b607248b27786045e1',
+    age: "Adult",
+    size: "Large",
+    spayed: true,
+    house_trained: true
+},
+{
+    user: '61aa493e8a22806888fa9ea1',
+    age: "Young",
+    size: "Small",
+    spayed: false,
+    house_trained: false
+}]
+
 db.once('open', async () => {
     try{
-        const dogArray = await getDogDataFromPetfinderApi();
-        await Dog.deleteMany({});
-        await Dog.create(dogArray);
+        // const dogArray = await getDogDataFromPetfinderApi();
+        // await Dog.deleteMany({});
+        // await Dog.create(dogArray);
+        // await User.deleteMany({});
+        // await User.create(userSeed);
+        await Settings.deleteMany({});
+        await Settings.create(userSettingsSeed);
         console.log("Seeded Data!");
         process.exit(0)
     }catch(err) {

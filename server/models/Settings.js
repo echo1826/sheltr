@@ -3,9 +3,9 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const SettingsSchema = new Schema({
-    userId: {
+    user: {
         type: Schema.Types.ObjectId,
-        ref: "User"
+        ref: 'User'
     },
     age: {
         type: String
@@ -21,6 +21,6 @@ const SettingsSchema = new Schema({
     },
 });
 
-const User = mongoose.model("User", UserSchema);
+const Settings = mongoose.model("Settings", SettingsSchema);
 
 module.exports = Settings;
