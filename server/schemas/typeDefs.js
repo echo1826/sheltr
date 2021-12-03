@@ -78,7 +78,7 @@ const typeDefs = gql`
         addUser(username: String!, email: String!, password: String!): User
         addSettings(userId: ID!): Settings
         updateUserPets(_id: ID!, pets: [String]): User
-        updateSettings(userId: ID!): Settings
+        updateSettings(userId: ID!, age: String, size: String, spayed: Boolean, house_trained: Boolean): Settings
         login(email: String!, password: String!): Auth
       }
     `;
