@@ -26,5 +26,10 @@
   "bugs": {
     "url": "https://github.com/echo1826/sheltr/issues"
   },
-  "homepage": "https://github.com/echo1826/sheltr#readme"
+  "homepage": "https://github.com/echo1826/sheltr#readme",
+  "dependencies": {
+    "@emotion/react": "^11.7.0",
+    "@emotion/styled": "^11.6.0",
+    "@mui/material": "^5.2.2"
+  }
 }
