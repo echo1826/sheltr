@@ -67,6 +67,9 @@ const DogSchema = new Schema({
     shots: {
         type: Boolean
     },
+    gender: {
+        type: String
+    },
     organization: {
         type: String
     }
