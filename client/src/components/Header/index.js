@@ -8,14 +8,13 @@ import IconButton from '@mui/material/IconButton';
 
 export default function ButtonAppBar() {
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box sx={{ flexGrow: 1}}>
       <AppBar position="static" color="transparent" >
         <Toolbar>
-
-          <Typography variant="h1" component="div" color="black" fontFamily="Pacifico" sx={{ flexGrow: 1 }}>
+          <Typography variant="h1" component="div" color="black" fontFamily="Pacifico">
             Sheltr
           </Typography>
-          <img src="./images/sheltr_logo.png" alt="Sheltr" />
+          <img src="./images/sheltr_logo.png" alt="Sheltr" paddingLeft="60px" />
         </Toolbar>
       </AppBar>
     </Box>
