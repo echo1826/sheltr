@@ -65,7 +65,7 @@ export default function Navbar() {
                 </Link>
             </li>
             <li>
-                <Link to='/sheltr'>
+                <Link to='/cards'>
                     <img src='./images/pawblank.png' alt='sheltr'></img>
                     Sheltr
                 </Link>
