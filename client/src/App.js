@@ -7,6 +7,7 @@ import Login from './pages/Login';
 import Profile from './pages/Profile';
 import Settings from './pages/Settings';
 import Navbar from './components/Navbar';
+import Likes from './pages/Likes';
 
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 
@@ -45,9 +46,9 @@ function App() {
 
     <ApolloProvider client={client}>
       <Router>
-        <div className="flex-column justify-flex-start min-100-vh">
+        <div>
           <Header />
-          <div className="container">
+          <div>
             <Route exact path="/">
               <Login />
             </Route>
@@ -56,6 +57,9 @@ function App() {
             </Route>
             <Route exact path="/profile">
               <Profile />
+            </Route>
+            <Route exact path="/likes">
+              <Likes />
             </Route>
             <Route exact path="/settings">
               <Settings />

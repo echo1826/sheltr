@@ -1,12 +1,11 @@
 import React from "react";
 import ReactDOM from 'react-dom';
-import Likes from './Likes'
-// import profileImg from '../../public/images/profilefilled.png'
 import { useQuery } from "@apollo/client";
 import {QUERY_ALL_DOGS} from '../utils/queries'
+import {Grid}  from '@mui/material';
+import Likes from './Likes'
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
-import {Grid}  from '@mui/material';
 import Avatar from '@mui/material/Avatar';
 
 export default function Profile() {
