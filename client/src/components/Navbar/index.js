@@ -56,27 +56,27 @@ export default function Navbar() {
     // if (Auth.loggedIn()) {
 
     return(
-    <nav className='navContainer'>
-        <ul>
-            <li>
+    <nav className='navContainer' display="flex-grow" role="navigation">
+        <ul style = {{display: "inline-flex","listStyleType": "none", borderTop: "3px solid black"}}>
+            <li style = {{padding: "20px"}}>
                 <Link to='/profile'>
                     <img src='./images/profileblank.png' alt='profile'></img>
                     Profile
                 </Link>
             </li>
-            <li>
+            <li style = {{borderLeft: "3px solid", padding: "20px"}}>
                 <Link to='/sheltr'>
                     <img src='./images/pawblank.png' alt='sheltr'></img>
                     Sheltr
                 </Link>
             </li>
-            <li>
+            <li style = {{borderLeft: "3px solid", padding: "20px"}}>
                 <Link to='/likes'>
                     <img src='./images/heartblank.png' alt='heart'></img>
                     Likes
                 </Link>
             </li>
-            <li>
+            <li style = {{borderLeft: "3px solid", padding: "20px"}}>
                 <Link to='/settings'>
                     <img src='./images/settingsblank.png' alt='settings'></img>
                     Settings
