@@ -1,41 +1,48 @@
 import React from 'react';
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-// import { themeOptions } from '@material-ui/core/styles/createMuiTheme';
 import Header from './components/Header';
 import Cards  from './pages/Cards';
 import Login from './pages/Login';
 import Profile from './pages/Profile';
 import Settings from './pages/Settings';
 import Navbar from './components/Navbar';
-// import { ThemeProvider } from '@emotion/react';
+
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+
 
 const client = new ApolloClient({
   uri: '/graphql',
   cache: new InMemoryCache(),
 });
 
-// export const ThemeProvider = themeOptions ( {
-//   palette: {
-//     type: 'light',
-//     primary: {
-//       main: '#fafafa',
-//     },
-//   },
-//   typography: {
-//     h1: {
-//       fontFamily: 'Pacifico',
-//     },
-//     fontFamily: 'Oxygen',
-//     h2: {
-//       fontFamily: 'Source Sans Pro',
-//     },
-//   },
-// });
+
+
+const theme = createTheme (theme => ({
+  palette: {
+    type: 'light',
+    primary: {
+      main: '#fafafa',
+    },
+  },
+  typography: {
+    h1: {
+      fontFamily: 'Pacifico',
+    },
+    fontFamily: 'Oxygen',
+    h2: {
+      fontFamily: 'Source Sans Pro',
+    },
+  },
+}));
+
 
 function App() {
+
   return (
-    // <ThemeProvider>
+
+<ThemeProvider theme = {theme}>
+
     <ApolloProvider client={client}>
       <Router>
         <div className="flex-column justify-flex-start min-100-vh">
@@ -58,7 +65,9 @@ function App() {
         </div>
       </Router>
     </ApolloProvider>
-    // </ThemeProvider>
+
+ </ThemeProvider>
+
   );
 }
 
