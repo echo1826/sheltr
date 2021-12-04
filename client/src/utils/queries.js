@@ -1,3 +1,4 @@
+
 import {gql} from "@apollo/client";
 
 export const QUERY_SINGLE_USER = gql`
@@ -206,3 +207,4 @@ export const QUERY_AGE = gql`
         }
     }
 `;
+
