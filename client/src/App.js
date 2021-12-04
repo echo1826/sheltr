@@ -7,12 +7,16 @@ import Login from './pages/Login';
 import Profile from './pages/Profile';
 import Settings from './pages/Settings';
 import Navbar from './components/Navbar';
+
 import { ThemeProvider, createTheme } from '@mui/material/styles';
+
 
 const client = new ApolloClient({
   uri: '/graphql',
   cache: new InMemoryCache(),
 });
+
+
 
 const theme = createTheme (theme => ({
   palette: {
@@ -32,10 +36,13 @@ const theme = createTheme (theme => ({
   },
 }));
 
+
 function App() {
 
   return (
+
 <ThemeProvider theme = {theme}>
+
     <ApolloProvider client={client}>
       <Router>
         <div className="flex-column justify-flex-start min-100-vh">
@@ -58,7 +65,9 @@ function App() {
         </div>
       </Router>
     </ApolloProvider>
+
  </ThemeProvider>
+
   );
 }
 

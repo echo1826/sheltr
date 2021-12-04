@@ -2,6 +2,7 @@
   "name": "sheltr",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:3001",
   "dependencies": {
     "@apollo/client": "^3.5.5",
     "@emotion/react": "^11.7.0",

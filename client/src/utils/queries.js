@@ -38,11 +38,31 @@ export const QUERY_SINGLE_USER = gql`
 export const QUERY_ALL_DOGS = gql`
     query getAllDogs {
         dogs{
-            _id
-            name
-            location
-        }  
+        _id
+        name
+        breed {
+        primary
+        secondary
+        mixed
+        unknown
+        }
+        age
+        size
+        photo {
+        small
+        medium
+        large
+        full
+        }
+        url
+        location
+        description
+        spayed
+        house_trained
+        shots
+        organization
     }
+}
 `;
 
 export const QUERY_SETTINGS = gql`
