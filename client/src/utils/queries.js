@@ -36,9 +36,11 @@ export const QUERY_SINGLE_USER = gql`
 
 export const QUERY_ALL_DOGS = gql`
     query getAllDogs {
-        _id
-        name
-        location
+        dogs{
+            _id
+            name
+            location
+        }  
     }
 `;
 
