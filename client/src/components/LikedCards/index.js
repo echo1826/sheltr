@@ -22,10 +22,11 @@ export default function LikedCards(props) {
         
         {profileDogs.map((dog) => {
            return ( 
-                <Grid item xs={4} key={dog._id} >
-                    <Paper>
-                        <img src={dog.photo[0].medium} alt='photo of dog'/>
+            <Paper elevation = {6} >
+                <Grid item xs={4} key={dog._id} flex flexWrap="wrap" margin = "10px" maxWidth="90vw" alignItems="center" justifyContent="center" container ={true}>
+                        <img src={dog.photo[0].small} alt='photo of dog' />
                         <h2>{dog.name}</h2>
+                        <div></div>
                         <p>{dog.breed.primary}</p>
                         <p>{dog.size} | {dog.gender} | {dog.age}</p>
                         <ul>
@@ -38,8 +39,8 @@ export default function LikedCards(props) {
                         <h3>Meet {dog.name}!</h3>
                         <p>{dog.description}</p>
                         <a href={dog.url} target='_blank'>Learn more...</a>
-                    </Paper>
-                </Grid>
+                    </Grid>
+                </Paper>
         )
         })}
         
