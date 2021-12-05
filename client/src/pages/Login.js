@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from 'react-dom';
+import Signup from '../components/Signup/index'
 
 import Auth from "../utils/auth";
 import Cards from './Cards.js';
@@ -10,5 +11,7 @@ export default function Login(component) {
         return(<Cards/>)
     } 
 
-    return(component);
+    return(<div>
+        <Signup />
+    </div>);
 }

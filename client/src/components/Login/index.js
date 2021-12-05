@@ -1,5 +1,4 @@
 import React from "react";
-import ReactDOM from 'react-dom';
 
 export default function LoginComp() {
     const [formState, setFormState] = useState({ email: '', password: '' });

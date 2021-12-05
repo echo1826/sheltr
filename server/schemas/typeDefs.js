@@ -46,7 +46,7 @@ const typeDefs = gql`
 
     type Settings {
       _id: ID
-      userId: User
+      user: User
       age: String
       size: String
       spayed: Boolean
@@ -71,14 +71,21 @@ const typeDefs = gql`
         houseTrained(house_trained: Boolean): [Dog]
         age(age: String): [Dog]
         dogs: [Dog]
-        settings(userId: ID!): Settings
+        settings(user: ID!): Settings
     }
 
     type Mutation {
+<<<<<<< HEAD
         addUser(username: String!, email: String!, password: String!): User
         addSettings(userId: ID!): Settings
         updateUserPets(_id: ID!, pets: [String]): User
         updateSettings(userId: ID!): Settings
+=======
+        addUser(username: String!, email: String!, password: String!): Auth
+        addSettings(user: ID!, age: String, size: String, spayed: Boolean, house_trained: Boolean): Settings
+        updateUserPets(_id: ID!, dog: ID!): User
+        updateSettings(user: ID!, age: String, size: String, spayed: Boolean, house_trained: Boolean): Settings
+>>>>>>> a56e0a26f7057b945e54bf43b2e15ebd932ed089
         login(email: String!, password: String!): Auth
       }
     `;

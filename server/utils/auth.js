@@ -1,8 +1,9 @@
 const jwtoken = require('jsonwebtoken');
+require('dotenv').config();
 
-const secret = 'Sheltr12-09-21Project3-FinalBootcampWork';
+const secret = process.env.SECRET;
 const expirationTime ='1d';
-
+console.log(process.env.SECRET);
 module.exports = {
     authMiddleware: function ({ req }) {
         let token = req.body.token || req.query.token || req.headers.authorization;
@@ -27,6 +28,6 @@ module.exports = {
 
     signToken: function({ _id, email, username }) {
         const payload = { _id, email, username };
-        return jwtoken.sign({ data: payload }, secret, { expiration: expirationTime});
+        return jwtoken.sign({ data: payload }, secret, { expiresIn: expirationTime});
     },
 };
