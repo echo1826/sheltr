@@ -75,17 +75,10 @@ const typeDefs = gql`
     }
 
     type Mutation {
-<<<<<<< HEAD
-        addUser(username: String!, email: String!, password: String!): User
-        addSettings(userId: ID!): Settings
-        updateUserPets(_id: ID!, pets: [String]): User
-        updateSettings(userId: ID!): Settings
-=======
         addUser(username: String!, email: String!, password: String!): Auth
         addSettings(user: ID!, age: String, size: String, spayed: Boolean, house_trained: Boolean): Settings
         updateUserPets(_id: ID!, dog: ID!): User
         updateSettings(user: ID!, age: String, size: String, spayed: Boolean, house_trained: Boolean): Settings
->>>>>>> a56e0a26f7057b945e54bf43b2e15ebd932ed089
         login(email: String!, password: String!): Auth
       }
     `;

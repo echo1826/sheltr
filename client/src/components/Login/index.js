@@ -1,14 +1,14 @@
 import React from "react";
 
 export default function LoginComp() {
-    const [formState, setFormState] = useState({ email: '', password: '' });
-    const [login, { error, data }] = useMutation(LOGIN_USER);
+    const [loginState, setLoginState] = useState({ email: '', password: '' });
+    const [login, { error, data }] = useMutation(LOGIN);
 
     // update state based on form input changes
     const handleChange = (event) => {
     const { name, value } = event.target;
 
-    setFormState({
+    setLoginState({
       ...formState,
       [name]: value,
     });
@@ -20,7 +20,7 @@ export default function LoginComp() {
     console.log(formState);
     try {
       const { data } = await login({
-        variables: { ...formState },
+        variables: { ...loginState },
       });
 
       Auth.login(data.login.token);
@@ -29,7 +29,7 @@ export default function LoginComp() {
     }
 
     // clear form values
-    setFormState({
+    setLoginState({
       email: '',
       password: '',
     });
@@ -37,22 +37,22 @@ export default function LoginComp() {
 
 
     return(
-        <form onSubmit={}>
+        <form onSubmit={handleFormSubmit}>
         <input
           className=""
           placeholder="Your email"
           name="email"
           type="email"
-          value={}
-          onChange={}
+          value={loginState.email}
+          onChange={handleChange}
         />
         <input
           className="form-input"
           placeholder="******"
           name="password"
           type="password"
-          value={}
-          onChange={}
+          value={loginState.password}
+          onChange={handleChange}
         />
         <button
           className=""
@@ -60,12 +60,12 @@ export default function LoginComp() {
         >
           Login
         </button>
-        <button
+        {/* <button
           className=""
           type="submit"
         >
           SignUp
-        </button>
+        </button> */}
         
       </form>);
 }
