@@ -32,6 +32,7 @@ export default function Signup() {
             });
       
             Auth.login(data.addUser.token);
+            window.location.assign('/profile');
           } catch (e) {
             console.error(e);
           }
@@ -78,7 +79,7 @@ export default function Signup() {
                 Sign Up
             </Button>
         </FormGroup>
-        <a href="#">Already a user? Log in!</a>
+        <a>Already a user? Log in!</a>
         
     </div>);
 };
