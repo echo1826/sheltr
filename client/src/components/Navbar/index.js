@@ -31,7 +31,7 @@ export default function Navbar() {
             <Link to='/profile'>
               <BottomNavigationAction label="Profile" icon={<img src='./images/profileblank2.png'/>}/>
             </Link>
-            <Link to='/sheltr'>
+            <Link to='/cards'>
                 <BottomNavigationAction label="Sheltr" icon={<img src='./images/pawblank2.png'/>} />
             </Link>
             <Link to='/likes'>
