@@ -1,6 +1,7 @@
 import React from 'react';
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
+import Box from '@mui/material/Box';
 import Header from './components/Header';
 import Cards  from './pages/Cards';
 import Login from './pages/Login';
