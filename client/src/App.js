@@ -22,7 +22,7 @@ function App() {
           <Header />
           <div className="container">
             <Route exact path="/">
-              <Login />
+              <Login component={<LoginComp />}/>
             </Route>
             <Route exact path="/cards">
               <Cards />

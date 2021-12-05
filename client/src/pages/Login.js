@@ -1,11 +1,14 @@
 import React from "react";
 import ReactDOM from 'react-dom';
 
-export default function Login() {
+import Auth from "../utils/auth";
+import Cards from './Cards.js';
+import LoginComp from '../components/Login/index.js';
 
+export default function Login(component) {
+    if(Auth.isLoggedIn()) {
+        return(<Cards/>)
+    } 
 
-    return(
-    <div>
-        
-    </div>);
+    return(component);
 }
