@@ -64,8 +64,8 @@ export default function Navbar() {
                     Profile
                 </Link>
             </li>
-            <li style = {{borderLeft: "3px solid", padding: "20px"}}>
-                <Link to='/sheltr'>
+            <li>
+                <Link to='/cards'>
                     <img src='./images/pawblank.png' alt='sheltr'></img>
                     Sheltr
                 </Link>

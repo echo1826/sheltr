@@ -1,28 +1,21 @@
 import React from "react";
-import ReactDOM from 'react-dom';
-// need to import all dogs returned after filtering from user settings
+import Cardrender from "../components/Cardrender";
+import {useQuery} from '@apollo/client';
+import {QUERY_ALL_DOGS, QUERY_SETTINGS} from '../utils/queries';
+import './Cards.css';
 
 export default function Cards() {
+    // const {loading, data} = useQuery(QUERY_SETTINGS, {
+    //     variables: // give user id here to get user settings
+    // });
+    // let settings;
+    // if(loading) {
+    //     return <div>Loading settings...</div>
+    // } else {
+    //     settings = data?.settings;
+    // }
 
-
-    return(<div>
-        
-        {/* {userArrDogs.map((dog) => {
-            <div key={dog._id}>
-                <img src={dog.photo[0].small} alt="dog photo"></img>
-                <h2>{dog.name}</h2>
-                <p>{dog.breed.primary} | {dog.location}</p>
-                <ul>
-                    <li>size: {dog.size}</li>
-                    <li>gender: {dog.gender}</li>
-                    <li>age: {dog.age}</li>
-                </ul>
-            </div>
-        })}
-        <div>
-            <button id="nope"></button>
-            <button id="like"></button>
-        </div> */}
-
+    return(<div className='cards'>
+        <Cardrender/>
     </div>);
 }
