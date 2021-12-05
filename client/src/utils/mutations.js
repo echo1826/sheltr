@@ -36,10 +36,9 @@ export const ADD_SETTINGS = gql`
     $userId: ObjectId!
   ) {
     addSettings(
-        userId: $userId,
+        userId: $userId
     )
     }
-  }
 `;
 
 export const UPDATE_SETTINGS = gql`
@@ -69,5 +68,15 @@ export const UPDATE_USER_PETS = gql`
           _id: $_id
           petId: $petId
       )
+  }
+`;
+
+export const REMOVE_USER = gql`
+  mutation removeUser(
+    $_id: ObjectId!
+  ) {
+    removeUser (
+      _id: $_id
+    )
   }
 `;
