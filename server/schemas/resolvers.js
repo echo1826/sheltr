@@ -199,11 +199,10 @@ const resolvers = {
             const token = signToken(user);
             return { token, user };
         },
-        updateUserPets: async (parent,{ _id, petId }) => {
-
-            return await User.findByIdAndUpdate(_id, {$push: {pets: petId}}, { new:true });
+        updateUserPets: async (parent,{ _id, dog }) => {
+            return await User.findByIdAndUpdate(_id, {$push: {pets: dog}}, { new:true }).populate('pets');
         },
-        login: async (parent, { email, password }) => {
+        login: async (parent, { email, password }, context) => {
             console.log(email, password);
             const user = await User.findOne({email});
             console.log(user);
@@ -225,7 +224,7 @@ const resolvers = {
             return await Settings.create(args);
         },
         updateSettings: async (parent, args) => {
-            return await Settings.findByIdAndUpdate(args._id, { args }, { new:true });
+            return await Settings.findOne({user:args._id}, {}, { new:true });
         }
     }
 };
