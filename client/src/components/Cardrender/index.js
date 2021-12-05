@@ -26,5 +26,6 @@ export default function Cardrender(props) {
                 <p>{dog.location}</p>
             </TinderCard>)
         })}
-    </div>);
+        {lastDirection ? <h2>You swiped {lastDirection}</h2> : <h2></h2>}
+    </div>)
 }
