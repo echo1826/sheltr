@@ -1,23 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
+import { useMutation } from "@apollo/client";
+import { LOGIN } from "../../utils/mutations";
+import Auth from "../../utils/auth.js";
 
 export default function LoginComp() {
-    const [loginState, setLoginState] = useState({ email: '', password: '' });
-    const [login, { error, data }] = useMutation(LOGIN);
+  const [loginState, setLoginState] = useState({ email: "", password: "" });
+  const [login, { error, data }] = useMutation(LOGIN);
 
-    // update state based on form input changes
-    const handleChange = (event) => {
+  // update state based on login input changes
+  const handleChange = (event) => {
     const { name, value } = event.target;
 
     setLoginState({
-      ...formState,
+      ...loginState,
       [name]: value,
     });
   };
 
-  // submit form
+  // submit login
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    console.log(formState);
+    console.log(loginState);
     try {
       const { data } = await login({
         variables: { ...loginState },
@@ -30,14 +33,19 @@ export default function LoginComp() {
 
     // clear form values
     setLoginState({
-      email: '',
-      password: '',
+      email: "",
+      password: "",
     });
   };
 
-
-    return(
-        <form onSubmit={handleFormSubmit}>
+  return (
+    <div className="card-body">
+      {data ? (
+        <p>
+          Success!
+        </p>
+    ) : (
+      <form onSubmit={handleFormSubmit}>
         <input
           className=""
           placeholder="Your email"
@@ -54,10 +62,7 @@ export default function LoginComp() {
           value={loginState.password}
           onChange={handleChange}
         />
-        <button
-          className=""
-          type="submit"
-        >
+        <button className="" type="submit">
           Login
         </button>
         {/* <button
@@ -66,6 +71,11 @@ export default function LoginComp() {
         >
           SignUp
         </button> */}
-        
-      </form>);
+      </form>
+      )}
+      {error && (
+        <div className="my-3 p-3 bg-danger text-white">{error.message}</div>
+      )}
+    </div>
+  );
 }
