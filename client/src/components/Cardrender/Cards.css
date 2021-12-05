@@ -8,6 +8,13 @@
 .swipe {
     position: absolute;
     right: 50%;
+    top: 50%;
+    border-radius: 15%;
+    border: 1px solid;
+    box-shadow: 0 5px;
+    background-color: #fff;
+    object-fit: cover;
+    
 }
 
 .cardContainer {
@@ -18,6 +25,5 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
 
 }
