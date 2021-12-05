@@ -80,6 +80,7 @@ const typeDefs = gql`
         updateUserPets(_id: ID!, dog: ID!): User
         updateSettings(user: ID!, age: String, size: String, spayed: Boolean, house_trained: Boolean): Settings
         login(email: String!, password: String!): Auth
+        removeUser(_id: ID!): User
       }
     `;
 
