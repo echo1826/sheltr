@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import TinderCard from 'react-tinder-card';
 import { QUERY_ALL_DOGS } from "../../utils/queries";
 import { useQuery } from "@apollo/client";
@@ -6,6 +6,7 @@ import './Cards.css';
 
 export default function Cardrender(props) {
     const [lastDirection, setLastDirection] = useState();
+    
     // const settings = props.settings;
     const {loading, data} = useQuery(QUERY_ALL_DOGS);
     let dogCardData;
@@ -18,6 +19,23 @@ export default function Cardrender(props) {
         setLastDirection(direction)
       }
     const testDogData = dogCardData.slice(0, 3);
+    const [currentIndex, setCurrentIndex] = useState(testDogData.length - 1);
+    const currentIndexRef = useRef(currentIndex);
+    const updateCurrentIndex= (val) => {
+        setCurrentIndex(val);
+        currentIndexRef.current = val;
+    }
+    const childRefs = useMemo(
+        () =>
+          Array(testDogData.length - 1)
+            .fill(0)
+            .map((i) => React.createRef()),
+        []
+      )
+    const swiped = (direction, index) => {
+        setLastDirection(direction);
+        updateCurrentIndex(index - 1);
+    }
     return(<div className='cardContainer'>
         {testDogData.map((dog) => {
             return(
