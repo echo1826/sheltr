@@ -78,5 +78,7 @@ export default function Signup() {
                 Sign Up
             </Button>
         </FormGroup>
+        <a href="#">Already a user? Log in!</a>
+        
     </div>);
 };
