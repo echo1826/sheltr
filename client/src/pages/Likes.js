@@ -18,7 +18,7 @@ export default function Likes() {
         return <h3>No liked dogs yet!</h3>
     } 
 
-console.log(likedDogs);
+    console.log(likedDogs);
 
     return(
         <Box sx={{ flexGrow: 1 }}>

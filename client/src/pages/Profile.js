@@ -1,14 +1,15 @@
 import React from "react";
 import { useQuery } from "@apollo/client";
-import {QUERY_ALL_DOGS} from '../utils/queries'
+import { QUERY_ME } from '../utils/queries'
 import {Grid}  from '@mui/material';
 import Likes from './Likes'
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import Avatar from '@mui/material/Avatar';
+import Auth from '../utils/auth';
 
 export default function Profile() {
-    const {loading, data} = useQuery(QUERY_ALL_DOGS)
+    const {loading, data} = useQuery(QUERY_ME);
     const likedDogs = data?.dogs || [];
 
     let profileDogs;
