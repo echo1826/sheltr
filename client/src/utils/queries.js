@@ -1,6 +1,41 @@
 
 import {gql} from "@apollo/client";
 
+export const QUERY_ME = gql`
+query me {
+    user {
+        username
+        email
+        password
+        pets {
+            name
+            breed {
+                primary
+                secondary
+                mixed
+                unknown
+            }
+            age
+            size
+            photo {
+                small
+                medium
+                large
+                full
+            }
+            url
+            location
+            description
+            spayed
+            house_trained
+            shots
+            organization
+        }
+    
+    }
+}
+`;
+
 export const QUERY_SINGLE_USER = gql`
     query getOneUser($id: ID!) {
         user(_id: $id){
