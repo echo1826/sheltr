@@ -26,11 +26,14 @@ console.log(likedDogs);
             justifyContent="center"
             alignItems="center"
             spacing={2}
+            
             >
                 <Grid item>
                 <h2>Your Liked Dogs</h2>
                 </Grid>
+                <Grid item>
                 <LikedCards likedDogs={likedDogs}/>
+                </Grid>
             </Grid>
 
         </Box>
