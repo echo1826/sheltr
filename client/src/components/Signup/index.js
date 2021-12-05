@@ -5,11 +5,11 @@ import FormHelperText from '@mui/material/FormHelperText';
 import Input from '@mui/material/Input';
 import InputLabel from '@mui/material/InputLabel';
 // import OutlinedInput from '@mui/material/OutlinedInput';
-import FormLabel from '@mui/material/FormLabel'
-import Button from '@mui/material/Button'
-import { useMutation } from '@apollo/client'
-import { ADD_USER } from '../../utils/mutations'
-import Auth from '../../utils/auth'
+import FormLabel from '@mui/material/FormLabel';
+import Button from '@mui/material/Button';
+import { useMutation } from '@apollo/client';
+import { ADD_USER } from '../../utils/mutations';
+import Auth from '../../utils/auth';
 
 export default function Signup() {
 
@@ -24,7 +24,7 @@ export default function Signup() {
 
     // attempt to create the user token
     const clickHandler = async (event)=>{
-        console.log('clickHandler being hit')
+        // console.log('clickHandler being hit')
         event.preventDefault();
         try {
             const { data } = await addUser({
@@ -73,10 +73,12 @@ export default function Signup() {
                 onChange={changeHandler}
                 value={formState.password}/>
             <FormHelperText id="password helper">Passwords must be at least 7 characters, alphanumeric only.</FormHelperText>
-            <Button type="submit" variant="contained" color="success"
+            <Button variant="contained" color="success"
              onClick={clickHandler}>
                 Sign Up
             </Button>
         </FormGroup>
+        <a href="#">Already a user? Log in!</a>
+        
     </div>);
 };

@@ -55,17 +55,10 @@ const typeDefs = gql`
     
     type Query {
         user(_id: ID!): User
-        ageSizeSpayedHouseTrained(age: String, size: String, spayed: Boolean, house_trained:Boolean): [Dog]
-        ageSizeSpayed(age: String, size: String, spayed: Boolean): [Dog]
+        me: User
         ageSizeHouseTrained(age: String, size: String, house_trained: Boolean): [Dog]
-        ageSpayedHouseTrained(age: String, spayed: Boolean, house_trained: Boolean): [Dog]
-        sizeHouseTrainedSpayed(size: String, house_trained: Boolean, spayed: Boolean): [Dog]
-        ageSpayed(age: String, spayed: Boolean): [Dog]
         ageHouseTrained(age: String, house_trained: Boolean): [Dog]
         ageSize(age: String, size: String): [Dog]
-        spayedSize(spayed: Boolean, size: String): [Dog]
-        spayedHouseTrained(spayed: Boolean, house_trained: Boolean): [Dog]
-        spayed(spayed: Boolean): [Dog]
         sizeHouseTrained(size: String, house_trained: Boolean): [Dog]
         size(size: String): [Dog]
         houseTrained(house_trained: Boolean): [Dog]
@@ -76,9 +69,9 @@ const typeDefs = gql`
 
     type Mutation {
         addUser(username: String!, email: String!, password: String!): Auth
-        addSettings(user: ID!, age: String, size: String, spayed: Boolean, house_trained: Boolean): Settings
+        addSettings(user: ID!, age: String, size: String, house_trained: Boolean): Settings
         updateUserPets(_id: ID!, dog: ID!): User
-        updateSettings(user: ID!, age: String, size: String, spayed: Boolean, house_trained: Boolean): Settings
+        updateSettings(user: ID!, age: String, size: String, house_trained: Boolean): Settings
         login(email: String!, password: String!): Auth
         removeUser(_id: ID!): User
       }

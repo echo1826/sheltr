@@ -1,6 +1,8 @@
-import { gql } from '@apollo/client'
+import {
+  gql
+} from '@apollo/client'
 
-export const LOGIN = gql`
+export const LOGIN = gql `
   mutation login($email: String!, $password: String!) {
     login(email: $email, password: $password) {
       token
@@ -11,7 +13,7 @@ export const LOGIN = gql`
   }
 `;
 
-export const ADD_USER = gql`
+export const ADD_USER = gql `
   mutation addUser(
     $username: String!
     $email: String!
@@ -31,43 +33,55 @@ export const ADD_USER = gql`
 `;
 
 
-export const ADD_SETTINGS = gql`
-  mutation addSettings(
-    $userId: ObjectId!
-  ) {
-    addSettings(
-        userId: $userId
-    )
-    }
+export const ADD_SETTINGS = gql `
+mutation addSettings($user: ID!, $age: String, $size: String, $house_trained: Boolean) {
+  addSettings(user: $user, age: $age, size:$size, spayed:$spayed, house_trained:$house_trained) {
+    _id
+    age
+    size
+    spayed
+    house_trained
+  }
+}
 `;
 
-export const UPDATE_SETTINGS = gql`
+export const UPDATE_SETTINGS = gql `
   mutation updateSettings(
     $userId: ObjectId!
     $age: String!
     $size: String!
-    $spayed: Boolean!
     $house_trained: Boolean!
   ) {
       updateSettings(
           userId: $userId
           age: $age
           size: $size
-          spayed: $spayed
           house_trained: $house_trained
-      )
+      ) {
+        _id
+        age
+        size
+        house_trained
+      }
   }
 `;
 
-export const UPDATE_USER_PETS = gql`
+export const UPDATE_USER_PETS = gql `
   mutation updateUserPets(
     $_id: ObjectId!
-    $petId: ObjectId!
+    $dog: ObjectId!
   ) {
       updateUserPets (
           _id: $_id
-          petId: $petId
-      )
+          dog: $dog
+      ) {
+        username
+        email
+        pets{
+          _id
+          name
+        }
+      }
   }
 `;
 

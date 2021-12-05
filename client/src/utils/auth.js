@@ -32,7 +32,7 @@ class AuthService {
     }
 
     getProfileToken() {
-        return decode(this.getProfileToken());
+        return decode(this.getToken());
     }
 
     isLoggedIn() {
