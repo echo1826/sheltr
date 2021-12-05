@@ -1,0 +1,23 @@
+.cards {
+    align-items: center;
+    text-align: center;
+    position: relative;
+    justify-content: center;
+}
+
+.swipe {
+    position: absolute;
+    right: 50%;
+}
+
+.cardContainer {
+    width: 90vw;
+    max-width: 260px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+
+}

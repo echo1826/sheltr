@@ -195,6 +195,7 @@ const resolvers = {
     Mutation: {
         addUser: async (parent, args) => {
             const user = await User.create(args);
+            console.log(user);
             const token = signToken(user);
             return { token, user };
         },
@@ -203,8 +204,9 @@ const resolvers = {
             return await User.findByIdAndUpdate(_id, {$push: {pets: petId}}, { new:true });
         },
         login: async (parent, { email, password }) => {
+            console.log(email, password);
             const user = await User.findOne({email});
-
+            console.log(user);
             if(!user) {
                 throw new AuthenticationError('Incorrect email or password');
             }
@@ -213,19 +215,14 @@ const resolvers = {
             const correctPw = await user.isCorrectPassword(password);
 
             if (!correctPw) {
-                throw new AuthenticationError('Incorrect credentials');
+                throw new AuthenticationError('Incorrect email or password');
               }
 
             const token = signToken(user);
             return { token, user };
             },
-        addSettings: async (parent, {userId}) => {
-            return await Settings.create({
-                userId: userId,
-                age: 'Young',
-                size: 'Medium',
-                spayed: 'true',
-                house_trained: 'true'});
+        addSettings: async (parent, args) => {
+            return await Settings.create(args);
         },
         updateSettings: async (parent, args) => {
             return await Settings.findByIdAndUpdate(args._id, { args }, { new:true });

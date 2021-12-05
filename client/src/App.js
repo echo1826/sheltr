@@ -1,22 +1,49 @@
 import React from 'react';
-import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
+import { 
+  ApolloClient, 
+  InMemoryCache, 
+  ApolloProvider,
+  createHttpLink, 
+} from '@apollo/client';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-// import { themeOptions } from '@material-ui/core/styles/createMuiTheme';
+import Box from '@mui/material/Box';
 import Header from './components/Header';
 import Cards  from './pages/Cards';
 import Login from './pages/Login';
 import Profile from './pages/Profile';
 import Settings from './pages/Settings';
 import Navbar from './components/Navbar';
-import { ThemeProvider } from '@emotion/react';
+import Likes from './pages/Likes';
+import { setContext } from '@apollo/client/link/context';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+
+// Construct our main GraphQL API endpoint
+const httpLink = createHttpLink({
+  uri: '/graphql',
+});
+
+// Construct request middleware that will attach the JWT token to every request as an `authorization` header
+const authLink = setContext((_, { headers }) => {
+  // get the authentication token from local storage if it exists
+  const token = localStorage.getItem('id_token');
+  // return the headers to the context so httpLink can read them
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? `Bearer ${token}` : '',
+    },
+  };
+});
 
 const client = new ApolloClient({
-  uri: '/graphql',
+  // Set up our client to execute the `authLink` middleware prior to making the request to our GraphQL API
+  link: authLink.concat(httpLink),
   cache: new InMemoryCache(),
 });
 
-// const theme = themeOptions ( {'
-const theme = ({
+
+
+const theme = createTheme (theme => ({
   palette: {
     type: 'light',
     primary: {
@@ -32,16 +59,20 @@ const theme = ({
       fontFamily: 'Source Sans Pro',
     },
   },
-});
+}));
+
 
 function App() {
+
   return (
-    <ThemeProvider theme={theme}>
+
+<ThemeProvider theme = {theme}>
+
     <ApolloProvider client={client}>
       <Router>
-        <div className="flex-column justify-flex-start min-100-vh">
+        <div>
           <Header />
-          <div className="container">
+          <div>
             <Route exact path="/">
               <Login />
             </Route>
@@ -51,6 +82,9 @@ function App() {
             <Route exact path="/profile">
               <Profile />
             </Route>
+            <Route exact path="/likes">
+              <Likes />
+            </Route>
             <Route exact path="/settings">
               <Settings />
             </Route>
@@ -59,7 +93,9 @@ function App() {
         </div>
       </Router>
     </ApolloProvider>
-    </ThemeProvider>
+
+ </ThemeProvider>
+
   );
 }
 
