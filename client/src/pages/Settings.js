@@ -26,6 +26,7 @@ export default function Settings() {
 
   return (
     <Box sx={{ minWidth: 120 }}>
+        <h2>User Settings</h2>
       <FormControl fullWidth>
         <InputLabel id="age-select">Age</InputLabel>
         <Select
@@ -70,6 +71,10 @@ export default function Settings() {
           <MenuItem value={'notAFactor'}>Not a Factor</MenuItem>
         </Select>
       </FormControl>
+      <a>Logout</a>
+
+      <h3>Copyright</h3>
+      
     </Box>
   );
 }
