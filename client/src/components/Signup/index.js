@@ -32,7 +32,6 @@ export default function Signup() {
             });
       
             Auth.login(data.addUser.token);
-            window.location.assign('/profile');
           } catch (e) {
             console.error(e);
           }
