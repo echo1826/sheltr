@@ -1,9 +1,6 @@
 import React from "react";
-<<<<<<< HEAD
 import ReactDOM from 'react-dom';
-import Signup from '../components/Signup'
-=======
->>>>>>> main
+import Signup from '../components/Signup/index'
 
 export default function Login() {
 
