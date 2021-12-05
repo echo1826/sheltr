@@ -25,66 +25,11 @@ const resolvers = {
 
             return user;
         },
-        ageSizeSpayedHouseTrained: async (parent, args) => {
-            const dogData = await Dog.find({
-                age: args.age,
-                spayed: args.spayed,
-                size: args.size,
-                house_trained: args.house_trained
-            });
-            if (!dogData) {
-                throw new Error("No dogs found!");
-            }
-            return dogData;
-        },
-        ageSizeSpayed: async (parent, args) => {
-            const dogData = await Dog.find({
-                age: args.age,
-                spayed: args.spayed,
-                size: args.size
-            });
-            if (!dogData) {
-                throw new Error("No dogs found!");
-            }
-            return dogData;
-        },
         ageSizeHouseTrained: async (parent, args) => {
             const dogData = await Dog.find({
                 age: args.size,
                 size: args.size,
                 house_trained: args.house_trained
-            });
-            if (!dogData) {
-                throw new Error("No dogs found!");
-            }
-            return dogData;
-        },
-        ageSpayedHouseTrained: async (parent, args) => {
-            const dogData = await Dog.find({
-                age: args.age,
-                spayed: args.spayed,
-                house_trained: args.house_trained
-            });
-            if (!dogData) {
-                throw new Error("No dogs found!");
-            }
-            return dogData;
-        },
-        sizeHouseTrainedSpayed: async (parent, args) => {
-            const dogData = await Dog.find({
-                size: args.size,
-                spayed: args.spayed,
-                house_trained: args.house_trained
-            });
-            if (!dogData) {
-                throw new Error("No dogs found!");
-            }
-            return dogData;
-        },
-        ageSpayed: async (parent, args) => {
-            const dogData = await Dog.find({
-                age: args.age,
-                spayed: args.spayed
             });
             if (!dogData) {
                 throw new Error("No dogs found!");
@@ -114,35 +59,6 @@ const resolvers = {
         age: async (parent, args) => {
             const dogData = await Dog.find({
                 age: args.age
-            });
-            if (!dogData) {
-                throw new Error("No dogs found!");
-            }
-            return dogData;
-        },
-        spayedSize: async (parent, args) => {
-            const dogData = await Dog.find({
-                spayed: args.spayed,
-                size: args.size
-            });
-            if (!dogData) {
-                throw new Error("No dogs found!");
-            }
-            return dogData;
-        },
-        spayedHouseTrained: async (parent, args) => {
-            const dogData = await Dog.find({
-                spayed: args.spayed,
-                house_trained: args.house_trained
-            });
-            if (!dogData) {
-                throw new Error("No dogs found!");
-            }
-            return dogData;
-        },
-        spayed: async (parent, args) => {
-            const dogData = await Dog.find({
-                spayed: args.spayed
             });
             if (!dogData) {
                 throw new Error("No dogs found!");
@@ -224,7 +140,7 @@ const resolvers = {
             return await Settings.create(args);
         },
         updateSettings: async (parent, args) => {
-            return await Settings.findOne({user:args._id}, {}, { new:true });
+            return await Settings.updateOne({user:args._id}, {args}, { new:true });
         }
     }
 };
