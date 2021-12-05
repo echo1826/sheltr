@@ -1,5 +1,4 @@
 import React from "react";
-import ReactDOM from 'react-dom';
 import { useQuery } from "@apollo/client";
 import {QUERY_ALL_DOGS} from '../utils/queries'
 import {Grid}  from '@mui/material';

@@ -1,5 +1,4 @@
 import React from "react";
-import ReactDOM from 'react-dom';
 import LikedCards from '../components/LikedCards/index';
 import { Grid } from '@mui/material';
 import Box from '@mui/material/Box';
