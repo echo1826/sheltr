@@ -3,7 +3,6 @@ const {
     Dog,
     Settings
 } = require("../models");
-const mongoose = require('mongoose');
 const {
     signToken
 } = require('../utils/auth.js');
