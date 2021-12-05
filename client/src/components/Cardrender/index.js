@@ -3,6 +3,7 @@ import TinderCard from 'react-tinder-card';
 import Typography from '@mui/material/Typography';
 import { QUERY_ALL_DOGS } from "../../utils/queries";
 import { useQuery } from "@apollo/client";
+import './Cards.css';
 
 export default function Cardrender(props) {
     const [lastDirection, setLastDirection] = useState();

@@ -1,7 +1,6 @@
 import React from "react";
 import Auth from "../../utils/auth";
 import { Link } from "react-router-dom";
-
 import Box from '@mui/material/Box';
 import CssBaseline from '@mui/material/CssBaseline';
 import BottomNavigation from '@mui/material/BottomNavigation';
@@ -22,7 +21,7 @@ export default function Navbar() {
       
       <Paper sx={{ position: 'fixed', bottom: 0, left: 0, right: 0 }} elevation={3} style={{ paddingBottom: 12 }}>
         <BottomNavigation
-          showLabels
+          showlabels="true"
           value={value}
           onChange={(event, newValue) => {
             setValue(newValue);
