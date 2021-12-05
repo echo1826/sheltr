@@ -3,14 +3,11 @@ import LikedCards from '../components/LikedCards/index';
 import { Grid } from '@mui/material';
 import Box from '@mui/material/Box';
 import { useQuery } from "@apollo/client";
-import {QUERY_SINGLE_USER} from '../utils/queries';
-import {Auth} from '../utils/auth';
+import {QUERY_ME} from '../utils/queries';
+import Auth from '../utils/auth';
 
 export default function Likes() {
-    const userId = Auth.getProfile().data._id;
-    const {loading, data} = useQuery(QUERY_SINGLE_USER, {
-        variables: {_id: userId}
-    });
+    const {loading, data} = useQuery(QUERY_ME);
     const likedDogs = data?.user.pets || [];
 
     if(loading) {
