@@ -3,11 +3,12 @@ import LikedCards from '../components/LikedCards/index';
 import { Grid } from '@mui/material';
 import Box from '@mui/material/Box';
 import { useQuery } from "@apollo/client";
-import {QUERY_ALL_DOGS} from '../utils/queries'
+import {QUERY_ME} from '../utils/queries';
+import Auth from '../utils/auth';
 
 export default function Likes() {
-    const {loading, data} = useQuery(QUERY_ALL_DOGS)
-    const likedDogs = data?.dogs || [];
+    const {loading, data} = useQuery(QUERY_ME);
+    const likedDogs = data?.user.pets || [];
 
     if(loading) {
        return <div>...loading</div> 
@@ -17,7 +18,7 @@ export default function Likes() {
         return <h3>No liked dogs yet!</h3>
     } 
 
-console.log(likedDogs);
+    console.log(likedDogs);
 
     return(
         <Box sx={{ flexGrow: 1 }}>
