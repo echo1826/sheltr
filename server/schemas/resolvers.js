@@ -12,11 +12,17 @@ const {
 
 const resolvers = {
     Query: {
+        me: async (parent, args, context) => {
+            if(context.user) {
+                return await User.findOne({ _id: context.user._id }).populate('pets');
+            }
+            throw new AuthenticationError("You must be logged in!")
+        },
         dogs: async () => {
             return await Dog.find({});
         },
-        user: async (parent, args, context) => {
-            const user = await User.findOne(args.id).populate('pets');
+        user: async (parent, args) => {
+            const user = await User.findOne({ _id: args.id}).populate('pets');
 
             if (!user) {
                 throw new AuthenticationError('Not logged in or user does not exisit');
