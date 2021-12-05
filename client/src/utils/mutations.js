@@ -36,10 +36,9 @@ export const ADD_SETTINGS = gql`
     $userId: ObjectId!
   ) {
     addSettings(
-        userId: $userId,
+        userId: $userId
     )
     }
-  }
 `;
 
 export const UPDATE_SETTINGS = gql`
