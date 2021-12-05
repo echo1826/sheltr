@@ -4,6 +4,7 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import AuthService  from '../utils/auth';
 
 
 export default function Settings() {
@@ -22,7 +23,9 @@ export default function Settings() {
     const handleTrained = (event) => {
     setTrained(event.target.value);
     };
-
+    const handleLogout = () => {
+    AuthService.logout();
+    }
 
   return (
     <Box sx={{ minWidth: 120 }}>
@@ -71,7 +74,9 @@ export default function Settings() {
           <MenuItem value={'notAFactor'}>Not a Factor</MenuItem>
         </Select>
       </FormControl>
-      <a>Logout</a>
+      <a
+      onClick={handleLogout}
+      >Logout</a>
 
       <h3>Copyright</h3>
       
