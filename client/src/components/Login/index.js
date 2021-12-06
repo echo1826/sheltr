@@ -3,6 +3,7 @@ import { useMutation } from "@apollo/client";
 // imports from utils
 import { LOGIN } from "../../utils/mutations";
 import Auth from "../../utils/auth.js";
+import Button from '@mui/material/Button';
 
 export default function LoginComp() {
   const [loginState, setLoginState] = useState({ email: "", password: "" });
@@ -21,7 +22,6 @@ export default function LoginComp() {
   // submit login
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    console.log(loginState);
     try {
       const { data } = await login({
         variables: { ...loginState },
@@ -40,7 +40,7 @@ export default function LoginComp() {
   };
 
   return (
-    <div className="card-body">
+    <div className="back" >
       {data ? (
         <p>
           Success!
@@ -63,9 +63,11 @@ export default function LoginComp() {
           value={loginState.password}
           onChange={handleChange}
         />
-        <button className="" type="submit">
+        <p>
+        <Button variant="contained" type="submit">
           Login
-        </button>
+        </Button>
+        </p>
       </form>
       )}
       {error && (
