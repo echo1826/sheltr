@@ -15,7 +15,7 @@ const resolvers = {
         me: async (parent, args, context) => {
             console.log(context.user);
             if(context.user) {
-                const user = await User.findOne({ email: context.user.email }).populate('pets');
+                const user = await User.findOne({ _id: context.user._id }).populate('pets');
                 return user;
             }
             throw new AuthenticationError("You must be logged in!");
@@ -32,95 +32,96 @@ const resolvers = {
 
             return user;
         },
-        ageSizeHouseTrained: async (parent, args) => {
-            const dogData = await Dog.find({
-                age: args.size,
-                size: args.size,
-                house_trained: args.house_trained
-            });
-            if (!dogData) {
-                throw new Error("No dogs found!");
-            }
-            return dogData;
-        },
-        ageHouseTrained: async (parent, args) => {
-            const dogData = await Dog.find({
-                age: args.age,
-                house_trained: args.house_trained
-            });
-            if (!dogData) {
-                throw new Error("No dogs found!");
-            }
-            return dogData;
-        },
-        ageSize: async (parent, args) => {
-            const dogData = await Dog.find({
-                age: args.age,
-                size: args.size
-            });
-            if (!dogData) {
-                throw new Error("No dogs found!");
-            }
-            return dogData;
-        },
-        age: async (parent, args) => {
-            const dogData = await Dog.find({
-                age: args.age
-            });
-            if (!dogData) {
-                throw new Error("No dogs found!");
-            }
-            return dogData;
-        },
-        sizeHouseTrained: async (parent, args) => {
-            const dogData = await Dog.find({
-                size: args.size,
-                house_trained: args.house_trained
-            });
-            if (!dogData) {
-                throw new Error("No dogs found!");
-            }
-            return dogData;
-        },
-        size: async (parent, args) => {
-            const dogData = await Dog.find({
-                size: args.size
-            });
-            if (!dogData) {
-                throw new Error("No dogs found!");
-            }
-            return dogData;
-        },
-        houseTrained: async (parent, args) => {
-            const dogData = await Dog.find({
-                house_trained: args.house_trained
-            });
-            if (!dogData) {
-                throw new Error("No dogs found!");
-            }
-            return dogData;
-        },
-        age: async (parent, args) => {
-            const dogData = await Dog.find({
-                age: args.age
-            });
-            if (!dogData) {
-                throw new Error("No dogs found!");
-            }
-            return dogData;
-        },
+        // ageSizeHouseTrained: async (parent, args) => {
+        //     const dogData = await Dog.find({
+        //         age: args.size,
+        //         size: args.size,
+        //         house_trained: args.house_trained
+        //     });
+        //     if (!dogData) {
+        //         throw new Error("No dogs found!");
+        //     }
+        //     return dogData;
+        // },
+        // ageHouseTrained: async (parent, args) => {
+        //     const dogData = await Dog.find({
+        //         age: args.age,
+        //         house_trained: args.house_trained
+        //     });
+        //     if (!dogData) {
+        //         throw new Error("No dogs found!");
+        //     }
+        //     return dogData;
+        // },
+        // ageSize: async (parent, args) => {
+        //     const dogData = await Dog.find({
+        //         age: args.age,
+        //         size: args.size
+        //     });
+        //     if (!dogData) {
+        //         throw new Error("No dogs found!");
+        //     }
+        //     return dogData;
+        // },
+        // age: async (parent, args) => {
+        //     const dogData = await Dog.find({
+        //         age: args.age
+        //     });
+        //     if (!dogData) {
+        //         throw new Error("No dogs found!");
+        //     }
+        //     return dogData;
+        // },
+        // sizeHouseTrained: async (parent, args) => {
+        //     const dogData = await Dog.find({
+        //         size: args.size,
+        //         house_trained: args.house_trained
+        //     });
+        //     if (!dogData) {
+        //         throw new Error("No dogs found!");
+        //     }
+        //     return dogData;
+        // },
+        // size: async (parent, args) => {
+        //     const dogData = await Dog.find({
+        //         size: args.size
+        //     });
+        //     if (!dogData) {
+        //         throw new Error("No dogs found!");
+        //     }
+        //     return dogData;
+        // },
+        // houseTrained: async (parent, args) => {
+        //     const dogData = await Dog.find({
+        //         house_trained: args.house_trained
+        //     });
+        //     if (!dogData) {
+        //         throw new Error("No dogs found!");
+        //     }
+        //     return dogData;
+        // },
+        // age: async (parent, args) => {
+        //     const dogData = await Dog.find({
+        //         age: args.age
+        //     });
+        //     if (!dogData) {
+        //         throw new Error("No dogs found!");
+        //     }
+        //     return dogData;
+        // },
         settings: async (parent, args) => {
             return await Settings.findOne({
                 userId:  args.userId
             }).populate('userId');
         },
-        allUsers: async (parent, args) => {
-            return await User.find({})
-        }
+        // users: async (parent, args) => {
+        //     return await User.find({})
+        // }
     },
     Mutation: {
         addUser: async (parent, args) => {
             const user = await User.create(args);
+            await Settings.create({userId: user._id, age: null, size: null, house_trained: null});
             console.log(user);
             const token = signToken(user);
             return { token, user };

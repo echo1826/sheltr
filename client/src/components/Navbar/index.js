@@ -6,7 +6,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 import BottomNavigation from "@mui/material/BottomNavigation";
 import BottomNavigationAction from "@mui/material/BottomNavigationAction";
 import Paper from "@mui/material/Paper";
-import './Navbar.css'
+import './navbar.css'
 
 export default function Navbar() {
   const [value, setValue] = React.useState(0);

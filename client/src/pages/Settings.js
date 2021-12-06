@@ -23,18 +23,10 @@ export default function Settings() {
     variables: {userId: Auth.getProfileToken().data._id}
   });
   const [updateSettings] = useMutation(UPDATE_SETTINGS);
-  const [age, setAge] = React.useState("");
-  const [size, setSize] = React.useState("");
+  const [age, setAge] = React.useState();
+  const [size, setSize] = React.useState();
   const [trained, setTrained] = React.useState(false);
-  if(!loading) {
-    console.log(data);
-    const settings = data?.settings;
-    if(settings !== null || undefined) {
-      setAge = settings.age;
-      setSize = settings.size;
-      setTrained = settings.house_trained;
-    }
-  }
+  let settings;
 
   const goLogin = (event) => {
     window.location.assign("/");
