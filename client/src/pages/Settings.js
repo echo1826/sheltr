@@ -6,6 +6,8 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import AuthService  from '../utils/auth';
 import Button from '@mui/material/Button';
+import Paper from '@mui/material/Paper';
+
 
 
 export default function Settings() {
@@ -29,10 +31,17 @@ export default function Settings() {
     }
 
   return (
-    <Box sx={{ minWidth: 120 }}>
-        <h2>User Settings</h2>
+    <Box sx={{
+      display: 'grid',
+      gridAutoColumns: '1fr',
+      gap: 3,
+      alignItems: 'center',
+    }}
+  >
+    <Paper elevation = {6} >
+        <h2 align="center">User Settings</h2>
       <FormControl fullWidth>
-        <InputLabel id="age-select">Age</InputLabel>
+        <InputLabel id="age-select" margin="10%">Age</InputLabel>
         <Select
           labelId="age-select"
           id="demo-simple-select"
@@ -48,7 +57,7 @@ export default function Settings() {
         </Select>
       </FormControl>
       <FormControl fullWidth>
-        <InputLabel id="size-select">Size</InputLabel>
+        <InputLabel id="size-select" margin="10%">Size</InputLabel>
         <Select
           labelId="size-select"
           id="demo-simple-select"
@@ -63,7 +72,7 @@ export default function Settings() {
         </Select>
       </FormControl>
       <FormControl fullWidth>
-        <InputLabel id="trained-select">House-trained</InputLabel>
+        <InputLabel id="trained-select" margin="10%">House Trained</InputLabel>
         <Select
           labelId="trained-select"
           id="demo-simple-select"
@@ -75,12 +84,10 @@ export default function Settings() {
           <MenuItem value={'notAFactor'}>Not a Factor</MenuItem>
         </Select>
       </FormControl>
-      <Button
+      <Button variant = "contained" justifyContent ="center"
       onClick={handleLogout}
       >Logout</Button>
-
-      <h3>Copyright</h3>
-      
+      </Paper>
     </Box>
   );
 }
