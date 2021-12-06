@@ -13,9 +13,6 @@ const SettingsSchema = new Schema({
     size: {
         type: String
     },
-    spayed: {
-        type: Boolean
-    },
     house_trained: {
         type: Boolean
     },

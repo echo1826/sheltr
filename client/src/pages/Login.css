@@ -7,10 +7,12 @@
   margin: -150px;
   float: left;
   perspective: 500px; */
+  
   padding: 0;
   margin: 5vh 2vw;
   align-items: center;
   justify-content: center;
+
 }
 
 /* .content {
