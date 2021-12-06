@@ -114,7 +114,7 @@ const resolvers = {
                 userId:  args.userId
             }).populate('userId');
         },
-        allUsers: async (parent, args) => {
+        users: async (parent, args) => {
             return await User.find({})
         }
     },
