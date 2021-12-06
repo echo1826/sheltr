@@ -6,7 +6,7 @@ import {
 import {UPDATE_USER_PETS} from "../../utils/mutations";
 import { useQuery, useMutation } from "@apollo/client";
 import Auth from "../../utils/auth";
-import './Cards.css';
+// import './Cards.css';
 
 export default function Cardrender(props) {
     const [lastDirection, setLastDirection] = useState();
