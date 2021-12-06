@@ -14,7 +14,7 @@ class AuthService {
     }
     //get user token from localstorage
     getToken() {
-        return localStorage.getItem('token_id');
+        return localStorage.getItem('id_token');
     }
 
     checkTokenExpiration(token) {

@@ -13,16 +13,18 @@ const {
 const resolvers = {
     Query: {
         me: async (parent, args, context) => {
+            console.log(context.user);
             if(context.user) {
-                return await User.findOne({ _id: context.user._id }).populate('pets');
+                const user = await User.findOne({ email: context.user.email }).populate('pets');
+                return user;
             }
-            throw new AuthenticationError("You must be logged in!")
+            throw new AuthenticationError("You must be logged in!");
         },
         dogs: async () => {
             return await Dog.find({});
         },
         user: async (parent, args) => {
-            const user = await User.findOne({ _id: args.id}).populate('pets');
+            const user = await User.findOne({ _id: args._id}).populate('pets');
 
             if (!user) {
                 throw new AuthenticationError('Not logged in or user does not exisit');
