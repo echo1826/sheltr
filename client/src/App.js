@@ -74,7 +74,7 @@ function App() {
           <Header />
           <div>
             <Route exact path="/">
-              <Login />
+              <Login/>
             </Route>
             <Route exact path="/cards">
               <Cards />
