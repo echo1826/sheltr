@@ -1,0 +1,42 @@
+.form-containerCustom {
+  justify-content: center;
+  align-items: center;
+}
+
+.emailCustom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2vh;
+  width: 60%;
+  max-width: 720px;
+  min-width: 220px;
+}
+
+.emailCustom * {
+    text-align: center;
+    width: 70%;
+    max-width: 720px;
+    min-width: 220px;
+}
+
+.passwordCustom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2vh;
+  width: 60%;
+  max-width: 720px;
+  min-width: 220px;
+}
+
+.passwordCustom * {
+    text-align: center;
+    width: 70%;
+    max-width: 720px;
+    min-width: 220px;
+}
+
+.buttonCustom {
+  margin-top: 6vh;
+}

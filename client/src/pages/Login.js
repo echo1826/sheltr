@@ -1,12 +1,18 @@
 import React, { useState } from "react";
+// imported utils files
 import Auth from "../utils/auth";
+// imported page files
 import Profile from "./Profile.js";
+// imported component files
 import LoginComp from "../components/Login/index.js";
 import Signup from '../components/Signup/index'
+// imported mui componets
 import Button from '@mui/material/Button'
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import { Grid } from "@mui/material";
+// imported custom css
+import './Login.css';
 
 
 export default function Login() {
@@ -40,10 +46,9 @@ export default function Login() {
   alignItems="center"
 
   >
-    <Grid container className="card" margin="5%" padding="5%">
+    <Grid container className="card">
           <Paper elevation = {6} >
-          <h2 align="center">About Sheltr</h2>
-          <p align="center">Search hundreds of animal rescue organizations to find your perfect rescue dog.</p>
+          <h2 align="center" style={{margin: '2vh 10vw 5vh 10vw'}}>Search hundreds of animal rescue organizations to find your perfect rescue dog.</h2>
       <Grid item className ="content">
       {renderState.comp ? <LoginComp /> : <Signup />}
       {renderState.comp ? <p align="center">Don't have an account? <Button onClick={handleChange}>Sign Up</Button></p> 
