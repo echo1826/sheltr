@@ -1,9 +1,12 @@
 import React, { useState } from "react";
-import ReactDOM from "react-dom";
-import Auth from "../utils/auth";
 import Profile from "./Profile.js";
+// import from utils
+import Auth from "../utils/auth";
+// import from components
 import LoginComp from "../components/Login/index.js";
 import Signup from '../components/Signup/index'
+// import from material
+import Button from '@mui/material/Button'
 
 export default function Login() {
   const [renderState, setRenderState] = useState({ comp: true });
@@ -17,13 +20,14 @@ export default function Login() {
   };
   
   if (Auth.isLoggedIn()) {
-    window.location.assign("/profile");
+    return <Profile />;
   }
 
   return (
     <div>
       {renderState.comp ? <LoginComp /> : <Signup />}
-      <button onClick={handleChange}>{renderState.comp ? "SignUp" : "Login"}</button>
+      {renderState.comp ? <p>Don't have an account? <Button onClick={handleChange}>Sign Up</Button></p> 
+      : <p>Already have an account? <Button onClick={handleChange}>Log In</Button></p>}
     </div>
   );
 }

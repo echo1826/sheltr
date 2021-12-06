@@ -1,9 +1,12 @@
 import React from "react";
+import { useQuery } from "@apollo/client";
+// import from components
 import LikedCards from "../components/LikedCards/index";
+// import from material
 import { Grid } from "@mui/material";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
-import { useQuery } from "@apollo/client";
+// import from utils
 import { QUERY_ME } from "../utils/queries";
 import Auth from "../utils/auth";
 

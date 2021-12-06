@@ -1,21 +1,25 @@
 import React from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { 
   ApolloClient, 
   InMemoryCache, 
   ApolloProvider,
   createHttpLink, 
 } from '@apollo/client';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
-import Box from '@mui/material/Box';
+import { setContext } from '@apollo/client/link/context';
+// import from components
 import Header from './components/Header';
+import Navbar from './components/Navbar';
+// import from pages
 import Cards  from './pages/Cards';
 import Login from './pages/Login';
 import Profile from './pages/Profile';
 import Settings from './pages/Settings';
-import Navbar from './components/Navbar';
 import Likes from './pages/Likes';
+// import from utils
 import Auth from "./utils/auth";
-import { setContext } from '@apollo/client/link/context';
+// import from material
+import Box from '@mui/material/Box';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 
 // Construct our main GraphQL API endpoint

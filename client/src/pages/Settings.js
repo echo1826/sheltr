@@ -1,11 +1,16 @@
 import React from "react";
-import Box from "@mui/material/Box";
-import InputLabel from "@mui/material/InputLabel";
-import MenuItem from "@mui/material/MenuItem";
-import FormControl from "@mui/material/FormControl";
-import Select from "@mui/material/Select";
-import Button from "@mui/material/Button";
-import Auth from "../utils/auth";
+// imports from material
+import Box from '@mui/material/Box';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
+import Button from '@mui/material/Button';
+import Paper from '@mui/material/Paper';
+// imports from utils
+import Auth from '../utils/auth';
+
+
 
 export default function Settings() {
   const [age, setAge] = React.useState("");
@@ -30,10 +35,17 @@ export default function Settings() {
 
   if (Auth.isLoggedIn()) {
     return (
-      <Box sx={{ minWidth: 120 }}>
-        <h2>User Settings</h2>
+      <Box sx={{
+        display: 'grid',
+        gridAutoColumns: '1fr',
+        gap: 3,
+        alignItems: 'center',
+      }}
+    >
+      <Paper elevation = {6} >
+          <h2 align="center">User Settings</h2>
         <FormControl fullWidth>
-          <InputLabel id="age-select">Age</InputLabel>
+          <InputLabel id="age-select" margin="10%">Age</InputLabel>
           <Select
             labelId="age-select"
             id="demo-simple-select"
@@ -42,14 +54,14 @@ export default function Settings() {
             type="age"
             onChange={handleAge}
           >
-            <MenuItem value={"baby"}>Baby</MenuItem>
-            <MenuItem value={"young"}>Young</MenuItem>
-            <MenuItem value={"adult"}>Adult</MenuItem>
-            <MenuItem value={"senior"}>Senior</MenuItem>
+            <MenuItem value={'baby'}>Baby</MenuItem>
+            <MenuItem value={'young'}>Young</MenuItem>
+            <MenuItem value={'adult'}>Adult</MenuItem>
+            <MenuItem value={'senior'}>Senior</MenuItem>
           </Select>
         </FormControl>
         <FormControl fullWidth>
-          <InputLabel id="size-select">Size</InputLabel>
+          <InputLabel id="size-select" margin="10%">Size</InputLabel>
           <Select
             labelId="size-select"
             id="demo-simple-select"
@@ -57,14 +69,14 @@ export default function Settings() {
             label="Size"
             onChange={handleSize}
           >
-            <MenuItem value={"small"}>Small</MenuItem>
-            <MenuItem value={"medium"}>Medium</MenuItem>
-            <MenuItem value={"large"}>Large</MenuItem>
-            <MenuItem value={"extraLarge"}>Extra Large</MenuItem>
+            <MenuItem value={'small'}>Small</MenuItem>
+            <MenuItem value={'medium'}>Medium</MenuItem>
+            <MenuItem value={'large'}>Large</MenuItem>
+            <MenuItem value={'extraLarge'}>Extra Large</MenuItem>
           </Select>
         </FormControl>
         <FormControl fullWidth>
-          <InputLabel id="trained-select">House-trained</InputLabel>
+          <InputLabel id="trained-select" margin="10%">House Trained</InputLabel>
           <Select
             labelId="trained-select"
             id="demo-simple-select"
@@ -72,13 +84,14 @@ export default function Settings() {
             label="House-trained"
             onChange={handleTrained}
           >
-            <MenuItem value={"yes"}>Yes</MenuItem>
-            <MenuItem value={"notAFactor"}>Not a Factor</MenuItem>
+            <MenuItem value={'yes'}>Yes</MenuItem>
+            <MenuItem value={'notAFactor'}>Not a Factor</MenuItem>
           </Select>
         </FormControl>
-        <a onClick={handleLogout}>Logout</a>
-
-        <h3>Copyright</h3>
+        <Button variant = "contained" justifyContent ="center"
+        onClick={handleLogout}
+        >Logout</Button>
+        </Paper>
       </Box>
     );
   } else {

@@ -1,26 +1,31 @@
 import React from "react";
 import { useQuery } from "@apollo/client";
-import { QUERY_ME } from "../utils/queries";
-import { Grid } from "@mui/material";
 import Likes from "./Likes";
+//imports from material
+import { Grid } from "@mui/material";
 import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
 import Avatar from "@mui/material/Avatar";
-import Button from '@mui/material/Button';
+import Button from '@mui/material/Button'
+//imports from utils
 import Auth from "../utils/auth";
+import { QUERY_SINGLE_USER, QUERY_ME } from "../utils/queries";
 
 export default function Profile() {
-  const { loading, data } = useQuery(QUERY_ME);
-  const likedDogs = data?.dogs || [];
+  const { loading, data } = useQuery(QUERY_SINGLE_USER, {
+    variables: { id: Auth.getProfileToken().data._id },
+  });
+  const likedDogs = data?.user.pets || [];
 
   let profileDogs;
   if (!loading) {
+    console.log(data?.user.pets);
     profileDogs = likedDogs.slice(0, 3);
   }
 
   const goLogin = (event) => {
-    window.location.assign('/');
-  }
+    window.location.assign("/");
+  };
 
   if (Auth.isLoggedIn()) {
     return (
@@ -90,17 +95,18 @@ export default function Profile() {
       </div>
     );
   } else {
-      const style= {
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        textAlign: 'center',
-      }
-    
+    const style = {
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "center",
+      textAlign: "center",
+    };
+
     return (
       <div style={style}>
-          <h1>You are not logged in!!</h1>
+        <h1>You are not logged in!!</h1>
         <Button onClick={goLogin}>Login</Button>
-      </div>);
+      </div>
+    );
   }
 }
