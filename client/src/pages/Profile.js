@@ -1,6 +1,6 @@
 import React from "react";
 import { useQuery } from "@apollo/client";
-import { QUERY_ME } from '../utils/queries'
+import {QUERY_SINGLE_USER, QUERY_ME} from '../utils/queries'
 import {Grid}  from '@mui/material';
 import Likes from './Likes'
 import Paper from '@mui/material/Paper';
@@ -9,12 +9,17 @@ import Avatar from '@mui/material/Avatar';
 import Auth from '../utils/auth';
 
 export default function Profile() {
-    const {loading, data} = useQuery(QUERY_ME);
-    const likedDogs = data?.dogs || [];
+    console.log(Auth.getProfileToken().data._id)
+    const {loading, data} = useQuery(QUERY_SINGLE_USER, {
+        variables: {id: Auth.getProfileToken().data._id}
+    });
+    const likedDogs = data?.user.pets || [];
 
     let profileDogs;
     if(!loading) {
-        profileDogs = likedDogs.slice(0,3)
+        console.log(data?.user.pets)
+        profileDogs = likedDogs.slice(0,3);
+
     }
 
 
