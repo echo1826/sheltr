@@ -1,3 +1,28 @@
-.settingsLogout{
-    display: block;
+.settingsContainer {
+    width: 70%;
+    margin: auto;
+    margin-top: 50px;
+}
+
+.settingsForm {
+    display: flex;
+    justify-content: center;
+}
+
+.settingsContainer h2 {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 35px;
+}
+
+
+.settingsLogout {
+    margin: auto !important;
+}
+
+.settingsInput {
+    font-family: 'Oxygen', sans-serif;
+    height: 60px; 
+    margin: 20px;
+    display: flex;
+    justify-content: center;
 }

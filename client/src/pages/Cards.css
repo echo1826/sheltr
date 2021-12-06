@@ -7,7 +7,6 @@
 }
 
 .tinderContainer {
-    width: 90vw;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -17,9 +16,11 @@
 .swipe {
     position: absolute;
     background-color: rgb(251, 225, 205);
+    border: 1px solid;
     border-radius: 15px;
     box-shadow: 4px 4px 4px rgb(195, 195, 195);
     right: auto;
+    top: 50%;
 }
 
 .swipeImg {
