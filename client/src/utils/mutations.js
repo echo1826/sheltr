@@ -82,7 +82,7 @@ export const UPDATE_USER_PETS = gql `
 
 export const REMOVE_USER = gql`
   mutation removeUser(
-    $_id: ObjectId!
+    $_id: ID!
   ) {
     removeUser (
       _id: $_id
