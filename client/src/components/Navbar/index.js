@@ -1,5 +1,6 @@
 import React from "react";
 import Auth from "../../utils/auth";
+import Login from '../../pages/Login';
 import { Link } from "react-router-dom";
 import Box from '@mui/material/Box';
 import CssBaseline from '@mui/material/CssBaseline';

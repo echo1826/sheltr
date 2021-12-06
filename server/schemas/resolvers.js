@@ -26,9 +26,9 @@ const resolvers = {
         user: async (parent, args) => {
             const user = await User.findOne({ _id: args._id}).populate('pets');
 
-            if (!user) {
-                throw new AuthenticationError('Not logged in or user does not exisit');
-            }
+      if (!user) {
+        throw new AuthenticationError("Not logged in or user does not exisit");
+      }
 
             return user;
         },
