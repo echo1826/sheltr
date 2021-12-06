@@ -152,11 +152,12 @@ const resolvers = {
         updateSettings: async (parent, args) => {
             return await Settings.updateOne({user:args._id}, {args}, { new:true });
         },
-        removeUser: async (parent, {_id}) => {
-            return await User.findByIdAndDelete(_id, function (err) {
-                if(err) console.log(err);
-                console.log("Successful deletion");
-              })
+        removeUser: async (parent, { userid }) => {
+            return await User.findOneAndDelete({_id: userid})
+                // , function (err) {
+                // if(err) console.log(err);
+                // console.log("Successful deletion");
+            //   })
         }
     }
 };

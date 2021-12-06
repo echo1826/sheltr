@@ -47,7 +47,7 @@ mutation addSettings($user: ID!, $age: String, $size: String, $house_trained: Bo
 
 export const UPDATE_SETTINGS = gql `
   mutation updateSettings(
-    $userId: ObjectId!
+    $userId: ID!
     $age: String!
     $size: String!
     $house_trained: Boolean!
@@ -68,8 +68,8 @@ export const UPDATE_SETTINGS = gql `
 
 export const UPDATE_USER_PETS = gql `
   mutation updateUserPets(
-    $_id: ObjectId!
-    $dog: ObjectId!
+    $_id: ID!
+    $dog: ID!
   ) {
       updateUserPets (
           _id: $_id
@@ -87,10 +87,13 @@ export const UPDATE_USER_PETS = gql `
 
 export const REMOVE_USER = gql`
   mutation removeUser(
-    $_id: ObjectId!
+    $_id: ID!
   ) {
     removeUser (
       _id: $_id
-    )
+    ){
+      _id
+      username
+    }
   }
 `;

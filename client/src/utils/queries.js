@@ -263,5 +263,9 @@ export const QUERY_AGE = gql`
 `;
 
 export const ALL_USERS = gql`
-
-`
+    query allUsers {
+        _id
+        username
+        email
+    }
+`;
