@@ -4,6 +4,7 @@ import Auth from "../utils/auth";
 import Profile from "./Profile.js";
 import LoginComp from "../components/Login/index.js";
 import Signup from '../components/Signup/index'
+import Button from '@mui/material/Button'
 
 export default function Login() {
   const [renderState, setRenderState] = useState({ comp: true });
@@ -23,8 +24,8 @@ export default function Login() {
   return (
     <div>
       {renderState.comp ? <LoginComp /> : <Signup />}
-      {renderState.comp ? <p>Don't have an account? <button onClick={handleChange}>Sign Up</button></p> 
-      : <p>Already have an account? <button onClick={handleChange}>Log In</button></p>}
+      {renderState.comp ? <p>Don't have an account? <Button onClick={handleChange}>Sign Up</Button></p> 
+      : <p>Already have an account? <Button onClick={handleChange}>Log In</Button></p>}
     </div>
   );
 }
