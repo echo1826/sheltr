@@ -16,15 +16,15 @@ export default function Cardrender(props) {
     }
     const swiped = (direction) => {
         setLastDirection(direction)
-      }
+    }
     const testDogData = dogCardData.slice(0, 3);
-    return(<div className='cardContainer'>
+    return(<div className='tinderContainer'>
         {testDogData.map((dog) => {
             return(
             <TinderCard className='swipe' key={dog._id} onSwipe={(direction) => swiped(direction)}>
-                <img src={dog.photo[0].medium} alt={dog.name}/>
-                <h2>{dog.name}</h2>
-                <p>{dog.location}</p>
+                <img src={dog.photo[0].medium} alt={dog.name} className='swipeImg'/>
+                <h2 className='swipeDogName'>{dog.name}</h2>
+                <p className='swipeDogLocation'>{dog.location}</p>
             </TinderCard>)
         })}
         {lastDirection ? <h2>You swiped {lastDirection}</h2> : <h2></h2>}
