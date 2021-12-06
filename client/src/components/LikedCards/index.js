@@ -7,7 +7,7 @@ import Paper from '@mui/material/Paper';
 
 
 export default function LikedCards(props) {
-    const profileDogs = props.likedDogs.slice(0,5) //dont need later. just for testing
+    // const profileDogs = props.likedDogs.slice(0,5) //dont need later. just for testing
 
     function yesNo (e) {
         if (e === true) {
@@ -17,11 +17,11 @@ export default function LikedCards(props) {
         }
     }
 
-    console.log(profileDogs);
+    // console.log(profileDogs);
 
     return(<div>
         
-        {profileDogs.map((dog) => {
+        {props.likedDogs.map((dog) => {
            return ( 
             <Paper elevation = {6} >
                 <Grid item xs={4} key={dog._id} flex flexWrap="wrap" margin = "10px" maxWidth="90vw" alignItems="center" justifyContent="center" container ={true} fontFamily="Oxygen">
