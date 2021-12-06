@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
+// imports from utils
 import { LOGIN } from "../../utils/mutations";
 import Auth from "../../utils/auth.js";
 
@@ -65,12 +66,6 @@ export default function LoginComp() {
         <button className="" type="submit">
           Login
         </button>
-        {/* <button
-          className=""
-          type="submit"
-        >
-          SignUp
-        </button> */}
       </form>
       )}
       {error && (

@@ -1,5 +1,6 @@
 // Detailed view of each dog that the user has liked/swiped right on
 import React from "react";
+// imports from material
 import {Grid}  from '@mui/material';
 import Paper from '@mui/material/Paper';
 
@@ -23,7 +24,7 @@ export default function LikedCards(props) {
         {profileDogs.map((dog) => {
            return ( 
             <Paper elevation = {6} >
-                <Grid item xs={4} key={dog._id} flex flexWrap="wrap" margin = "10px" maxWidth="90vw" alignItems="center" justifyContent="center" container ={true}>
+                <Grid item xs={4} key={dog._id} flex flexWrap="wrap" margin = "10px" maxWidth="90vw" alignItems="center" justifyContent="center" container ={true} fontFamily="Oxygen">
                         <img src={dog.photo[0].small} alt='photo of dog' />
                         <h2>{dog.name}</h2>
                         <div></div>

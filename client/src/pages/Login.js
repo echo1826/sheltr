@@ -1,9 +1,11 @@
 import React, { useState } from "react";
-import ReactDOM from "react-dom";
-import Auth from "../utils/auth";
 import Profile from "./Profile.js";
+// import from utils
+import Auth from "../utils/auth";
+// import from components
 import LoginComp from "../components/Login/index.js";
 import Signup from '../components/Signup/index'
+// import from material
 import Button from '@mui/material/Button'
 
 export default function Login() {
@@ -16,7 +18,7 @@ export default function Login() {
       setRenderState({comp: true});
     }
   };
-  console.log(Auth.isLoggedIn());
+  
   if (Auth.isLoggedIn()) {
     return <Profile />;
   }

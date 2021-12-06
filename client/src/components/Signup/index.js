@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 // import ReactDOM from 'react-dom';
+import { useMutation } from '@apollo/client';
+// import from material
 import { FormGroup } from '@mui/material';
 import FormHelperText from '@mui/material/FormHelperText';
 import Input from '@mui/material/Input';
@@ -7,7 +9,7 @@ import InputLabel from '@mui/material/InputLabel';
 // import OutlinedInput from '@mui/material/OutlinedInput';
 import FormLabel from '@mui/material/FormLabel';
 import Button from '@mui/material/Button';
-import { useMutation } from '@apollo/client';
+// import from utils
 import { ADD_USER } from '../../utils/mutations';
 import Auth from '../../utils/auth';
 
