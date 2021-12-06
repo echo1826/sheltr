@@ -112,6 +112,9 @@ const resolvers = {
                 user:  args.user
             }).populate('user');
         },
+        allUsers: async (parent, args) => {
+            return await User.find({})
+        }
     },
     Mutation: {
         addUser: async (parent, args) => {

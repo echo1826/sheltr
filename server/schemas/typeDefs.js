@@ -65,6 +65,7 @@ const typeDefs = gql`
         age(age: String): [Dog]
         dogs: [Dog]
         settings(user: ID!): Settings
+        allUsers: User
     }
 
     type Mutation {
