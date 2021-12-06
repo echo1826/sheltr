@@ -5,6 +5,7 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import AuthService  from '../utils/auth';
+import Button from '@mui/material/Button';
 
 
 export default function Settings() {
@@ -74,9 +75,9 @@ export default function Settings() {
           <MenuItem value={'notAFactor'}>Not a Factor</MenuItem>
         </Select>
       </FormControl>
-      <a
+      <Button
       onClick={handleLogout}
-      >Logout</a>
+      >Logout</Button>
 
       <h3>Copyright</h3>
       
