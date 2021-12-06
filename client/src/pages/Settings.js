@@ -58,9 +58,9 @@ export default function Settings() {
         variables: {userId:Auth.getProfileToken().data._id, age, size, trained}
       });
       console.log(data.updateSettings.age, data.updateSettings.size, data.updateSettings.house_trained);
-      setAge(data.updateSettings.age);
-      setSize(data.updateSettings.size);
-      setTrained(data.updateSettings.house_trained)
+      // setAge(data.updateSettings.age);
+      // setSize(data.updateSettings.size);
+      // setTrained(data.updateSettings.house_trained)
     }catch(err) {
       console.log(err);
     }
