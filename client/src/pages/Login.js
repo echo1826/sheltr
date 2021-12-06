@@ -40,7 +40,6 @@ export default function Login() {
   >
   <Grid
   container
-  container
   direction="row"
   justifyContent="center"
   alignItems="center"

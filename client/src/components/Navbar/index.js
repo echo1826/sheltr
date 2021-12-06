@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import { Link } from "react-router-dom";
 // imports from material
 import Box from "@mui/material/Box";
@@ -6,18 +6,34 @@ import CssBaseline from "@mui/material/CssBaseline";
 import BottomNavigation from "@mui/material/BottomNavigation";
 import BottomNavigationAction from "@mui/material/BottomNavigationAction";
 import Paper from "@mui/material/Paper";
-import './navbar.css'
+import './Navbar.css'
 
 export default function Navbar() {
   const [value, setValue] = React.useState(0);
   const ref = React.useRef(null);
 
+  const [dimensions, setDimensions] = React.useState({ 
+    width: window.innerWidth
+  })
+  React.useEffect(() => {
+    function handleResize() {
+      setDimensions({
+        width: window.innerWidth
+      })
+  }
+    window.addEventListener('resize', handleResize)
+  }, [])
+
+
   return (
     <Box sx={{ pb: 7 }} ref={ref}>
+      {dimensions.width < 1200 ? 
+      (
+      <div>
       <CssBaseline />
 
       <Paper
-        className='navbarContainer'
+        className='bottomNavbarContainer'
         elevation={3}
       >
         <BottomNavigation
@@ -53,43 +69,48 @@ export default function Navbar() {
           </Link>
         </BottomNavigation>
       </Paper>
+      </div>)
+
+    :
+
+    (<div className='topNavContainer'>
+    <nav role="navigation">
+        <ul className='topNavUl'>
+            <li className='topNavLi'>
+                <Link to='/profile' className='topNavLink'>
+                    <img src='./images/profileblank.png' alt='profile'></img>
+                    Profile
+                </Link>
+            </li>
+            <li className='topNavLi'>
+                <Link to='/sheltr' className='topNavLink'>
+                    <img src='./images/pawblank.png' alt='sheltr'></img>
+                    Sheltr
+                </Link>
+            </li>
+            <li className='topNavLi'>
+                <Link to='/likes' className='topNavLink'>
+                    <img src='./images/heartblank.png' alt='heart'></img>
+                    Likes
+                </Link>
+            </li>
+            <li className='topNavLi'>
+                <Link to='/settings' className='topNavLink'>
+                    <img src='./images/settingsblank.png' alt='settings'></img>
+                    Settings
+                </Link>
+            </li>
+        </ul>
+    </nav>
+    </div>
+    )
+    }
     </Box>
   );
 }
 
-// export default function Navbar() {
-//     // if (Auth.loggedIn()) {
 
-//     return(
 
-//     <nav className='navContainer' display="flex-shrink" role="navigation">
-//         <ul style = {{display: "inline-flex","listStyleType": "none", borderTop: "3px solid black"}}>
-//             <li style = {{padding: "20px"}}>
-//                 <Link to='/profile'>
-//                     <img src='./images/profileblank.png' alt='profile'></img>
-//                     Profile
-//                 </Link>
-//             </li>
-//             <li style = {{borderLeft: "3px solid", padding: "20px"}}>
-//                 <Link to='/sheltr'>
-//                     <img src='./images/pawblank.png' alt='sheltr'></img>
-//                     Sheltr
-//                 </Link>
-//             </li>
-//             <li style = {{borderLeft: "3px solid", padding: "20px"}}>
-//                 <Link to='/likes'>
-//                     <img src='./images/heartblank.png' alt='heart'></img>
-//                     Likes
-//                 </Link>
-//             </li>
-//             <li style = {{borderLeft: "3px solid", padding: "20px"}}>
-//                 <Link to='/settings'>
-//                     <img src='./images/settingsblank.png' alt='settings'></img>
-//                     Settings
-//                 </Link>
-//             </li>
-//         </ul>
-//     </nav>
 //     )
 
 //     // } else {

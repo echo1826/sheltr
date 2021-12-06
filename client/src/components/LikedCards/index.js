@@ -25,7 +25,7 @@ export default function LikedCards(props) {
            return ( 
             <Paper elevation = {6} >
                 <Grid item xs={4} key={dog._id} flex flexWrap="wrap" margin = "10px" maxWidth="90vw" alignItems="center" justifyContent="center" container ={true} fontFamily="Oxygen">
-                        <img src={dog.photo[0].small} alt='photo of dog' />
+                        <img src={dog.photo[0].small} alt='dog' />
                         <h2>{dog.name}</h2>
                         <div></div>
                         <p>{dog.breed.primary}</p>
