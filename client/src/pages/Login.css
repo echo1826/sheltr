@@ -12,8 +12,8 @@
   align-items: center;
   justify-content: center;
 }
-/* 
-.content {
+
+/* .content {
   position: absolute;
   transition: transform 1s;
   transform-style: preserve-3d;
