@@ -1,0 +1,16 @@
+.navbarContainer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding-bottom: 12px;
+}
+
+@media only screen and (min-width: 900px) {
+    .navbarContainer {
+        width: 500px;
+        top: 0;
+        left: auto;
+        padding-top: 12px;
+    }
+  }
