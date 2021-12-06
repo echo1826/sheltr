@@ -126,9 +126,7 @@ const resolvers = {
             return await User.findByIdAndUpdate(_id, {$push: {pets: dog}}, { new:true }).populate('pets');
         },
         login: async (parent, { email, password }, context) => {
-            console.log(email, password);
             const user = await User.findOne({email});
-            console.log(user);
             if(!user) {
                 throw new AuthenticationError('Incorrect email or password');
             }
