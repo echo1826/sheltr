@@ -14,6 +14,7 @@ import Profile from './pages/Profile';
 import Settings from './pages/Settings';
 import Navbar from './components/Navbar';
 import Likes from './pages/Likes';
+import Auth from "./utils/auth";
 import { setContext } from '@apollo/client/link/context';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 
@@ -89,7 +90,7 @@ function App() {
               <Settings />
             </Route>
           </div>
-          <Navbar />
+          {Auth.isLoggedIn() && <Navbar />}
         </div>
       </Router>
     </ApolloProvider>

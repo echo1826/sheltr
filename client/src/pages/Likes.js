@@ -1,43 +1,58 @@
 import React from "react";
-import LikedCards from '../components/LikedCards/index';
-import { Grid } from '@mui/material';
-import Box from '@mui/material/Box';
+import LikedCards from "../components/LikedCards/index";
+import { Grid } from "@mui/material";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
 import { useQuery } from "@apollo/client";
-import {QUERY_ME} from '../utils/queries';
-import Auth from '../utils/auth';
+import { QUERY_ME } from "../utils/queries";
+import Auth from "../utils/auth";
 
 export default function Likes() {
-    const {loading, data} = useQuery(QUERY_ME);
-    const likedDogs = data?.user.pets || [];
+  const { loading, data } = useQuery(QUERY_ME);
+  const likedDogs = data?.user.pets || [];
 
-    if(loading) {
-       return <div>...loading</div> 
+  const goLogin = (event) => {
+    window.location.assign("/");
+  };
+
+  
+  if (Auth.isLoggedIn()) {
+    
+    if (loading) {
+      return <div>...loading</div>;
     }
 
-    if(!likedDogs.length) {
-        return <h3>No liked dogs yet!</h3>
-    } 
+    if (!likedDogs.length) {
+      return <h3>No liked dogs yet!</h3>;
+    }
 
     console.log(likedDogs);
 
-    return(
-        <Box sx={{ flexGrow: 1 }}>
+    return (
+      <Box sx={{ flexGrow: 1 }}>
+        <Grid container justifyContent="center" alignItems="center" spacing={2}>
+          <Grid item>
+            <h2>Your Liked Dogs</h2>
+          </Grid>
+          <Grid item>
+            <LikedCards likedDogs={likedDogs} />
+          </Grid>
+        </Grid>
+      </Box>
+    );
+  } else {
+    const style = {
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "center",
+      textAlign: "center",
+    };
 
-            <Grid container
-            justifyContent="center"
-            alignItems="center"
-            spacing={2}
-            
-            >
-                <Grid item>
-                <h2>Your Liked Dogs</h2>
-                </Grid>
-                <Grid item>
-                <LikedCards likedDogs={likedDogs}/>
-                </Grid>
-            </Grid>
-
-        </Box>
-  
-    )
+    return (
+      <div style={style}>
+        <h1>You are not logged in!!</h1>
+        <Button onClick={goLogin}>Login</Button>
+      </div>
+    );
+  }
 }
