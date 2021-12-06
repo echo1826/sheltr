@@ -10,15 +10,16 @@ import Auth from "../utils/auth";
 import Button from "@mui/material/Button";
 
 export default function Cards() {
-  // const {loading, data} = useQuery(QUERY_SETTINGS, {
-  //     variables: // give user id here to get user settings
-  // });
-  // let settings;
-  // if(loading) {
-  //     return <div>Loading settings...</div>
-  // } else {
-  //     settings = data?.settings;
-  // }
+  const {loading, data} = useQuery(QUERY_SETTINGS, {
+      variables: {userId: Auth.getProfileToken().data._id}
+  });
+  let settings;
+  if(loading) {
+      return <div>Loading settings...</div>
+  } else {
+      settings = data?.settings;
+  }
+  console.log(settings);
 
   const goLogin = (event) => {
     window.location.assign("/");
@@ -27,7 +28,7 @@ export default function Cards() {
   if (Auth.isLoggedIn()) {
     return (
       <div className="cards">
-        <Cardrender />
+        <Cardrender settings={settings}/>
       </div>
     );
   } else {

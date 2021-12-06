@@ -98,16 +98,15 @@ export const QUERY_ALL_DOGS = gql`
 `;
 
 export const QUERY_SETTINGS = gql`
-    query getUserSettings($user: ID!) {
-        settings(user: $user) {
-            _id
-            user{
-                username
-            }
-            age
-            size
-            spayed
-            house_trained
+    query getSettings($userId: ID!) {
+        settings(userId: $userId) {
+        _id
+        userId{
+            username
+        }
+        age
+        size
+        house_trained
         }
     }
 `;

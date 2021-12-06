@@ -111,8 +111,8 @@ const resolvers = {
         },
         settings: async (parent, args) => {
             return await Settings.findOne({
-                user:  args.user
-            }).populate('user');
+                userId:  args.userId
+            }).populate('userId');
         },
     },
     Mutation: {

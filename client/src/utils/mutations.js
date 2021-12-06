@@ -35,7 +35,7 @@ export const ADD_USER = gql `
 
 export const ADD_SETTINGS = gql `
 mutation addSettings($user: ID!, $age: String, $size: String, $house_trained: Boolean) {
-  addSettings(user: $user, age: $age, size:$size, spayed:$spayed, house_trained:$house_trained) {
+  addSettings(user: $user, age: $age, size:$size, house_trained:$house_trained) {
     _id
     age
     size

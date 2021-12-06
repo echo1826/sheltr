@@ -18,6 +18,7 @@ export default function Cardrender(props) {
         setLastDirection(direction)
       }
     const testDogData = dogCardData.slice(0, 3);
+    console.log(props.settings);
     return(<div className='cardContainer'>
         {testDogData.map((dog) => {
             return(
