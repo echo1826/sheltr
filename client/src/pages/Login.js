@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import ReactDOM from "react-dom";
 import Auth from "../utils/auth";
 import Profile from "./Profile.js";
 import LoginComp from "../components/Login/index.js";
