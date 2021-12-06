@@ -13,6 +13,7 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import FormLabel from '@mui/material/FormLabel';
 // imports from utils
 import Auth from '../utils/auth';
+import './Settings.css'
 
 
 export default function Settings() {
@@ -45,16 +46,17 @@ export default function Settings() {
         alignItems: 'center',
       }}
     >
-      <Paper elevation = {6} >
+      <Paper className='settingsContainer' elevation = {6} >
           <h2 align="center">User Settings</h2>
         <FormControl fullWidth>
-          <InputLabel id="age-select" margin="10%">Age</InputLabel>
+          <InputLabel id="age-select" className='settingsForm'>Age</InputLabel>
           <Select
             labelId="age-select"
             id="demo-simple-select"
             value={age}
             label="Age"
             type="age"
+            className='settingsInput'
             onChange={handleAge}
           >
             <MenuItem value={'baby'}>Baby</MenuItem>
@@ -70,6 +72,7 @@ export default function Settings() {
             id="demo-simple-select"
             value={size}
             label="Size"
+            className='settingsInput'
             onChange={handleSize}
           >
             <MenuItem value={'small'}>Small</MenuItem>
@@ -86,13 +89,15 @@ export default function Settings() {
           control={<Switch color="primary" />}
           label="House-trained"
           labelPlacement="start"
+          className='settingsInput'
+          
         />
         </FormGroup>
       </FormControl>
         </Paper>
         
-        <Button variant = "contained" justifyContent ="center"
-        onClick={handleLogout} className='settingsLogout'>Logout</Button>
+        <Button variant ='outlined' color='error'onClick={handleLogout} className='settingsLogout'>Logout</Button>
+
       </Box>
     );
   } else {
