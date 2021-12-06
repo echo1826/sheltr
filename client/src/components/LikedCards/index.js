@@ -1,5 +1,6 @@
 // Detailed view of each dog that the user has liked/swiped right on
 import React from "react";
+// imports from material
 import {Grid}  from '@mui/material';
 import Paper from '@mui/material/Paper';
 

@@ -1,26 +1,25 @@
 import React from "react";
-import Auth from "../../utils/auth";
-import Login from '../../pages/Login';
 import { Link } from "react-router-dom";
-import Box from '@mui/material/Box';
-import CssBaseline from '@mui/material/CssBaseline';
-import BottomNavigation from '@mui/material/BottomNavigation';
-import BottomNavigationAction from '@mui/material/BottomNavigationAction';
-import Paper from '@mui/material/Paper';
-
+// imports from material
+import Box from "@mui/material/Box";
+import CssBaseline from "@mui/material/CssBaseline";
+import BottomNavigation from "@mui/material/BottomNavigation";
+import BottomNavigationAction from "@mui/material/BottomNavigationAction";
+import Paper from "@mui/material/Paper";
 
 export default function Navbar() {
-    const [value, setValue] = React.useState(0);
-    const ref = React.useRef(null);
-  
- //   if (Auth.loggedIn()) {
+  const [value, setValue] = React.useState(0);
+  const ref = React.useRef(null);
 
   return (
-    
     <Box sx={{ pb: 7 }} ref={ref}>
       <CssBaseline />
-      
-      <Paper sx={{ position: 'fixed', bottom: 0, left: 0, right: 0 }} elevation={3} style={{ paddingBottom: 12 }}>
+
+      <Paper
+        sx={{ position: "fixed", bottom: 0, left: 0, right: 0 }}
+        elevation={3}
+        style={{ paddingBottom: 12 }}
+      >
         <BottomNavigation
           showlabels="true"
           value={value}
@@ -28,35 +27,41 @@ export default function Navbar() {
             setValue(newValue);
           }}
         >
-            <Link to='/profile'>
-              <BottomNavigationAction label="Profile" icon={<img src='./images/profileblank2.png'/>}/>
-            </Link>
-            <Link to='/cards'>
-                <BottomNavigationAction label="Sheltr" icon={<img src='./images/pawblank2.png'/>} />
-            </Link>
-            <Link to='/likes'>
-                <BottomNavigationAction label="Likes" icon={<img src='./images/heartblank2.png'/>} />
-            </Link> 
-            <Link to='/settings'>
-                <BottomNavigationAction label="Settings" icon={<img src='./images/settingsblank2.png'/>}/>
-            </Link>  
+          <Link to="/profile">
+            <BottomNavigationAction
+              label="Profile"
+              icon={<img src="./images/profileblank2.png" />}
+            />
+          </Link>
+          <Link to="/cards">
+            <BottomNavigationAction
+              label="Sheltr"
+              icon={<img src="./images/pawblank2.png" />}
+            />
+          </Link>
+          <Link to="/likes">
+            <BottomNavigationAction
+              label="Likes"
+              icon={<img src="./images/heartblank2.png" />}
+            />
+          </Link>
+          <Link to="/settings">
+            <BottomNavigationAction
+              label="Settings"
+              icon={<img src="./images/settingsblank2.png" />}
+            />
+          </Link>
         </BottomNavigation>
       </Paper>
     </Box>
-    )
-    // } else {
-    //     return (<Login />)
-    // }
+  );
 }
-
-
-
 
 // export default function Navbar() {
 //     // if (Auth.loggedIn()) {
 
 //     return(
-      
+
 //     <nav className='navContainer' display="flex-shrink" role="navigation">
 //         <ul style = {{display: "inline-flex","listStyleType": "none", borderTop: "3px solid black"}}>
 //             <li style = {{padding: "20px"}}>
@@ -93,4 +98,3 @@ export default function Navbar() {
 // }
 
 // position: 'fixed', bottom: 0, left: 0, right: 0
-
