@@ -10,11 +10,16 @@ import Button from '@mui/material/Button'
 //imports from utils
 import Auth from "../utils/auth";
 import { QUERY_SINGLE_USER, QUERY_ME } from "../utils/queries";
+import { Link } from "react-router-dom";
 
 export default function Profile() {
   const { loading, data } = useQuery(QUERY_SINGLE_USER, {
     variables: { id: Auth.getProfileToken().data._id },
   });
+
+  console.log('user = ',data?.user);
+  // console.log('user = ',data.user);
+
   const likedDogs = data?.user.pets || [];
 
   let profileDogs;
@@ -30,7 +35,7 @@ export default function Profile() {
   if (Auth.isLoggedIn()) {
     return (
       <div>
-        <h1>My Profile</h1>
+        <h1>{data?.user.username}</h1>
 
         <Box sx={{ flexGrow: 1 }}>
           <Grid
@@ -44,18 +49,18 @@ export default function Profile() {
               <React.Fragment>
                 <Grid item>
                   <Paper>
-                    <Avatar alt="User photo" src="./images/profilefilled.png" />
+                    <Avatar alt="Avatar" src="./images/profilefilled.png" />
                   </Paper>
                 </Grid>
                 <Grid item>
-                  <Paper>
+                  {/* <Paper>
                     <ul>
                       <li>Username: ABC</li>
                       <li>Username: ABC</li>
                       <li>Username: ABC</li>
                       <li>Username: ABC</li>
                     </ul>
-                  </Paper>
+                  </Paper> */}
                 </Grid>
               </React.Fragment>
             </Grid>
@@ -86,7 +91,7 @@ export default function Profile() {
             <Grid container>
               <React.Fragment>
                 <Paper>
-                  <a href={Likes}>View all your liked dogs</a>
+                  <Link to="/likes"><Button>View all your liked dogs</Button></Link>
                 </Paper>
               </React.Fragment>
             </Grid>

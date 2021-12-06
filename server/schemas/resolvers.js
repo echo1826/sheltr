@@ -114,6 +114,9 @@ const resolvers = {
                 userId:  args.userId
             }).populate('userId');
         },
+        allUsers: async (parent, args) => {
+            return await User.find({})
+        }
     },
     Mutation: {
         addUser: async (parent, args) => {
@@ -150,11 +153,12 @@ const resolvers = {
             const settings = await Settings.findOne({userId: args.userId}).populate('userId');
             return settings;
         },
-        removeUser: async (parent, {_id}) => {
-            return await User.findByIdAndDelete(_id, function (err) {
-                if(err) console.log(err);
-                console.log("Successful deletion");
-              })
+        removeUser: async (parent, { userid }) => {
+            return await User.findOneAndDelete({_id: userid})
+                // , function (err) {
+                // if(err) console.log(err);
+                // console.log("Successful deletion");
+            //   })
         }
     }
 };

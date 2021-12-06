@@ -265,3 +265,10 @@ export const QUERY_SETTINGS = gql`
 //     }
 // `;
 
+export const ALL_USERS = gql`
+    query allUsers {
+        _id
+        username
+        email
+    }
+`;
