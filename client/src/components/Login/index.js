@@ -93,7 +93,7 @@ export default function LoginComp() {
             variant="contained" 
             type="submit"
             onClick={handleFormSubmit}
-            style={{marginTop: '5vh', width: '25%', alignItems: 'center'}}>
+            style={{marginTop: '5vh', width: '35%', maxWidth: '175px', alignItems: 'center',}}>
               Login
           </Button>
       </FormGroup>
