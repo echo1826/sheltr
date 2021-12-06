@@ -34,36 +34,31 @@ export const ADD_USER = gql `
 
 
 export const ADD_SETTINGS = gql `
-mutation addSettings($user: ID!, $age: String, $size: String, $house_trained: Boolean) {
-  addSettings(user: $user, age: $age, size:$size, house_trained:$house_trained) {
+mutation addSettings($userId: ID!, $age: String, $size: String, $house_trained: Boolean) {
+  addSettings(userId: $userId, age: $age, size:$size, house_trained:$house_trained) {
     _id
+    userId {
+      username
+    }
     age
     size
-    spayed
     house_trained
   }
 }
 `;
 
 export const UPDATE_SETTINGS = gql `
-  mutation updateSettings(
-    $userId: ObjectId!
-    $age: String!
-    $size: String!
-    $house_trained: Boolean!
-  ) {
-      updateSettings(
-          userId: $userId
-          age: $age
-          size: $size
-          house_trained: $house_trained
-      ) {
-        _id
-        age
-        size
-        house_trained
-      }
+mutation updateSettings($userId: ID!, $age:String, $size:String,$house_trained:Boolean) {
+  updateSettings(userId: $userId, age: $age, size: $size, house_trained: $house_trained) {
+    _id
+    userId {
+      username
+    }
+    age
+    size
+    house_trained
   }
+}
 `;
 
 export const UPDATE_USER_PETS = gql `

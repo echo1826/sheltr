@@ -19,7 +19,6 @@ export default function Cards() {
   } else {
       settings = data?.settings;
   }
-  console.log(settings);
 
   const goLogin = (event) => {
     window.location.assign("/");

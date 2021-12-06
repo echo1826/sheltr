@@ -9,13 +9,25 @@ import Button from '@mui/material/Button';
 import Paper from '@mui/material/Paper';
 // imports from utils
 import Auth from '../utils/auth';
-
+import {UPDATE_SETTINGS} from '../utils/mutations';
+import {QUERY_SETTINGS} from '../utils/queries';
+import {useQuery, useMutation} from '@apollo/client';
 
 
 export default function Settings() {
+  const {loading, data} = useQuery(QUERY_SETTINGS);
+  const [updateSettings] = useMutation(UPDATE_SETTINGS);
   const [age, setAge] = React.useState("");
   const [size, setSize] = React.useState("");
   const [trained, setTrained] = React.useState(false);
+  if(!loading) {
+    const settings = data?.settings;
+    if(settings !== null || undefined) {
+      setAge = settings.age;
+      setSize = settings.size;
+      setTrained = settings.house_trained;
+    }
+  }
 
   const goLogin = (event) => {
     window.location.assign("/");
@@ -32,6 +44,17 @@ export default function Settings() {
   const handleLogout = () => {
     Auth.logout();
   };
+
+  const handleSettingsChange = async(e) => {
+    e.preventDefault();
+    try{
+      const {data} = await updateSettings({
+        variables: {userId:Auth.getProfileToken().data._id, age, size, trained}
+      })
+    }catch(err) {
+      console.log(err);
+    }
+  }
 
   if (Auth.isLoggedIn()) {
     return (
@@ -85,7 +108,7 @@ export default function Settings() {
             onChange={handleTrained}
           >
             <MenuItem value={'yes'}>Yes</MenuItem>
-            <MenuItem value={'notAFactor'}>Not a Factor</MenuItem>
+            <MenuItem value={null}>Not a Factor</MenuItem>
           </Select>
         </FormControl>
         <Button variant = "contained" justifyContent ="center"

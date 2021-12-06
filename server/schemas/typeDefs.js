@@ -70,7 +70,7 @@ const typeDefs = gql`
         addUser(username: String!, email: String!, password: String!): Auth
         addSettings(userId: ID!, age: String, size: String, house_trained: Boolean): Settings
         updateUserPets(_id: ID!, dog: ID!): User
-        updateSettings(user: ID!, age: String, size: String, house_trained: Boolean): Settings
+        updateSettings(userId: ID!, age: String, size: String, house_trained: Boolean): Settings
         login(email: String!, password: String!): Auth
         removeUser(_id: ID!): User
       }
