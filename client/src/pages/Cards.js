@@ -4,21 +4,23 @@ import { useQuery } from "@apollo/client";
 import Cardrender from "../components/Cardrender";
 import "./Cards.css";
 // import from utils
-import { QUERY_ALL_DOGS, QUERY_SETTINGS } from "../utils/queries";
+import { QUERY_SETTINGS } from "../utils/queries";
 import Auth from "../utils/auth";
 // import from material
 import Button from "@mui/material/Button";
 
 export default function Cards() {
-  // const {loading, data} = useQuery(QUERY_SETTINGS, {
-  //     variables: // give user id here to get user settings
-  // });
-  // let settings;
-  // if(loading) {
-  //     return <div>Loading settings...</div>
-  // } else {
-  //     settings = data?.settings;
-  // }
+  const {loading, data} = useQuery(QUERY_SETTINGS, {
+      variables: {userId: Auth.getProfileToken().data._id}
+  });
+  let settings;
+  let likedDogs;
+  if(loading) {
+      return <div>Loading settings...</div>
+  } else {
+      settings = data?.settings;
+      likedDogs = data?.settings.userId.pets;
+  }
 
   const goLogin = (event) => {
     window.location.assign("/");
@@ -26,8 +28,8 @@ export default function Cards() {
 
   if (Auth.isLoggedIn()) {
     return (
-      <div className="tinderCards">
-        <Cardrender />
+      <div className="cards">
+        <Cardrender settings={settings} likedDogs={likedDogs}/>
       </div>
     );
   } else {

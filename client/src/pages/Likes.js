@@ -7,11 +7,13 @@ import { Grid } from "@mui/material";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 // import from utils
-import { QUERY_ME } from "../utils/queries";
+import { QUERY_SINGLE_USER } from "../utils/queries";
 import Auth from "../utils/auth";
 
 export default function Likes() {
-  const { loading, data } = useQuery(QUERY_ME);
+  const { loading, data } = useQuery(QUERY_SINGLE_USER, {
+    variables: { id: Auth.getProfileToken().data._id },
+  });
   const likedDogs = data?.user.pets || [];
 
   const goLogin = (event) => {

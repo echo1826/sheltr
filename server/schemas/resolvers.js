@@ -111,8 +111,8 @@ const resolvers = {
         },
         settings: async (parent, args) => {
             return await Settings.findOne({
-                user:  args.user
-            }).populate('user');
+                userId:  args.userId
+            }).populate('userId');
         },
     },
     Mutation: {
@@ -126,9 +126,7 @@ const resolvers = {
             return await User.findByIdAndUpdate(_id, {$push: {pets: dog}}, { new:true }).populate('pets');
         },
         login: async (parent, { email, password }, context) => {
-            console.log(email, password);
             const user = await User.findOne({email});
-            console.log(user);
             if(!user) {
                 throw new AuthenticationError('Incorrect email or password');
             }
@@ -147,7 +145,10 @@ const resolvers = {
             return await Settings.create(args);
         },
         updateSettings: async (parent, args) => {
-            return await Settings.updateOne({user:args._id}, {args}, { new:true });
+            const res = await Settings.updateOne({userId:args.userId}, {age: args.age, size: args.size, house_trained: args.house_trained}, { upsert: true });
+            console.log(res);
+            const settings = await Settings.findOne({userId: args.userId}).populate('userId');
+            return settings;
         },
         removeUser: async (parent, {_id}) => {
             return await User.findByIdAndDelete(_id, function (err) {

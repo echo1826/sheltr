@@ -64,20 +64,7 @@ const userSeed = {
     password: '12345678',
 }
 
-const userSettingsSeed = [{
-    user: '61a984b607248b27786045e1',
-    age: "Adult",
-    size: "Large",
-    spayed: true,
-    house_trained: true
-},
-{
-    user: '61aa493e8a22806888fa9ea1',
-    age: "Young",
-    size: "Small",
-    spayed: false,
-    house_trained: false
-}]
+
 
 db.once('open', async () => {
     try{
@@ -86,8 +73,6 @@ db.once('open', async () => {
         await Dog.create(dogArray);
         await User.deleteMany({});
         await User.create(userSeed);
-        await Settings.deleteMany({});
-        await Settings.create(userSettingsSeed);
         console.log("Seeded Data!");
         process.exit(0)
     }catch(err) {

@@ -13,12 +13,27 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import FormLabel from '@mui/material/FormLabel';
 // imports from utils
 import Auth from '../utils/auth';
-
+import {UPDATE_SETTINGS} from '../utils/mutations';
+import {QUERY_SETTINGS} from '../utils/queries';
+import {useQuery, useMutation} from '@apollo/client';
 
 export default function Settings() {
+  const {loading, data} = useQuery(QUERY_SETTINGS, {
+    variables: {userId: Auth.getProfileToken().data._id}
+  });
+  const [updateSettings] = useMutation(UPDATE_SETTINGS);
   const [age, setAge] = React.useState("");
   const [size, setSize] = React.useState("");
   const [trained, setTrained] = React.useState(false);
+  if(!loading) {
+    console.log(data);
+    const settings = data?.settings;
+    if(settings !== null || undefined) {
+      setAge = settings.age;
+      setSize = settings.size;
+      setTrained = settings.house_trained;
+    }
+  }
 
   const goLogin = (event) => {
     window.location.assign("/");
@@ -35,6 +50,21 @@ export default function Settings() {
   const handleLogout = () => {
     Auth.logout();
   };
+
+  const handleSettingsChange = async(e) => {
+    e.preventDefault();
+    try{
+      const {data} = await updateSettings({
+        variables: {userId:Auth.getProfileToken().data._id, age, size, trained}
+      });
+      console.log(data.updateSettings.age, data.updateSettings.size, data.updateSettings.house_trained);
+      // setAge(data.updateSettings.age);
+      // setSize(data.updateSettings.size);
+      // setTrained(data.updateSettings.house_trained)
+    }catch(err) {
+      console.log(err);
+    }
+  }
 
   if (Auth.isLoggedIn()) {
     return (
