@@ -50,7 +50,7 @@ export default function Signup() {
         console.log(formState)
     };
 
-    return (<div>
+    return (<div className='signupDiv'>
         <FormGroup>
             <FormLabel>Sign Up!</FormLabel>
             <InputLabel htmlFor="my-input">Email</InputLabel>
