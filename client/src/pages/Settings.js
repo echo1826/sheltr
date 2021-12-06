@@ -15,12 +15,15 @@ import {useQuery, useMutation} from '@apollo/client';
 
 
 export default function Settings() {
-  const {loading, data} = useQuery(QUERY_SETTINGS);
+  const {loading, data} = useQuery(QUERY_SETTINGS, {
+    variables: {userId: Auth.getProfileToken().data._id}
+  });
   const [updateSettings] = useMutation(UPDATE_SETTINGS);
   const [age, setAge] = React.useState("");
   const [size, setSize] = React.useState("");
   const [trained, setTrained] = React.useState(false);
   if(!loading) {
+    console.log(data);
     const settings = data?.settings;
     if(settings !== null || undefined) {
       setAge = settings.age;
@@ -50,7 +53,11 @@ export default function Settings() {
     try{
       const {data} = await updateSettings({
         variables: {userId:Auth.getProfileToken().data._id, age, size, trained}
-      })
+      });
+      console.log(data.updateSettings.age, data.updateSettings.size, data.updateSettings.house_trained);
+      setAge(data.updateSettings.age);
+      setSize(data.updateSettings.size);
+      setTrained(data.updateSettings.house_trained)
     }catch(err) {
       console.log(err);
     }

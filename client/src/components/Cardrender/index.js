@@ -6,7 +6,7 @@ import './Cards.css';
 
 export default function Cardrender(props) {
     const [lastDirection, setLastDirection] = useState();
-    // const settings = props.settings;
+    const settings = props.settings;
     const {loading, data} = useQuery(QUERY_ALL_DOGS);
     let dogCardData;
     if(loading) {
