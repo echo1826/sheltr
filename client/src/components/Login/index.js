@@ -3,6 +3,8 @@ import { useMutation } from "@apollo/client";
 // imports from utils
 import { LOGIN } from "../../utils/mutations";
 import Auth from "../../utils/auth.js";
+// imports from material
+import Button from '@mui/material/Button';
 
 export default function LoginComp() {
   const [loginState, setLoginState] = useState({ email: "", password: "" });
@@ -57,15 +59,15 @@ export default function LoginComp() {
         />
         <input
           className="form-input"
-          placeholder="******"
+          placeholder="*******"
           name="password"
           type="password"
           value={loginState.password}
           onChange={handleChange}
         />
-        <button className="" type="submit">
+        <Button className="" type="submit">
           Login
-        </button>
+        </Button>
       </form>
       )}
       {error && (
