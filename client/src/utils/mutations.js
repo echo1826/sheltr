@@ -86,6 +86,9 @@ export const REMOVE_USER = gql`
   ) {
     removeUser (
       _id: $_id
-    )
+    ){
+      _id
+      username
+    }
   }
 `;
