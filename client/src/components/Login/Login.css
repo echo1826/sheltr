@@ -1,0 +1,24 @@
+.form-containerCustom {
+  justify-content: center;
+  align-items: center;
+}
+
+.emailCustom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2vh;
+  width: 60vw;
+}
+
+.passwordCustom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2vh;
+  width: 60vw;
+}
+
+.buttonCustom {
+  margin-top: 6vh;
+}

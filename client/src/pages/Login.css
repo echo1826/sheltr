@@ -1,0 +1,35 @@
+.card {
+  /* position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 300px;
+  height: 300px;
+  margin: -150px;
+  float: left;
+  perspective: 500px; */
+  padding: 0;
+  margin: 5vh 2vw;
+  align-items: center;
+  justify-content: center;
+}
+/* 
+.content {
+  position: absolute;
+  transition: transform 1s;
+  transform-style: preserve-3d;
+}
+
+.card:hover .content {
+  transform: rotateY(180deg);
+  transition: transform 0.5s;
+}
+
+.front,
+.back {
+  position: absolute;
+  backface-visibility: hidden;
+}
+
+.back {
+  transform: rotateY(180deg);
+} */
