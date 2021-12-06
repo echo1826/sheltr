@@ -50,9 +50,10 @@ export default function Signup() {
         console.log(formState)
     };
 
-    return (<div>
+    return (<div className="back">
         <FormGroup>
-            <FormLabel>Sign Up!</FormLabel>
+            <FormLabel align="center" fontFamily="Source San Pro" fontStyle="italic">Sign up to create a profile and start searching!</FormLabel>
+           <p></p>
             <InputLabel htmlFor="my-input">Email</InputLabel>
             <Input id="email" aria-describedby="my-helper-text"
                 name='email'
@@ -75,7 +76,7 @@ export default function Signup() {
                 onChange={changeHandler}
                 value={formState.password}/>
             <FormHelperText id="password helper">Passwords must be at least 7 characters, alphanumeric only.</FormHelperText>
-            <Button variant="contained" color="success"
+            <Button variant="contained" type="submit"
              onClick={clickHandler}>
                 Sign Up
             </Button>
