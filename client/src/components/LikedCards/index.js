@@ -17,7 +17,7 @@ export default function LikedCards(props) {
         }
     }
 
-    // console.log(profileDogs);
+    console.log(props.likedDogs);
 
     return(<div>
         

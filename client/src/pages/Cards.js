@@ -4,7 +4,7 @@ import { useQuery } from "@apollo/client";
 import Cardrender from "../components/Cardrender";
 import "./Cards.css";
 // import from utils
-import { QUERY_ALL_DOGS, QUERY_SETTINGS } from "../utils/queries";
+import { QUERY_SETTINGS } from "../utils/queries";
 import Auth from "../utils/auth";
 // import from material
 import Button from "@mui/material/Button";

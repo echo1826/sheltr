@@ -1,13 +1,13 @@
 
 .card {
-  position: absolute;
+  /* position: absolute;
   top: 50%;
   left: 50%;
   width: 300px;
   height: 300px;
   margin: -150px;
   float: left;
-  perspective: 500px;
+  perspective: 500px; */
 }
 
 .content {

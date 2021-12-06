@@ -63,8 +63,8 @@ mutation updateSettings($userId: ID!, $age:String, $size:String,$house_trained:B
 
 export const UPDATE_USER_PETS = gql `
   mutation updateUserPets(
-    $_id: ObjectId!
-    $dog: ObjectId!
+    $_id: ID!
+    $dog: ID!
   ) {
       updateUserPets (
           _id: $_id
