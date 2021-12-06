@@ -6,6 +6,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 import BottomNavigation from "@mui/material/BottomNavigation";
 import BottomNavigationAction from "@mui/material/BottomNavigationAction";
 import Paper from "@mui/material/Paper";
+import './navbar.css'
 
 export default function Navbar() {
   const [value, setValue] = React.useState(0);
@@ -16,9 +17,8 @@ export default function Navbar() {
       <CssBaseline />
 
       <Paper
-        sx={{ position: "fixed", bottom: 0, left: 0, right: 0 }}
+        className='navbarContainer'
         elevation={3}
-        style={{ paddingBottom: 12 }}
       >
         <BottomNavigation
           showlabels="true"

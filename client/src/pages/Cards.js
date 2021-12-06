@@ -26,7 +26,7 @@ export default function Cards() {
 
   if (Auth.isLoggedIn()) {
     return (
-      <div className="cards">
+      <div className="tinderCards">
         <Cardrender />
       </div>
     );

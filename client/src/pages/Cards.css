@@ -1,14 +1,13 @@
-.cards {
+.tinderCards {
+    display: flex;
     align-items: center;
     text-align: center;
     position: relative;
     justify-content: center;
 }
 
-.cardContainer {
+.tinderContainer {
     width: 90vw;
-    max-width: 260px;
-    height: 300px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -17,10 +16,10 @@
 
 .swipe {
     position: absolute;
-    right: 50%;
     background-color: rgb(251, 225, 205);
-    border-radius: 20px;
+    border-radius: 15px;
     box-shadow: 4px 4px 4px rgb(195, 195, 195);
+    right: auto;
 }
 
 .swipeImg {
@@ -29,6 +28,17 @@
     object-fit: cover;
     position: relative;
     margin: 0px;
-    border-radius: 20px 20px 0 0;
+    border-radius: 15px 15px 0 0;
 }
+
+.swipeDogName {
+    font-family: 'Source Sans Pro', sans-serif;
+    margin: 0;
+}
+
+.swipeDogLocation {
+    font-family: 'Oxygen', sans-serif;
+}
+
+
 

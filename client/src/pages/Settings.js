@@ -7,9 +7,12 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import Button from '@mui/material/Button';
 import Paper from '@mui/material/Paper';
+import Switch from '@mui/material/Switch';
+import FormGroup from '@mui/material/FormGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import FormLabel from '@mui/material/FormLabel';
 // imports from utils
 import Auth from '../utils/auth';
-
 
 
 export default function Settings() {
@@ -75,23 +78,21 @@ export default function Settings() {
             <MenuItem value={'extraLarge'}>Extra Large</MenuItem>
           </Select>
         </FormControl>
-        <FormControl fullWidth>
-          <InputLabel id="trained-select" margin="10%">House Trained</InputLabel>
-          <Select
-            labelId="trained-select"
-            id="demo-simple-select"
-            value={trained}
-            label="House-trained"
-            onChange={handleTrained}
-          >
-            <MenuItem value={'yes'}>Yes</MenuItem>
-            <MenuItem value={'notAFactor'}>Not a Factor</MenuItem>
-          </Select>
-        </FormControl>
-        <Button variant = "contained" justifyContent ="center"
-        onClick={handleLogout}
-        >Logout</Button>
+        <FormControl component="fieldset">
+      <FormLabel component="legend"></FormLabel>
+      <FormGroup aria-label="position" row>
+        <FormControlLabel
+          value="start"
+          control={<Switch color="primary" />}
+          label="House-trained"
+          labelPlacement="start"
+        />
+        </FormGroup>
+      </FormControl>
         </Paper>
+        
+        <Button variant = "contained" justifyContent ="center"
+        onClick={handleLogout} className='settingsLogout'>Logout</Button>
       </Box>
     );
   } else {
