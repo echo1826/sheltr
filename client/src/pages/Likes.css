@@ -6,7 +6,7 @@
 }
 
 .likedDogsContainer {
-    padding-bottom: 25px;
+    padding-bottom: 20px;
 } 
 
 .likedDogsContainer h2 {
@@ -17,15 +17,20 @@
     margin: 15px;
 } 
 
+.likedDogsContainer img {
+    margin: 15px;
+} 
+
 .likedDogsEx {
     line-height: 18px;
 }
 
-
-
 .likedDogsMeet {
-    display: block;
+    margin: 0;
+    width: 100%''
 }
+
+
 
 
 

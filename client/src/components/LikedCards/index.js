@@ -23,14 +23,15 @@ export default function LikedCards(props) {
         
         {props.likedDogs.map((dog) => {
            return ( 
-            <Paper elevation = {6} >
-                <Grid item xs={4} key={dog._id} container ={true} className='likedDogsContainer' style={{ margin:"10px", maxWidth:"90vw", alignItems:"center", justifyContent:"center", fontFamily:"Oxygen"}}>
+            <Paper elevation = {6} style={{borderRadius: 15}} >
+                <Grid item xs={4} key={dog._id} container ={true} className='likedDogsContainer' style={{ marginBottom:15, maxWidth:"90vw", alignItems:"center", justifyContent:"center", fontFamily:"Oxygen"}}>
                         <img src={dog.photo[0].medium} alt='dog' />
                         <div className='likedDogsEx'>
                         <h2>{dog.name}</h2>
                         <p>{dog.breed.primary}</p>
                         <p>{dog.size} | {dog.gender} | {dog.age}</p>
                         </div>
+                        <div>
                         <ul>
                             <li>Shelter/Organization: {dog.organization}</li>
                             <li>Location: {dog.location}</li>
@@ -38,8 +39,9 @@ export default function LikedCards(props) {
                             <li>House Trained: {yesNo(dog.house_trained)}</li>
                             <li>Shots: {yesNo(dog.shots)}</li>
                         </ul>
-                        <div className='likedDogsMeet'>
-                        <h3>Meet {dog.name}!</h3>
+                        </div>
+                        <div>
+                        <h3 className='likedDogsMeet'>Meet {dog.name}!</h3>
                         </div>
                         <p>{dog.description}</p>
                         <a href={dog.url} target='_blank' rel="noreferrer noopener">Learn more...</a>
