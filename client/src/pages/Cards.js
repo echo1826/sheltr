@@ -2,12 +2,12 @@ import React from "react";
 import { useQuery } from "@apollo/client";
 // import from components
 import Cardrender from "../components/Cardrender";
-import "./Cards.css";
 // import from utils
 import { QUERY_SETTINGS } from "../utils/queries";
 import Auth from "../utils/auth";
 // import from material
 import Button from "@mui/material/Button";
+import "./Cards.css";
 
 export default function Cards() {
   const {loading, data} = useQuery(QUERY_SETTINGS, {
@@ -28,7 +28,7 @@ export default function Cards() {
 
   if (Auth.isLoggedIn()) {
     return (
-      <div className="cards">
+      <div className="tinderCards">
         <Cardrender settings={settings} likedDogs={likedDogs}/>
       </div>
     );
