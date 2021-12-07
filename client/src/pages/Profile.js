@@ -18,7 +18,8 @@ export default function Profile() {
     variables: { id: Auth.getProfileToken().data._id },
   });
 
-  console.log('user = ',data?.user);
+  const date = data?.user.createdAt
+  console.log('date = ',date.getMonth());
 
   const likedDogs = data?.user.pets || [];
 
@@ -40,8 +41,8 @@ export default function Profile() {
         <div className="avatar">
         <Avatar alt="Avatar" src="https://avatarfiles.alphacoders.com/170/thumb-1920-170799.jpg" sx={{ width: 156, height: 156 }} />
         <ul>
-          <li>Location: Austin, TX</li>
-          <li>Member Since: 2021</li>
+          <li>Location: {data?.user.location || 'N/A'}</li>
+          <li>Member Since: {data?.user.createdAt}</li>
         </ul>
         </div>
       
