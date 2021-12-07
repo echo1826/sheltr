@@ -61,17 +61,21 @@ export default function Settings() {
   const handleAge = (event) => {
     setAgeFlag(true);
     setAge(event.target.value);
+    prevAge = age;
   };
   const handleSize = (event) => {
     setSizeFlag(true);
     setSize(event.target.value);
+    prevSize = size;
   };
   const handleTrained = () => {
     setTrainedFlag(true);
     if(trained) {
       setTrained(null);
+      prevTrained = trained;
     }else {
       setTrained(true);
+      prevTrained = trained;
     }
     
   };
@@ -100,6 +104,12 @@ export default function Settings() {
           });
           break;
         }
+        case(ageFlag && sizeFlag): {
+          await updateSettings({
+            variables: {userId:Auth.getProfileToken().data._id, age, size, house_trained: prevTrained}
+          });
+          break;
+        }
         case(ageFlag): {
           await updateSettings({
             variables: {userId:Auth.getProfileToken().data._id, age, size:prevSize, house_trained: prevTrained}
@@ -123,9 +133,6 @@ export default function Settings() {
           break;
         }
       }
-      // await updateSettings({
-      //   variables: {userId:Auth.getProfileToken().data._id, age, size, house_trained: trained}
-      // });
     }catch(err) {
       console.log(err);
     }
