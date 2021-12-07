@@ -6,7 +6,6 @@ import {
 import {UPDATE_USER_PETS} from "../../utils/mutations";
 import { useQuery, useMutation } from "@apollo/client";
 import Auth from "../../utils/auth";
-// import './Cards.css';
 
 export default function Cardrender(props) {
     const [lastDirection, setLastDirection] = useState();
@@ -19,7 +18,6 @@ export default function Cardrender(props) {
     if(loading) {
         return <div>Loading cards...</div>
     }
-    // console.log(dogCardData);
     console.log(props.settings);
     if(data?.dogs.length !== 0) {
         switch(true) {
@@ -69,10 +67,10 @@ export default function Cardrender(props) {
             }
         }
     }
-    let finalDogData;
-    console.log("liked dogs array", props.likedDogs);
-    // finalDogData = 
-    // console.log(finalDogData);
+    const dogsToFilter = props.likedDogs.map((dog) => dog._id);
+    const finalDogData = dogCardData.filter((dog) => {
+        return !dogsToFilter.includes(dog._id);
+    });
     const swiped = async (direction) => {
         setLastDirection(direction);
       }
@@ -93,9 +91,8 @@ export default function Cardrender(props) {
             <div>No Dogs Found! Change your filter settings to get more dogs!</div>
         )
     }
-    // console.log(finalDogData);
     return(<div className='cardContainer'>
-        {dogCardData.map((dog) => {
+        {finalDogData.map((dog) => {
             return(
             <TinderCard className='swipe' key={dog._id} onSwipe={(direction) => swiped(direction)} onCardLeftScreen={(direction) => outOfFrame(direction, dog._id)}>
                 <img src={dog.photo[0].medium} alt={dog.name} className = "swipeImg"/>

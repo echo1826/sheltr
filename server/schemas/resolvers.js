@@ -27,7 +27,7 @@ const resolvers = {
         settings: async (parent, args) => {
             return await Settings.findOne({
                 userId:  args.userId
-            }).populate('userId');
+            }).populate('userId').populate('pets');
         },
     },
     Mutation: {
@@ -68,10 +68,6 @@ const resolvers = {
         },
         removeUser: async (parent, { userid }) => {
             return await User.findOneAndDelete({_id: userid})
-                // , function (err) {
-                // if(err) console.log(err);
-                // console.log("Successful deletion");
-            //   })
         }
     }
 };
