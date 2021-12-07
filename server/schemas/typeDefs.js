@@ -21,9 +21,9 @@ const typeDefs = gql`
         breed: Breed
         age: String
         size: String
+        gender: String
         photo: [Photo]
         url: String
-        gender: String
         location: String
         description: String
         spayed: Boolean
@@ -37,6 +37,8 @@ const typeDefs = gql`
         username: String
         email: String
         password: String
+        createdAt: String
+        location: String
         pets: [Dog] 
     }
     
@@ -60,7 +62,7 @@ const typeDefs = gql`
     }
 
     type Mutation {
-        addUser(username: String!, email: String!, password: String!): Auth
+        addUser(username: String!, email: String!, location: String!, password: String!): Auth
         addSettings(userId: ID!, age: String, size: String, house_trained: Boolean): Settings
         updateUserPets(_id: ID!, dog: ID!): User
         updateSettings(userId: ID!, age: String, size: String, house_trained: Boolean): Settings

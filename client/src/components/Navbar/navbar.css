@@ -6,10 +6,9 @@
     padding-bottom: 12px;
 }
 
-
 .topNavContainer {
     border: none;
-    position: fixed;
+    position: absolute;
     top: 115px;
     right: 0;
     margin-right: 20px;
@@ -31,6 +30,11 @@
   }
 
   .topNavLink img {
-      width: 35px;
-      padding: 15px;
+      width: 30px;
+      padding: 10px;
   }
+
+  .topNavLink:hover {
+    color: rgb(153,30,41);
+    text-decoration: underline rgb(153,30,41);
+}

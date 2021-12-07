@@ -6,7 +6,6 @@ import {
 import {UPDATE_USER_PETS} from "../../utils/mutations";
 import { useQuery, useMutation } from "@apollo/client";
 import Auth from "../../utils/auth";
-// import './Cards.css';
 
 export default function Cardrender(props) {
     const [lastDirection, setLastDirection] = useState();
@@ -19,7 +18,6 @@ export default function Cardrender(props) {
     if(loading) {
         return <div>Loading cards...</div>
     }
-    console.log(dogCardData);
     console.log(props.settings);
     if(data?.dogs.length !== 0) {
         switch(true) {
@@ -55,22 +53,26 @@ export default function Cardrender(props) {
             }
             case((settings.house_trained !== null)): {
                 console.log("houseTrained firing");
-                dogCardData = dogs.filter((dog) => dog.house_trained === settings.size);
+                dogCardData = dogs.filter((dog) => dog.house_trained === settings.house_trained);
                 break;
             }
             case((settings.house_trained === null && settings.size === null && settings.age === null)): {
+                console.log("default case firing");
                 dogCardData = dogs;
+                break;
+            }
+            default: {
+                console.error("Something went wrong");
                 break;
             }
         }
     }
-    let finalDogData;
-    console.log(props.likedDogs);
-    // finalDogData = 
-    console.log(finalDogData);
+    const dogsToFilter = props.likedDogs.map((dog) => dog._id);
+    const finalDogData = dogCardData.filter((dog) => {
+        return !dogsToFilter.includes(dog._id);
+    });
     const swiped = async (direction) => {
         setLastDirection(direction);
-        
       }
     const outOfFrame = async (direction, id) => {
         console.log("Dog id", id, "\nDirection", direction);
@@ -82,12 +84,17 @@ export default function Cardrender(props) {
             }catch(err) {
                 console.log(err);
             }
-            
         }
     }
-    console.log(finalDogData);
-    return(<div className='cardContainer'>
-        {dogCardData.map((dog) => {
+    if(dogCardData.length === 0) {
+        return (
+            <div>No Dogs Found! Change your filter settings to get more dogs!</div>
+        )
+    }
+
+    return(<div className='tinderContainer'>
+        {finalDogData.map((dog) => {
+
             return(
             <TinderCard className='swipe' key={dog._id} onSwipe={(direction) => swiped(direction)} onCardLeftScreen={(direction) => outOfFrame(direction, dog._id)}>
                 <img src={dog.photo[0].medium} alt={dog.name} className = "swipeImg"/>
@@ -98,3 +105,4 @@ export default function Cardrender(props) {
         {lastDirection ? <h2>You swiped {lastDirection}</h2> : <h2></h2>}
     </div>)
 }
+

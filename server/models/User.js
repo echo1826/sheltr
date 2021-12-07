@@ -23,6 +23,15 @@ const UserSchema = new Schema({
         minLength: 7,
         match: [/^[a-z0-9A-Z]+$/, "Password can only contain alphanumeric characters"]
     },
+    createdAt:  {
+        type: Date,
+        required: true,
+        default: Date.now()
+    },
+    location: {
+        type: String,
+        required: true
+    },
     pets: [
         {
             type: Schema.Types.ObjectId,

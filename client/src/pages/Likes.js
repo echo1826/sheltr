@@ -9,6 +9,7 @@ import Button from "@mui/material/Button";
 // import from utils
 import { QUERY_SINGLE_USER } from "../utils/queries";
 import Auth from "../utils/auth";
+import './Likes.css'
 
 export default function Likes() {
   const { loading, data } = useQuery(QUERY_SINGLE_USER, {
@@ -34,10 +35,10 @@ export default function Likes() {
     console.log(likedDogs);
 
     return (
-      <Box sx={{ flexGrow: 1 }}>
+      <Box>
         <Grid container justifyContent="center" alignItems="center" spacing={2}>
           <Grid item>
-            <h2>Your Liked Dogs</h2>
+            <h2 className='likesHeader'>Your Liked Dogs</h2>
           </Grid>
           <Grid item>
             <LikedCards likedDogs={likedDogs} />
