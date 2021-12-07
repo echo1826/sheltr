@@ -19,85 +19,83 @@ export default function Cardrender(props) {
     if(loading) {
         return <div>Loading cards...</div>
     }
-    console.log(dogCardData);
+    // console.log(dogCardData);
     console.log(props.settings);
     if(data?.dogs.length !== 0) {
         switch(true) {
             case ((settings.age !== null) && (settings.size !== null) && (settings.house_trained !== null)): {
                 console.log("age, size, houseTrained firing")
                 dogCardData = dogs.filter((dog) => (dog.age === settings.age) && (dog.size === settings.size) && (dog.house_trained === settings.house_trained));
-                // setCurrentIndex(dogCardData.length - 1);
                 break;
             }
             case ((settings.age !== null) && (settings.size !== null)): {
                 console.log("age, size firing");
                 dogCardData = dogs.filter((dog) => (dog.age === settings.age) && (dog.size === settings.size));
-                // setCurrentIndex(dogCardData.length - 1);
                 break;
             }
             case ((settings.age !== null) && (settings.house_trained !== null)): {
                 console.log("age, houseTrained firing");
                 dogCardData = dogs.filter((dog) => (dog.age === settings.age) && (dog.house_trained === settings.house_trained));
-                // setCurrentIndex(dogCardData.length - 1);
                 break;
             }
             case ((settings.age !== null)): {
                 console.log("settings.age case firing");
                 dogCardData = dogs.filter((dog) => dog.age === settings.age);
-                // setCurrentIndex(dogCardData.length - 1);
                 break;
             }
             case((settings.size !== null) && (settings.house_trained !== null)): {
                 console.log("size, houseTrained firing");
                 dogCardData = dogs.filter((dog) => (dog.size === settings.size) && (dog.house_trained === settings.house_trained));
-                // setCurrentIndex(dogCardData.length - 1);
                 break;
             }
             case((settings.size !== null)): {
                 console.log("size firing");
                 dogCardData = dogs.filter((dog) => dog.size === settings.size);
-                // setCurrentIndex(dogCardData.length - 1);
                 break;
             }
             case((settings.house_trained !== null)): {
                 console.log("houseTrained firing");
-                dogCardData = dogs.filter((dog) => dog.house_trained === settings.size);
-                // setCurrentIndex(dogCardData.length - 1);
+                dogCardData = dogs.filter((dog) => dog.house_trained === settings.house_trained);
+                break;
+            }
+            case((settings.house_trained === null && settings.size === null && settings.age === null)): {
+                console.log("default case firing");
+                dogCardData = dogs;
                 break;
             }
             default: {
-                dogCardData = dogs;
-                // setCurrentIndex(dogCardData.length - 1);
+                console.error("Something went wrong");
                 break;
             }
         }
     }
     let finalDogData;
-    console.log(props.likedDogs);
-    for(let dogLiked of props.likedDogs) {
-        finalDogData = dogCardData.filter((dog) => dogLiked._id !== dog._id);
-    }
-    console.log(finalDogData);
+    console.log("liked dogs array", props.likedDogs);
+    // finalDogData = 
+    // console.log(finalDogData);
     const swiped = async (direction) => {
         setLastDirection(direction);
-        
       }
     const outOfFrame = async (direction, id) => {
         console.log("Dog id", id, "\nDirection", direction);
         if(direction === 'right') {
             try {
-                const {data} = await updateUserPets({
+                    await updateUserPets({
                     variables: {_id: Auth.getProfileToken().data._id, dog: id}
                 })
             }catch(err) {
                 console.log(err);
             }
-            
         }
     }
-    console.log(finalDogData);
+    if(dogCardData.length === 0) {
+        return (
+            <div>No Dogs Found! Change your filter settings to get more dogs!</div>
+        )
+    }
+    // console.log(finalDogData);
     return(<div className='cardContainer'>
-        {finalDogData.map((dog) => {
+        {dogCardData.map((dog) => {
             return(
             <TinderCard className='swipe' key={dog._id} onSwipe={(direction) => swiped(direction)} onCardLeftScreen={(direction) => outOfFrame(direction, dog._id)}>
                 <img src={dog.photo[0].medium} alt={dog.name} className = "swipeImg"/>
