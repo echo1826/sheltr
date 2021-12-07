@@ -43,30 +43,30 @@ export default function Navbar() {
             setValue(newValue);
           }}
         >
-          <Link to="/profile">
+          <a href="/profile">
             <BottomNavigationAction
               label="Profile"
               icon={<img src="./images/profileblank2.png" alt="profile" />}
             />
-          </Link>
-          <Link to="/sheltr">
+          </a>
+          <a href="/sheltr">
             <BottomNavigationAction
               label="Sheltr"
               icon={<img src="./images/pawblank2.png" alt="sheltr"/>}
             />
-          </Link>
-          <Link to="/likes">
+          </a>
+          <a href="/likes">
             <BottomNavigationAction
               label="Likes"
               icon={<img src="./images/heartblank2.png" alt="liked cards"/>}
             />
-          </Link>
-          <Link to="/settings">
+          </a>
+          <a href="/settings">
             <BottomNavigationAction
               label="Settings"
               icon={<img src="./images/settingsblank2.png" alt="settings"/>}
             />
-          </Link>
+          </a>
         </BottomNavigation>
       </Paper>
       </div>)
@@ -77,28 +77,28 @@ export default function Navbar() {
     <nav role="navigation">
         <ul className='topNavUl'>
             <li className='topNavLi'>
-                <Link to='/profile' className='topNavLink'>
+                <a href='/profile' className='topNavLink'>
                     <img src='./images/profileblank.png' alt='profile'></img>
                     Profile
-                </Link>
+                </a>
             </li>
             <li className='topNavLi'>
-                <Link to='/sheltr' className='topNavLink'>
+                <a href='/sheltr' className='topNavLink'>
                     <img src='./images/pawblank.png' alt='sheltr'></img>
                     Sheltr
-                </Link>
+                </a>
             </li>
             <li className='topNavLi'>
-                <Link to='/likes' className='topNavLink'>
+                <a href='/likes' className='topNavLink'>
                     <img src='./images/heartblank.png' alt='heart'></img>
                     Likes
-                </Link>
+                </a>
             </li>
             <li className='topNavLi'>
-                <Link to='/settings' className='topNavLink'>
+                <a href='/settings' className='topNavLink'>
                     <img src='./images/settingsblank.png' alt='settings'></img>
                     Settings
-                </Link>
+                </a>
             </li>
         </ul>
     </nav>

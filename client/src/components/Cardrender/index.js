@@ -82,7 +82,6 @@ export default function Cardrender(props) {
             }catch(err) {
                 console.log(err);
             }
-            
         }
     }
     console.log(finalDogData);
