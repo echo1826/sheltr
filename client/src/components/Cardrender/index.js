@@ -87,7 +87,7 @@ export default function Cardrender(props) {
     }
     console.log(finalDogData);
     return(<div className='cardContainer'>
-        {finalDogData.map((dog) => {
+        {dogCardData.map((dog) => {
             return(
             <TinderCard className='swipe' key={dog._id} onSwipe={(direction) => swiped(direction)} onCardLeftScreen={(direction) => outOfFrame(direction, dog._id)}>
                 <img src={dog.photo[0].medium} alt={dog.name} className = "swipeImg"/>

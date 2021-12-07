@@ -12,14 +12,6 @@ const {
 
 const resolvers = {
     Query: {
-        me: async (parent, args, context) => {
-            console.log(context.user);
-            if(context.user) {
-                const user = await User.findOne({ _id: context.user._id }).populate('pets');
-                return user;
-            }
-            throw new AuthenticationError("You must be logged in!");
-        },
         dogs: async () => {
             return await Dog.find({});
         },

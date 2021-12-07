@@ -39,7 +39,7 @@ export default function LikedCards(props) {
                         </ul>
                         <h3>Meet {dog.name}!</h3>
                         <p>{dog.description}</p>
-                        <a href={dog.url} target='_blank' rel="noreferrer">Learn more...</a>
+                        <a href={dog.url} target='_blank' rel="noreferrer noopener">Learn more...</a>
                     </Grid>
                 </Paper>
         )
