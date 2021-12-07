@@ -91,8 +91,10 @@ export default function Cardrender(props) {
             <div>No Dogs Found! Change your filter settings to get more dogs!</div>
         )
     }
-    return(<div className='cardContainer'>
+
+    return(<div className='tinderContainer'>
         {finalDogData.map((dog) => {
+
             return(
             <TinderCard className='swipe' key={dog._id} onSwipe={(direction) => swiped(direction)} onCardLeftScreen={(direction) => outOfFrame(direction, dog._id)}>
                 <img src={dog.photo[0].medium} alt={dog.name} className = "swipeImg"/>
@@ -103,3 +105,4 @@ export default function Cardrender(props) {
         {lastDirection ? <h2>You swiped {lastDirection}</h2> : <h2></h2>}
     </div>)
 }
+
