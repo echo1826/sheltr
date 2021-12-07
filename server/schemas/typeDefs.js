@@ -23,6 +23,7 @@ const typeDefs = gql`
         size: String
         photo: [Photo]
         url: String
+        gender: String
         location: String
         description: String
         spayed: Boolean
