@@ -9,17 +9,9 @@
     padding-bottom: 20px;
 } 
 
-.likedDogsContainer h2 {
+.likedDogsContainer h2, p, img {
     margin: 15px;
 }
-
-.likedDogsContainer p {
-    margin: 15px;
-} 
-
-.likedDogsContainer img {
-    margin: 15px;
-} 
 
 .likedDogsEx {
     line-height: 18px;

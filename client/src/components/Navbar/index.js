@@ -39,6 +39,7 @@ export default function Navbar() {
         <BottomNavigation
           showlabels="true"
           value={value}
+          sx={{alignItems:'center'}}
           onChange={(event, newValue) => {
             setValue(newValue);
           }}
