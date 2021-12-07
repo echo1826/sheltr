@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 // imports from material
 import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
@@ -22,17 +22,29 @@ export default function Settings() {
   const {loading, data} = useQuery(QUERY_SETTINGS, {
     variables: {userId: Auth.getProfileToken().data._id}
   });
+  console.log('QUERY_SETTINGS = ',data?.settings)
+  const prevAge = data?.settings.age;
+  const prevSize = data?.settings.size;
+  const prevTrained = data?.settings.house_trained
+
   const [updateSettings] = useMutation(UPDATE_SETTINGS);
   // initializing the state lets us update it for some reason
-  const [age, setAge] = useState();
-  const [size, setSize] = useState();
+  const [age, setAge] = useState(null);
+  const [size, setSize] = useState(null);
   const [trained, setTrained] = useState(false);
+  const isMounted = useRef(false);
   let settings;
 
   // handle functions set the states, this hook will make the DB update
   useEffect(()=> {
-    console.log(`age = ${age} size = ${size} trained = ${trained}`)
-  });
+    if (isMounted.current){
+    // console.log(`age = ${age} size = ${size} trained = ${trained}`);
+    console.log('isMounted = ',isMounted)
+    handleSettingsChange();
+    } else {
+      isMounted.current = true
+    }
+  },[age,size,trained]);
 
   const goLogin = (event) => {
     window.location.assign("/");
@@ -43,18 +55,18 @@ export default function Settings() {
   const handleSize = (event) => {
     setSize(event.target.value);
   };
-  const handleTrained = (event) => {
+  const handleTrained = () => {
     setTrained(!trained);
   };
   const handleLogout = () => {
     Auth.logout();
   };
 
-  const handleSettingsChange = async(e) => {
-    e.preventDefault();
+  const handleSettingsChange = async() => {
+    
     try{
       const {data} = await updateSettings({
-        variables: {userId:Auth.getProfileToken().data._id, age, size, trained}
+        variables: {userId:Auth.getProfileToken().data._id, age, size, house_trained: trained}
       });
       console.log(data.updateSettings.age, data.updateSettings.size, data.updateSettings.house_trained);
       // setAge(data.updateSettings.age);
@@ -81,7 +93,7 @@ export default function Settings() {
           <Select
             labelId="age-select"
             id="demo-simple-select"
-            value={age}
+            value={prevAge}
             label="Age"
             type="age"
             className='settingsInput'
@@ -99,7 +111,7 @@ export default function Settings() {
           <Select
             labelId="size-select"
             id="demo-simple-select"
-            value={size}
+            value={prevSize}
             label="Size"
             className='settingsInput'
             onChange={handleSize}
@@ -115,7 +127,7 @@ export default function Settings() {
       <FormLabel component="legend"></FormLabel>
       <FormGroup aria-label="position" row>
         <FormControlLabel
-          value="start"
+          value={prevTrained}
           control={<Switch color="primary" />}
           label="House-trained"
           labelPlacement="start"
