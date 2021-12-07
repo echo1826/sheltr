@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 // imports from material
 import Box from "@mui/material/Box";
@@ -46,25 +46,25 @@ export default function Navbar() {
           <Link to="/profile">
             <BottomNavigationAction
               label="Profile"
-              icon={<img src="./images/profileblank2.png" />}
+              icon={<img src="./images/profileblank2.png" alt="profile" />}
             />
           </Link>
-          <Link to="/cards">
+          <Link to="/sheltr">
             <BottomNavigationAction
               label="Sheltr"
-              icon={<img src="./images/pawblank2.png" />}
+              icon={<img src="./images/pawblank2.png" alt="sheltr"/>}
             />
           </Link>
           <Link to="/likes">
             <BottomNavigationAction
               label="Likes"
-              icon={<img src="./images/heartblank2.png" />}
+              icon={<img src="./images/heartblank2.png" alt="liked cards"/>}
             />
           </Link>
           <Link to="/settings">
             <BottomNavigationAction
               label="Settings"
-              icon={<img src="./images/settingsblank2.png" />}
+              icon={<img src="./images/settingsblank2.png" alt="settings"/>}
             />
           </Link>
         </BottomNavigation>

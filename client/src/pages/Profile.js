@@ -1,6 +1,5 @@
 import React from "react";
 import { useQuery } from "@apollo/client";
-import Likes from "./Likes";
 //imports from material
 import { Grid } from "@mui/material";
 import Paper from "@mui/material/Paper";
@@ -9,7 +8,7 @@ import Avatar from "@mui/material/Avatar";
 import Button from '@mui/material/Button'
 //imports from utils
 import Auth from "../utils/auth";
-import { QUERY_SINGLE_USER, QUERY_ME } from "../utils/queries";
+import { QUERY_SINGLE_USER } from "../utils/queries";
 import { Link } from "react-router-dom";
 
 export default function Profile() {
@@ -28,7 +27,7 @@ export default function Profile() {
     profileDogs = likedDogs.slice(0, 3);
   }
 
-  const goLogin = (event) => {
+  const goLogin = () => {
     window.location.assign("/");
   };
 
@@ -39,7 +38,6 @@ export default function Profile() {
 
         <Box sx={{ flexGrow: 1 }}>
           <Grid
-            container
             container
             direction="row"
             justifyContent="center"
@@ -74,7 +72,7 @@ export default function Profile() {
                     <React.Fragment>
                       <Grid container item>
                         <Paper>
-                          <img src={dog.photo[0].small} alt="photo of dog" />
+                          <img src={dog.photo[0].small} alt={dog.name} />
                           <h2>{dog.name}</h2>
                           <p>{dog.breed.primary}</p>
                           <p>

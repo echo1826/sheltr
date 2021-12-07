@@ -54,14 +54,6 @@ const typeDefs = gql`
     
     type Query {
         user(_id: ID!): User
-        me: User
-        #ageSizeHouseTrained(age: String, size: String, house_trained: Boolean): [Dog]
-        #ageHouseTrained(age: String, house_trained: Boolean): [Dog]
-        #ageSize(age: String, size: String): [Dog]
-        #sizeHouseTrained(size: String, house_trained: Boolean): [Dog]
-        #size(size: String): [Dog]
-        #houseTrained(house_trained: Boolean): [Dog]
-        #age(age: String): [Dog]
         dogs: [Dog]
         settings(userId: ID!): Settings
     }
