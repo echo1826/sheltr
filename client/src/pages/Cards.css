@@ -32,6 +32,7 @@
     display: inline-block;
     width: 90vw;
     max-width: 400px;
+
 }
 
 .swipeImg {
@@ -47,10 +48,13 @@
 .swipeDogName {
     font-family: 'Source Sans Pro', sans-serif;
     margin: 0;
+    text-align: center;
+    border-bottom: 1px outset #8C8B8B;
 }
 
 .swipeDogLocation {
     font-family: 'Oxygen', sans-serif;
+    text-align: center;
 }
 
 

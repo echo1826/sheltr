@@ -7,7 +7,6 @@ import Paper from '@mui/material/Paper';
 
 
 export default function LikedCards(props) {
-    // const profileDogs = props.likedDogs.slice(0,5) //dont need later. just for testing
 
     function yesNo (e) {
         if (e === true) {
