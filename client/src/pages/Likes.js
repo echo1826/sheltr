@@ -36,10 +36,8 @@ export default function Likes() {
 
     return (
       <Box>
+        <h2 className='likesHeader'>Your Liked Dogs</h2>
         <Grid container justifyContent="center" alignItems="center" spacing={2}>
-          <Grid item>
-            <h2 className='likesHeader'>Your Liked Dogs</h2>
-          </Grid>
           <Grid item>
             <LikedCards likedDogs={likedDogs} />
           </Grid>
