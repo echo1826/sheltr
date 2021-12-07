@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 // imports from material
 import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
@@ -23,10 +23,16 @@ export default function Settings() {
     variables: {userId: Auth.getProfileToken().data._id}
   });
   const [updateSettings] = useMutation(UPDATE_SETTINGS);
-  const [age, setAge] = React.useState();
-  const [size, setSize] = React.useState();
-  const [trained, setTrained] = React.useState(false);
+  // initializing the state lets us update it for some reason
+  const [age, setAge] = useState();
+  const [size, setSize] = useState();
+  const [trained, setTrained] = useState(false);
   let settings;
+
+  // handle functions set the states, this hook will make the DB update
+  useEffect(()=> {
+    console.log(`age = ${age} size = ${size} trained = ${trained}`)
+  });
 
   const goLogin = (event) => {
     window.location.assign("/");
@@ -38,7 +44,7 @@ export default function Settings() {
     setSize(event.target.value);
   };
   const handleTrained = (event) => {
-    setTrained(event.target.value);
+    setTrained(!trained);
   };
   const handleLogout = () => {
     Auth.logout();
@@ -81,6 +87,7 @@ export default function Settings() {
             className='settingsInput'
             onChange={handleAge}
           >
+            <MenuItem value={null}>No Preference</MenuItem>
             <MenuItem value={'baby'}>Baby</MenuItem>
             <MenuItem value={'young'}>Young</MenuItem>
             <MenuItem value={'adult'}>Adult</MenuItem>
@@ -97,6 +104,7 @@ export default function Settings() {
             className='settingsInput'
             onChange={handleSize}
           >
+            <MenuItem value={null}>No Preference</MenuItem>
             <MenuItem value={'small'}>Small</MenuItem>
             <MenuItem value={'medium'}>Medium</MenuItem>
             <MenuItem value={'large'}>Large</MenuItem>
@@ -112,6 +120,7 @@ export default function Settings() {
           label="House-trained"
           labelPlacement="start"
           className='settingsInput'
+          onChange={handleTrained}
           
         />
         </FormGroup>
