@@ -37,13 +37,13 @@ export default function Profile() {
     
       <div className= "profileHead">
         <h1>{data?.user.username}</h1>
-        <div className="avatar">
+        <p align = "center" className="avatar">
         <Avatar alt="Avatar" src="https://avatarfiles.alphacoders.com/170/thumb-1920-170799.jpg" sx={{ width: 156, height: 156 }} />
-        <ul>
+        <ul style={{ listStyleType: "none"}}>
           <li>Location: Austin, TX</li>
           <li>Member Since: 2021</li>
         </ul>
-        </div>
+        </p>
       
         <div className="profileDogs">
 
@@ -63,12 +63,12 @@ export default function Profile() {
                 );
               })
             )}
-            
-          <Link to="/likes" underline="none"><Button variant = "contained">View all your liked dogs</Button></Link>
-          
-
-      </div>
-      </div>);
+            </div>
+            <p align = "center">
+            <Link to="/likes" style={{ textDecoration: 'none' }}><Button variant = "contained">View all your liked dogs</Button></Link>
+            </p>
+          </div>);
+      
   } else {
     const style = {
       display: "flex",

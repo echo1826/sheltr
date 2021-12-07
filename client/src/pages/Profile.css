@@ -4,16 +4,11 @@ h1{
     text-align: center;
 }
 
-.avatar{
-    display:inline-flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 20px;
-    margin-left: 40%;
-}
+
 
 .profileDogs {
     display: inline-flex;
+    align-self: center;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-evenly;
