@@ -63,11 +63,10 @@ export default function Profile() {
                 );
               })
             )}
-           <div> 
+        </div>
+        <div> 
           <Link to="/likes" underline="none" className='profileLink'><Button variant = "contained">View all your liked dogs</Button></Link>
-          </div>
-
-      </div>
+        </div>
       </div>);
   } else {
     const style = {
