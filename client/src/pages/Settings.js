@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 // imports from material
 import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
@@ -22,11 +22,29 @@ export default function Settings() {
   const {loading, data} = useQuery(QUERY_SETTINGS, {
     variables: {userId: Auth.getProfileToken().data._id}
   });
+  console.log('QUERY_SETTINGS = ',data?.settings)
+  const prevAge = data?.settings.age;
+  const prevSize = data?.settings.size;
+  const prevTrained = data?.settings.house_trained
+
   const [updateSettings] = useMutation(UPDATE_SETTINGS);
-  const [age, setAge] = React.useState();
-  const [size, setSize] = React.useState();
-  const [trained, setTrained] = React.useState(false);
+  // initializing the state lets us update it for some reason
+  const [age, setAge] = useState(null);
+  const [size, setSize] = useState(null);
+  const [trained, setTrained] = useState(false);
+  const isMounted = useRef(false);
   let settings;
+
+  // handle functions set the states, this hook will make the DB update
+  useEffect(()=> {
+    if (isMounted.current){
+    // console.log(`age = ${age} size = ${size} trained = ${trained}`);
+    console.log('isMounted = ',isMounted)
+    handleSettingsChange();
+    } else {
+      isMounted.current = true
+    }
+  },[age,size,trained]);
 
   const goLogin = (event) => {
     window.location.assign("/");
@@ -37,18 +55,18 @@ export default function Settings() {
   const handleSize = (event) => {
     setSize(event.target.value);
   };
-  const handleTrained = (event) => {
-    setTrained(event.target.value);
+  const handleTrained = () => {
+    setTrained(!trained);
   };
   const handleLogout = () => {
     Auth.logout();
   };
 
-  const handleSettingsChange = async(e) => {
-    e.preventDefault();
+  const handleSettingsChange = async() => {
+    
     try{
       const {data} = await updateSettings({
-        variables: {userId:Auth.getProfileToken().data._id, age, size, trained}
+        variables: {userId:Auth.getProfileToken().data._id, age, size, house_trained: trained}
       });
     }catch(err) {
       console.log(err);
@@ -71,16 +89,17 @@ export default function Settings() {
           <Select
             labelId="age-select"
             id="demo-simple-select"
-            value={age}
+            value={prevAge}
             label="Age"
             type="age"
             className='settingsInput'
             onChange={handleAge}
           >
-            <MenuItem value={'Baby'}>Baby</MenuItem>
-            <MenuItem value={'Young'}>Young</MenuItem>
-            <MenuItem value={'Adult'}>Adult</MenuItem>
-            <MenuItem value={'Senior'}>Senior</MenuItem>
+            <MenuItem value={null}>No Preference</MenuItem>
+            <MenuItem value={'baby'}>Baby</MenuItem>
+            <MenuItem value={'young'}>Young</MenuItem>
+            <MenuItem value={'adult'}>Adult</MenuItem>
+            <MenuItem value={'senior'}>Senior</MenuItem>
           </Select>
         </FormControl>
         <FormControl fullWidth>
@@ -88,26 +107,28 @@ export default function Settings() {
           <Select
             labelId="size-select"
             id="demo-simple-select"
-            value={size}
+            value={prevSize}
             label="Size"
             className='settingsInput'
             onChange={handleSize}
           >
-            <MenuItem value={'Small'}>Small</MenuItem>
-            <MenuItem value={'Medium'}>Medium</MenuItem>
-            <MenuItem value={'Large'}>Large</MenuItem>
-            <MenuItem value={'Extra Large'}>Extra Large</MenuItem>
+            <MenuItem value={null}>No Preference</MenuItem>
+            <MenuItem value={'small'}>Small</MenuItem>
+            <MenuItem value={'medium'}>Medium</MenuItem>
+            <MenuItem value={'large'}>Large</MenuItem>
+            <MenuItem value={'extraLarge'}>Extra Large</MenuItem>
           </Select>
         </FormControl>
         <FormControl component="fieldset">
       <FormLabel component="legend"></FormLabel>
       <FormGroup aria-label="position" row>
         <FormControlLabel
-          value="start"
+          value={prevTrained}
           control={<Switch color="primary" />}
           label="House-trained"
           labelPlacement="start"
           className='settingsInput'
+          onChange={handleTrained}
           
         />
         </FormGroup>
