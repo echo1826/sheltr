@@ -15,12 +15,13 @@
 
 .swipe {
     position: absolute;
-    background-color: rgb(251, 225, 205);
+    background-color: #F2F2F2;
     border: 1px solid;
     border-radius: 15px;
     box-shadow: 4px 4px 4px rgb(195, 195, 195);
     right: auto;
-    top: 50%;
+    top: 30%;
+    left: 25%
 }
 
 .swipeImg {
@@ -30,15 +31,19 @@
     position: relative;
     margin: 0px;
     border-radius: 15px 15px 0 0;
+    box-shadow: 4px 4px 4px rgb(195, 195, 195);
 }
 
 .swipeDogName {
     font-family: 'Source Sans Pro', sans-serif;
     margin: 0;
+    text-align: center;
+    border-bottom: 1px outset #8C8B8B;
 }
 
 .swipeDogLocation {
     font-family: 'Oxygen', sans-serif;
+    text-align: center;
 }
 
 
