@@ -35,7 +35,7 @@ export default function Profile() {
   if (Auth.isLoggedIn()) {
     return (
     
-      <div className= "profileHead">
+      <div className= "userProfile">
         <h1>{data?.user.username}</h1>
         <p align = "center" className="avatar">
         <Avatar alt="Avatar" src="https://avatarfiles.alphacoders.com/170/thumb-1920-170799.jpg" sx={{ width: 156, height: 156 }} />
@@ -63,12 +63,11 @@ export default function Profile() {
                 );
               })
             )}
-            </div>
-            <p align = "center">
-            <Link to="/likes" style={{ textDecoration: 'none' }}><Button variant = "contained">View all your liked dogs</Button></Link>
-            </p>
-          </div>);
-      
+        </div>
+        <div> 
+          <Link to="/likes" underline="none" className='profileLink'><Button variant = "contained">View all your liked dogs</Button></Link>
+        </div>
+      </div>);
   } else {
     const style = {
       display: "flex",
@@ -80,7 +79,7 @@ export default function Profile() {
     return (
       <div style={style}>
         <h1>You are not logged in!!</h1>
-        <Button onClick={goLogin}>Login</Button>
+        <Button className='profileBtn' onClick={goLogin}>Login</Button>
       </div>
     );
   }
