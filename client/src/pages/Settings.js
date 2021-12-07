@@ -24,15 +24,16 @@ export default function Settings() {
   });
   const [updateSettings] = useMutation(UPDATE_SETTINGS);
   // initializing the state lets us update it for some reason
-  const [age, setAge] = useState();
-  const [size, setSize] = useState();
+  const [age, setAge] = useState(null);
+  const [size, setSize] = useState(null);
   const [trained, setTrained] = useState(false);
   let settings;
 
   // handle functions set the states, this hook will make the DB update
   useEffect(()=> {
-    console.log(`age = ${age} size = ${size} trained = ${trained}`)
-  });
+    console.log(`age = ${age} size = ${size} trained = ${trained}`);
+    handleSettingsChange();
+  },[age,size,trained]);
 
   const goLogin = (event) => {
     window.location.assign("/");
@@ -50,11 +51,11 @@ export default function Settings() {
     Auth.logout();
   };
 
-  const handleSettingsChange = async(e) => {
-    e.preventDefault();
+  const handleSettingsChange = async() => {
+    
     try{
       const {data} = await updateSettings({
-        variables: {userId:Auth.getProfileToken().data._id, age, size, trained}
+        variables: {userId:Auth.getProfileToken().data._id, age, size, house_trained: trained}
       });
       console.log(data.updateSettings.age, data.updateSettings.size, data.updateSettings.house_trained);
       // setAge(data.updateSettings.age);
