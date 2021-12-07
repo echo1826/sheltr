@@ -35,7 +35,7 @@ export default function Likes() {
     console.log(likedDogs);
 
     return (
-      <Box sx={{ flexGrow: 1 }}>
+      <Box>
         <Grid container justifyContent="center" alignItems="center" spacing={2}>
           <Grid item>
             <h2 className='likesHeader'>Your Liked Dogs</h2>

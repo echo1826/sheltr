@@ -139,16 +139,18 @@ export default function Settings() {
         gridAutoColumns: '1fr',
         gap: 3,
         alignItems: 'center',
+        paddingBottom: 7,
       }}
     > {loading ? <div>Loading settings...</div> :
       <React.Fragment>
       <Paper className='settingsContainer' elevation = {6} >
           <h2 align="center">User Settings</h2>
-        <FormControl fullWidth>
-          <InputLabel id="age-select" className='settingsForm'>Age</InputLabel>
+  
+        <FormControl fullWidth style={{marginBottom: '20px'}} className='settingsForm'>
+          <InputLabel id="demo-simple-select-label">Age</InputLabel>
           <Select
-            labelId="age-select"
-            id="demo-simple-select"
+            labelId="demo-simple-select-label"
+            id="demo-simple-select-label"
             value={prevAge}
             label="Age"
             type="age"
@@ -162,8 +164,9 @@ export default function Settings() {
             <MenuItem value={'Senior'}>Senior</MenuItem>
           </Select>
         </FormControl>
-        <FormControl fullWidth>
-          <InputLabel id="size-select" margin="10%">Size</InputLabel>
+    
+        <FormControl fullWidth fullWidth style={{marginTop: '20px', marginBottom:'10px'}} className='settingsForm'>
+          <InputLabel id="size-select">Size</InputLabel>
           <Select
             labelId="size-select"
             id="demo-simple-select"
