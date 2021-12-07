@@ -1,3 +1,6 @@
+.userProfile {
+    padding-bottom: 30px;
+}
 
 h1{
     font-family: 'Source Sans Pro', sans-serif;
@@ -5,36 +8,43 @@ h1{
 }
 
 .avatar{
-    display:inline-flex;
+    display:flex;
     justify-content: center;
     align-items: center;
     margin-bottom: 20px;
-    margin-left: 40%;
+    margin-left: 3%;
 }
 
 .profileDogs {
-    display: inline-flex;
-    flex-direction: row;
+    display: flex;
+    /* flex-direction: row; */
     flex-wrap: wrap;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
     margin-top: 10px;
 }
 
 .dogCard {
+    width: 250px;
     background-color: #F2F2F2;
     border: 1px solid;
     border-radius: 15px;
     object-fit: cover;
     position: relative;
-    margin: 30px;
+    margin: 25px;
     box-shadow: 4px 4px 4px rgb(195, 195, 195);
     justify-content: center;
     align-items: center;
     text-align: center;
     padding: 5px;
-
 }
+
+.profileLink {
+    text-decoration: none;
+    display: flex;
+    align-self: flex-end;
+}
+
 
 .dogImage {
     object-fit: cover;
