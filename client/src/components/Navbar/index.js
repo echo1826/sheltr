@@ -109,13 +109,3 @@ export default function Navbar() {
   );
 }
 
-
-
-//     )
-
-//     // } else {
-//     //     return (<Login />)
-//     // }
-// }
-
-// position: 'fixed', bottom: 0, left: 0, right: 0

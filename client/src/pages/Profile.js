@@ -17,7 +17,6 @@ export default function Profile() {
   });
 
   console.log('user = ',data?.user);
-  // console.log('user = ',data.user);
 
   const likedDogs = data?.user.pets || [];
 

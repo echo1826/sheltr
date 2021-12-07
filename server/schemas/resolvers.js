@@ -68,10 +68,6 @@ const resolvers = {
         },
         removeUser: async (parent, { userid }) => {
             return await User.findOneAndDelete({_id: userid})
-                // , function (err) {
-                // if(err) console.log(err);
-                // console.log("Successful deletion");
-            //   })
         }
     }
 };
