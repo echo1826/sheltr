@@ -33,13 +33,12 @@ export default function Settings() {
   const [size, setSize] = useState(null);
   const [trained, setTrained] = useState(false);
   const isMounted = useRef(false);
-  let settings;
+  
 
   // handle functions set the states, this hook will make the DB update
   useEffect(()=> {
     if (isMounted.current){
     // console.log(`age = ${age} size = ${size} trained = ${trained}`);
-    console.log('isMounted = ',isMounted)
     handleSettingsChange();
     } else {
       isMounted.current = true
@@ -56,7 +55,7 @@ export default function Settings() {
     setSize(event.target.value);
   };
   const handleTrained = () => {
-    setTrained(!trained);
+    trained ? setTrained(null) : setTrained(true);
   };
   const handleLogout = () => {
     Auth.logout();
