@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 // imports from material
 import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
@@ -32,12 +32,18 @@ export default function Settings() {
   const [age, setAge] = useState(null);
   const [size, setSize] = useState(null);
   const [trained, setTrained] = useState(false);
+  const isMounted = useRef(false);
   let settings;
 
   // handle functions set the states, this hook will make the DB update
   useEffect(()=> {
+    if (isMounted.current){
     // console.log(`age = ${age} size = ${size} trained = ${trained}`);
+    console.log('isMounted = ',isMounted)
     handleSettingsChange();
+    } else {
+      isMounted.current = true
+    }
   },[age,size,trained]);
 
   const goLogin = (event) => {
@@ -49,7 +55,7 @@ export default function Settings() {
   const handleSize = (event) => {
     setSize(event.target.value);
   };
-  const handleTrained = (event) => {
+  const handleTrained = () => {
     setTrained(!trained);
   };
   const handleLogout = () => {
