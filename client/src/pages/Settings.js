@@ -199,7 +199,6 @@ export default function Settings() {
           labelPlacement="start"
           className='settingsInput'
           onChange={handleTrained}
-          
         />
         </FormGroup>
       </FormControl>
