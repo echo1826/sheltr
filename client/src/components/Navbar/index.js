@@ -83,7 +83,7 @@ export default function Navbar() {
                 </Link>
             </li>
             <li className='topNavLi'>
-                <Link to='/sheltr' className='topNavLink'>
+                <Link to='/cards' className='topNavLink'>
                     <img src='./images/pawblank.png' alt='sheltr'></img>
                     Sheltr
                 </Link>

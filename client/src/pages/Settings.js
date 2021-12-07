@@ -81,10 +81,10 @@ export default function Settings() {
             className='settingsInput'
             onChange={handleAge}
           >
-            <MenuItem value={'baby'}>Baby</MenuItem>
-            <MenuItem value={'young'}>Young</MenuItem>
-            <MenuItem value={'adult'}>Adult</MenuItem>
-            <MenuItem value={'senior'}>Senior</MenuItem>
+            <MenuItem value={'Baby'}>Baby</MenuItem>
+            <MenuItem value={'Young'}>Young</MenuItem>
+            <MenuItem value={'Adult'}>Adult</MenuItem>
+            <MenuItem value={'Senior'}>Senior</MenuItem>
           </Select>
         </FormControl>
         <FormControl fullWidth>
@@ -97,10 +97,10 @@ export default function Settings() {
             className='settingsInput'
             onChange={handleSize}
           >
-            <MenuItem value={'small'}>Small</MenuItem>
-            <MenuItem value={'medium'}>Medium</MenuItem>
-            <MenuItem value={'large'}>Large</MenuItem>
-            <MenuItem value={'extraLarge'}>Extra Large</MenuItem>
+            <MenuItem value={'Small'}>Small</MenuItem>
+            <MenuItem value={'Medium'}>Medium</MenuItem>
+            <MenuItem value={'Large'}>Large</MenuItem>
+            <MenuItem value={'Extra Large'}>Extra Large</MenuItem>
           </Select>
         </FormControl>
         <FormControl component="fieldset">
