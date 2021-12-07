@@ -21,9 +21,9 @@ const typeDefs = gql`
         breed: Breed
         age: String
         size: String
+        gender: String
         photo: [Photo]
         url: String
-        gender: String
         location: String
         description: String
         spayed: Boolean

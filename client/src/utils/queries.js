@@ -82,6 +82,7 @@ export const QUERY_ALL_DOGS = gql`
         age
         gender
         size
+        gender
         photo {
         small
         medium
