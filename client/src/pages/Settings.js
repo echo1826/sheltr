@@ -59,14 +59,23 @@ export default function Settings() {
     window.location.assign("/");
   };
   const handleAge = (event) => {
+    console.log('ageflag = ',ageFlag);
+    console.log('sizeFlag = ',sizeFlag);
+    console.log('trainedflag = ',trainedFlag);
     setAgeFlag(true);
     setAge(event.target.value);
   };
   const handleSize = (event) => {
+    console.log('ageflag = ',ageFlag);
+    console.log('sizeFlag = ',sizeFlag);
+    console.log('trainedflag = ',trainedFlag);
     setSizeFlag(true);
     setSize(event.target.value);
   };
   const handleTrained = () => {
+    console.log('ageflag = ',ageFlag);
+    console.log('sizeFlag = ',sizeFlag);
+    console.log('trainedflag = ',trainedFlag);
     setTrainedFlag(true);
     if(trained) {
       setTrained(null);
