@@ -22,18 +22,27 @@ export default function Settings() {
   const {loading, data} = useQuery(QUERY_SETTINGS, {
     variables: {userId: Auth.getProfileToken().data._id}
   });
-  console.log('QUERY_SETTINGS = ',data?.settings)
-  const prevAge = data?.settings.age;
-  const prevSize = data?.settings.size;
-  const prevTrained = data?.settings.house_trained
+  // console.log('QUERY_SETTINGS = ',data?.settings);
+  let prevAge;
+  let prevSize;
+  let prevTrained;
+  if(!loading) {
+      prevAge = data?.settings.age;
+      prevSize = data?.settings.size;
+      prevTrained = data?.settings.house_trained;
+  }
+   
+  console.log('prevAge', prevAge, 'prevSize', prevSize, 'prevTrained', prevTrained);
 
   const [updateSettings] = useMutation(UPDATE_SETTINGS);
   // initializing the state lets us update it for some reason
   const [age, setAge] = useState(null);
   const [size, setSize] = useState(null);
-  const [trained, setTrained] = useState(false);
+  const [trained, setTrained] = useState(null);
+  const [ageFlag, setAgeFlag] = useState(false);
+  const [sizeFlag, setSizeFlag] = useState(false);
+  const [trainedFlag, setTrainedFlag] = useState(false);
   const isMounted = useRef(false);
-  let settings;
 
   // handle functions set the states, this hook will make the DB update
   useEffect(()=> {
@@ -50,24 +59,73 @@ export default function Settings() {
     window.location.assign("/");
   };
   const handleAge = (event) => {
+    setAgeFlag(true);
     setAge(event.target.value);
   };
   const handleSize = (event) => {
+    setSizeFlag(true);
     setSize(event.target.value);
   };
   const handleTrained = () => {
-    setTrained(!trained);
+    setTrainedFlag(true);
+    if(trained) {
+      setTrained(null);
+    }else {
+      setTrained(true);
+    }
+    
   };
   const handleLogout = () => {
     Auth.logout();
   };
 
   const handleSettingsChange = async() => {
-    
     try{
-      const {data} = await updateSettings({
-        variables: {userId:Auth.getProfileToken().data._id, age, size, house_trained: trained}
-      });
+      switch(true) {
+        case (ageFlag && sizeFlag && trainedFlag): {
+          await updateSettings({
+            variables: {userId:Auth.getProfileToken().data._id, age, size, house_trained: trained}
+          });
+          break;
+        } 
+        case (ageFlag && trainedFlag): {
+          await updateSettings({
+            variables: {userId:Auth.getProfileToken().data._id, age, size:prevSize, house_trained: trained}
+          });
+          break;
+        }
+        case (trainedFlag && sizeFlag): {
+          await updateSettings({
+            variables: {userId:Auth.getProfileToken().data._id, age:prevAge, size, house_trained: trained}
+          });
+          break;
+        }
+        case(ageFlag): {
+          await updateSettings({
+            variables: {userId:Auth.getProfileToken().data._id, age, size:prevSize, house_trained: prevTrained}
+          });
+          break;
+        }
+        case(sizeFlag): {
+          await updateSettings({
+            variables: {userId:Auth.getProfileToken().data._id, age:prevAge, size, house_trained: prevTrained}
+          });
+          break;
+        }
+        case(trainedFlag): {
+          await updateSettings({
+            variables: {userId:Auth.getProfileToken().data._id, age:prevAge, size: prevSize, house_trained: trained}
+          });
+          break;
+        }
+        default: {
+          console.error("default case firing");
+          break;
+        }
+      }
+      // await updateSettings({
+      //   variables: {userId:Auth.getProfileToken().data._id, age, size, house_trained: trained}
+      // });
     }catch(err) {
       console.log(err);
     }
@@ -75,13 +133,15 @@ export default function Settings() {
 
   if (Auth.isLoggedIn()) {
     return (
+
       <Box sx={{
         display: 'grid',
         gridAutoColumns: '1fr',
         gap: 3,
         alignItems: 'center',
       }}
-    >
+    > {loading ? <div>Loading settings...</div> :
+      <React.Fragment>
       <Paper className='settingsContainer' elevation = {6} >
           <h2 align="center">User Settings</h2>
         <FormControl fullWidth>
@@ -96,10 +156,10 @@ export default function Settings() {
             onChange={handleAge}
           >
             <MenuItem value={null}>No Preference</MenuItem>
-            <MenuItem value={'baby'}>Baby</MenuItem>
-            <MenuItem value={'young'}>Young</MenuItem>
-            <MenuItem value={'adult'}>Adult</MenuItem>
-            <MenuItem value={'senior'}>Senior</MenuItem>
+            <MenuItem value={'Baby'}>Baby</MenuItem>
+            <MenuItem value={'Young'}>Young</MenuItem>
+            <MenuItem value={'Adult'}>Adult</MenuItem>
+            <MenuItem value={'Senior'}>Senior</MenuItem>
           </Select>
         </FormControl>
         <FormControl fullWidth>
@@ -113,10 +173,10 @@ export default function Settings() {
             onChange={handleSize}
           >
             <MenuItem value={null}>No Preference</MenuItem>
-            <MenuItem value={'small'}>Small</MenuItem>
-            <MenuItem value={'medium'}>Medium</MenuItem>
-            <MenuItem value={'large'}>Large</MenuItem>
-            <MenuItem value={'extraLarge'}>Extra Large</MenuItem>
+            <MenuItem value={'Small'}>Small</MenuItem>
+            <MenuItem value={'Medium'}>Medium</MenuItem>
+            <MenuItem value={'Large'}>Large</MenuItem>
+            <MenuItem value={'Extra Large'}>Extra Large</MenuItem>
           </Select>
         </FormControl>
         <FormControl component="fieldset">
@@ -136,7 +196,8 @@ export default function Settings() {
         </Paper>
         
         <Button variant ='outlined' color='error'onClick={handleLogout} className='settingsLogout'>Logout</Button>
-
+        </React.Fragment> 
+      }
       </Box>
     );
   } else {
