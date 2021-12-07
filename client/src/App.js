@@ -80,7 +80,7 @@ function App() {
             <Route exact path="/">
               <Login/>
             </Route>
-            <Route exact path="/cards">
+            <Route exact path="/sheltr">
               <Cards />
             </Route>
             <Route exact path="/profile">

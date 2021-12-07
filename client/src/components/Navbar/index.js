@@ -49,7 +49,7 @@ export default function Navbar() {
               icon={<img src="./images/profileblank2.png" alt="profile" />}
             />
           </Link>
-          <Link to="/cards">
+          <Link to="/sheltr">
             <BottomNavigationAction
               label="Sheltr"
               icon={<img src="./images/pawblank2.png" alt="sheltr"/>}
@@ -83,7 +83,7 @@ export default function Navbar() {
                 </Link>
             </li>
             <li className='topNavLi'>
-                <Link to='/cards' className='topNavLink'>
+                <Link to='/sheltr' className='topNavLink'>
                     <img src='./images/pawblank.png' alt='sheltr'></img>
                     Sheltr
                 </Link>
