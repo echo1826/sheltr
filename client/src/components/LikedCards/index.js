@@ -26,10 +26,11 @@ export default function LikedCards(props) {
             <Paper elevation = {6} >
                 <Grid item xs={4} key={dog._id} container ={true} className='likedDogsContainer' style={{ margin:"10px", maxWidth:"90vw", alignItems:"center", justifyContent:"center", fontFamily:"Oxygen"}}>
                         <img src={dog.photo[0].medium} alt='dog' />
+                        <div className='likedDogsEx'>
                         <h2>{dog.name}</h2>
-                        <div></div>
                         <p>{dog.breed.primary}</p>
                         <p>{dog.size} | {dog.gender} | {dog.age}</p>
+                        </div>
                         <ul>
                             <li>Shelter/Organization: {dog.organization}</li>
                             <li>Location: {dog.location}</li>

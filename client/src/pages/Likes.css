@@ -7,7 +7,7 @@
 
 .likedDogsContainer {
     padding-bottom: 25px;
-}
+} 
 
 .likedDogsContainer h2 {
     margin: 15px;
@@ -15,7 +15,13 @@
 
 .likedDogsContainer p {
     margin: 15px;
+} 
+
+.likedDogsEx {
+    line-height: 18px;
 }
+
+
 
 .likedDogsMeet {
     display: block;
