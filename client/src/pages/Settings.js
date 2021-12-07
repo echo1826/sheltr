@@ -29,20 +29,19 @@ export default function Settings() {
   const [trained, setTrained] = useState(false);
   let settings;
 
+  // handle functions set the states, this hook will make the DB update
   useEffect(()=> {
     console.log(`age = ${age} size = ${size} trained = ${trained}`)
-  })
+  });
 
   const goLogin = (event) => {
     window.location.assign("/");
   };
   const handleAge = (event) => {
     setAge(event.target.value);
-    // console.log('age = '+age)
   };
   const handleSize = (event) => {
     setSize(event.target.value);
-    // console.log('size = '+size)
   };
   const handleTrained = (event) => {
     setTrained(!trained);
@@ -88,6 +87,7 @@ export default function Settings() {
             className='settingsInput'
             onChange={handleAge}
           >
+            <MenuItem value={null}>No Preference</MenuItem>
             <MenuItem value={'baby'}>Baby</MenuItem>
             <MenuItem value={'young'}>Young</MenuItem>
             <MenuItem value={'adult'}>Adult</MenuItem>
@@ -104,6 +104,7 @@ export default function Settings() {
             className='settingsInput'
             onChange={handleSize}
           >
+            <MenuItem value={null}>No Preference</MenuItem>
             <MenuItem value={'small'}>Small</MenuItem>
             <MenuItem value={'medium'}>Medium</MenuItem>
             <MenuItem value={'large'}>Large</MenuItem>
