@@ -2,7 +2,7 @@
     font-family: 'Source Sans Pro', sans-serif;
     font-size: 35px;
     text-align: center;
-    margin-bottom: 0;
+    margin: 20px;
 }
 
 .likedDogsContainer {
@@ -18,10 +18,20 @@
 }
 
 .likedDogsMeet {
-    margin: 0;
+    display: flex;
+    justify-content: center;
     width: 100%;
 }
 
+.likedDogsMeet h3 {
+    margin: 0px;
+}
+
+@media screen and (min-width: 1200px) {
+    .likesHeader{
+        margin: 35px;
+    }
+}
 
 
 
