@@ -73,6 +73,7 @@ db.once('open', async () => {
         await Dog.create(dogArray);
         await User.deleteMany({});
         await User.create(userSeed);
+        await Settings.deleteMany({});
         console.log("Seeded Data!");
         process.exit(0)
     }catch(err) {
