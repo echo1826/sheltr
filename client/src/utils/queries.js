@@ -109,6 +109,29 @@ export const QUERY_SETTINGS = gql`
             pets {
                 _id
                 name
+                breed {
+                primary
+                secondary
+                mixed
+                unknown
+                }
+                age
+                gender
+                size
+                gender
+                photo {
+                small
+                medium
+                large
+                full
+                }
+                url
+                location
+                description
+                spayed
+                house_trained
+                shots
+                organization
             }
         }
         age

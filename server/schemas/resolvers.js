@@ -27,7 +27,7 @@ const resolvers = {
         settings: async (parent, args) => {
             return await Settings.findOne({
                 userId:  args.userId
-            }).populate('userId');
+            }).populate('userId').populate('pets');
         },
     },
     Mutation: {
