@@ -32,91 +32,11 @@ const resolvers = {
 
             return user;
         },
-        // ageSizeHouseTrained: async (parent, args) => {
-        //     const dogData = await Dog.find({
-        //         age: args.size,
-        //         size: args.size,
-        //         house_trained: args.house_trained
-        //     });
-        //     if (!dogData) {
-        //         throw new Error("No dogs found!");
-        //     }
-        //     return dogData;
-        // },
-        // ageHouseTrained: async (parent, args) => {
-        //     const dogData = await Dog.find({
-        //         age: args.age,
-        //         house_trained: args.house_trained
-        //     });
-        //     if (!dogData) {
-        //         throw new Error("No dogs found!");
-        //     }
-        //     return dogData;
-        // },
-        // ageSize: async (parent, args) => {
-        //     const dogData = await Dog.find({
-        //         age: args.age,
-        //         size: args.size
-        //     });
-        //     if (!dogData) {
-        //         throw new Error("No dogs found!");
-        //     }
-        //     return dogData;
-        // },
-        // age: async (parent, args) => {
-        //     const dogData = await Dog.find({
-        //         age: args.age
-        //     });
-        //     if (!dogData) {
-        //         throw new Error("No dogs found!");
-        //     }
-        //     return dogData;
-        // },
-        // sizeHouseTrained: async (parent, args) => {
-        //     const dogData = await Dog.find({
-        //         size: args.size,
-        //         house_trained: args.house_trained
-        //     });
-        //     if (!dogData) {
-        //         throw new Error("No dogs found!");
-        //     }
-        //     return dogData;
-        // },
-        // size: async (parent, args) => {
-        //     const dogData = await Dog.find({
-        //         size: args.size
-        //     });
-        //     if (!dogData) {
-        //         throw new Error("No dogs found!");
-        //     }
-        //     return dogData;
-        // },
-        // houseTrained: async (parent, args) => {
-        //     const dogData = await Dog.find({
-        //         house_trained: args.house_trained
-        //     });
-        //     if (!dogData) {
-        //         throw new Error("No dogs found!");
-        //     }
-        //     return dogData;
-        // },
-        // age: async (parent, args) => {
-        //     const dogData = await Dog.find({
-        //         age: args.age
-        //     });
-        //     if (!dogData) {
-        //         throw new Error("No dogs found!");
-        //     }
-        //     return dogData;
-        // },
         settings: async (parent, args) => {
             return await Settings.findOne({
                 userId:  args.userId
             }).populate('userId');
         },
-        // users: async (parent, args) => {
-        //     return await User.find({})
-        // }
     },
     Mutation: {
         addUser: async (parent, args) => {
