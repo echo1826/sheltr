@@ -1,9 +1,16 @@
+.titleFont {
+  font-size: 18px;
+  margin: 2vh 10vw 4vh 10vw;
+}
+
 .form-containerCustom {
   justify-content: center;
   align-items: center;
 }
 
-.emailCustom {
+.emailCustom,
+.passwordCustom,
+.usernameCustom {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -13,30 +20,41 @@
   min-width: 220px;
 }
 
-.emailCustom * {
-    text-align: center;
-    width: 70%;
-    max-width: 720px;
-    min-width: 220px;
-}
-
-.passwordCustom {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 2vh;
-  width: 60%;
+.emailCustom *,
+.passwordCustom *,
+.usernameCustom * {
+  text-align: center;
+  width: 70%;
   max-width: 720px;
   min-width: 220px;
-}
-
-.passwordCustom * {
-    text-align: center;
-    width: 70%;
-    max-width: 720px;
-    min-width: 220px;
 }
 
 .buttonCustom {
   margin-top: 6vh;
+}
+
+@media screen and (max-height: 736px) and (max-width: 420px) {
+  .titleFont {
+    font-size: 14px !important;
+    margin: 5vw 2vh;
+  }
+  
+  .labelFont {
+    font-size: 12px !important;
+  }
+
+  .helperFont {
+    font-size: 10px !important;
+  }
+  
+  /* .emailCustom,
+  .passwordCustom,
+  .usernameCustom {
+    margin-top: 0;
+    margin-bottom: 0;
+  } */
+
+  .inputFeild {
+    height: 17px;
+  }
 }

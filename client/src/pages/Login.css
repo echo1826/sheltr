@@ -9,6 +9,7 @@
 .login-signupCard {
   width: 100%;
   height: 100%;
+  height: 78vh;
 }
 
 /* position: absolute;
@@ -20,7 +21,7 @@
   float: left;
   perspective: 500px; */
   
-/* .flippyCard {
+.flippyCard {
   position: relative;
   width: 100%;
   height: 100%;
@@ -34,7 +35,7 @@
   transform-style: preserve-3d;
 }
 
-.flippyCard:hover .content {
+.contentTwo {
   transform: rotateY(180deg);
   transition: transform 0.5s;
 }
@@ -49,4 +50,8 @@
 
 .back {
   transform: rotateY(180deg);
-} */
+}
+
+.flipComp {
+  bottom: 0;
+}
