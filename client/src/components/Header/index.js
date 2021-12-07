@@ -12,7 +12,7 @@ export default function ButtonAppBar() {
     <Box sx={{ }}>
       <AppBar sx = {{ position:"static", backgroundColor:"transparent"}} >
         <Toolbar className='sheltrHeader'>
-        <img src="./images/sheltr_logo.png" alt="Sheltr" className='headerImg'/>
+        <img src="./images/sheltr_logo2.png" alt="Sheltr" className='headerImg'/>
          <a href='/sheltr' className='headerText' style={{ textDecoration:'none', color:'#000' }}>Sheltr</a>
         </Toolbar>
       </AppBar>
