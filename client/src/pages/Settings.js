@@ -61,17 +61,21 @@ export default function Settings() {
   const handleAge = (event) => {
     setAgeFlag(true);
     setAge(event.target.value);
+    prevAge = age;
   };
   const handleSize = (event) => {
     setSizeFlag(true);
     setSize(event.target.value);
+    prevSize = size;
   };
   const handleTrained = () => {
     setTrainedFlag(true);
     if(trained) {
       setTrained(null);
+      prevTrained = trained;
     }else {
       setTrained(true);
+      prevTrained = trained;
     }
     
   };
@@ -97,6 +101,12 @@ export default function Settings() {
         case (trainedFlag && sizeFlag): {
           await updateSettings({
             variables: {userId:Auth.getProfileToken().data._id, age:prevAge, size, house_trained: trained}
+          });
+          break;
+        }
+        case(ageFlag && sizeFlag): {
+          await updateSettings({
+            variables: {userId:Auth.getProfileToken().data._id, age, size, house_trained: prevTrained}
           });
           break;
         }
