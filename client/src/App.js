@@ -65,12 +65,6 @@ const theme = createTheme (theme => ({
   },
 }));
 
-const [settings, setSettings] = useState({
-  age: null,
-  size: null,
-  trained: null,
-});
-
 function App() {
 
   return (

@@ -129,7 +129,7 @@ export default function Settings() {
     }catch(err) {
       console.log(err);
     }
-  }
+  };
 
   if (Auth.isLoggedIn()) {
     return (
