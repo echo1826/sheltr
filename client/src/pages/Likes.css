@@ -4,3 +4,22 @@
     text-align: center;
     margin-bottom: 0;
 }
+
+.likedDogsContainer {
+    padding-bottom: 25px;
+}
+
+.likedDogsContainer h2 {
+    margin: 15px;
+}
+
+.likedDogsContainer p {
+    margin: 15px;
+}
+
+.likedDogsMeet {
+    display: block;
+}
+
+
+
