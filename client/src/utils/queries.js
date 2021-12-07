@@ -49,6 +49,7 @@ export const QUERY_SINGLE_USER = gql`
                 }
                 age
                 size
+                gender
                 photo {
                 small
                 medium
@@ -79,6 +80,7 @@ export const QUERY_ALL_DOGS = gql`
         unknown
         }
         age
+        gender
         size
         photo {
         small

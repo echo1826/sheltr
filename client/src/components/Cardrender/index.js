@@ -58,7 +58,7 @@ export default function Cardrender(props) {
                 dogCardData = dogs.filter((dog) => dog.house_trained === settings.size);
                 break;
             }
-            default: {
+            case((settings.house_trained === null && settings.size === null && settings.age === null)): {
                 dogCardData = dogs;
                 break;
             }
