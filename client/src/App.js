@@ -19,7 +19,6 @@ import Likes from './pages/Likes';
 // import from utils
 import Auth from "./utils/auth";
 // import from material
-import Box from '@mui/material/Box';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 
 // Construct our main GraphQL API endpoint

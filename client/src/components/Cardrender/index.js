@@ -26,57 +26,47 @@ export default function Cardrender(props) {
             case ((settings.age !== null) && (settings.size !== null) && (settings.house_trained !== null)): {
                 console.log("age, size, houseTrained firing")
                 dogCardData = dogs.filter((dog) => (dog.age === settings.age) && (dog.size === settings.size) && (dog.house_trained === settings.house_trained));
-                // setCurrentIndex(dogCardData.length - 1);
                 break;
             }
             case ((settings.age !== null) && (settings.size !== null)): {
                 console.log("age, size firing");
                 dogCardData = dogs.filter((dog) => (dog.age === settings.age) && (dog.size === settings.size));
-                // setCurrentIndex(dogCardData.length - 1);
                 break;
             }
             case ((settings.age !== null) && (settings.house_trained !== null)): {
                 console.log("age, houseTrained firing");
                 dogCardData = dogs.filter((dog) => (dog.age === settings.age) && (dog.house_trained === settings.house_trained));
-                // setCurrentIndex(dogCardData.length - 1);
                 break;
             }
             case ((settings.age !== null)): {
                 console.log("settings.age case firing");
                 dogCardData = dogs.filter((dog) => dog.age === settings.age);
-                // setCurrentIndex(dogCardData.length - 1);
                 break;
             }
             case((settings.size !== null) && (settings.house_trained !== null)): {
                 console.log("size, houseTrained firing");
                 dogCardData = dogs.filter((dog) => (dog.size === settings.size) && (dog.house_trained === settings.house_trained));
-                // setCurrentIndex(dogCardData.length - 1);
                 break;
             }
             case((settings.size !== null)): {
                 console.log("size firing");
                 dogCardData = dogs.filter((dog) => dog.size === settings.size);
-                // setCurrentIndex(dogCardData.length - 1);
                 break;
             }
             case((settings.house_trained !== null)): {
                 console.log("houseTrained firing");
                 dogCardData = dogs.filter((dog) => dog.house_trained === settings.size);
-                // setCurrentIndex(dogCardData.length - 1);
                 break;
             }
             default: {
                 dogCardData = dogs;
-                // setCurrentIndex(dogCardData.length - 1);
                 break;
             }
         }
     }
     let finalDogData;
     console.log(props.likedDogs);
-    for(let dogLiked of props.likedDogs) {
-        finalDogData = dogCardData.filter((dog) => dogLiked._id !== dog._id);
-    }
+    // finalDogData = 
     console.log(finalDogData);
     const swiped = async (direction) => {
         setLastDirection(direction);
@@ -86,7 +76,7 @@ export default function Cardrender(props) {
         console.log("Dog id", id, "\nDirection", direction);
         if(direction === 'right') {
             try {
-                const {data} = await updateUserPets({
+                    await updateUserPets({
                     variables: {_id: Auth.getProfileToken().data._id, dog: id}
                 })
             }catch(err) {
