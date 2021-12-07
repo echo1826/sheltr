@@ -123,9 +123,6 @@ export default function Settings() {
           break;
         }
       }
-      // await updateSettings({
-      //   variables: {userId:Auth.getProfileToken().data._id, age, size, house_trained: trained}
-      // });
     }catch(err) {
       console.log(err);
     }
