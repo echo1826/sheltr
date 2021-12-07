@@ -19,13 +19,16 @@ import {QUERY_SETTINGS} from '../utils/queries';
 import {useQuery, useMutation} from '@apollo/client';
 
 export default function Settings() {
-  const {loading, data} = useQuery(QUERY_SETTINGS, {
+  const {loading, data} =
+    useQuery(QUERY_SETTINGS, {
     variables: {userId: Auth.getProfileToken().data._id}
   });
+
   console.log('QUERY_SETTINGS = ',data?.settings)
   const prevAge = data?.settings.age;
   const prevSize = data?.settings.size;
   const prevTrained = data?.settings.house_trained
+  console.log('vars = ',prevAge,prevSize,prevTrained)
 
   const [updateSettings] = useMutation(UPDATE_SETTINGS);
   // initializing the state lets us update it for some reason
@@ -128,7 +131,7 @@ export default function Settings() {
           labelPlacement="start"
           className='settingsInput'
           onChange={handleTrained}
-          
+          checked={prevTrained}
         />
         </FormGroup>
       </FormControl>
