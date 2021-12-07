@@ -22,6 +22,11 @@ export default function Settings() {
   const {loading, data} = useQuery(QUERY_SETTINGS, {
     variables: {userId: Auth.getProfileToken().data._id}
   });
+  console.log('QUERY_SETTINGS = ',data?.settings)
+  const prevAge = data?.settings.age;
+  const prevSize = data?.settings.size;
+  const prevTrained = data?.settings.house_trained
+
   const [updateSettings] = useMutation(UPDATE_SETTINGS);
   // initializing the state lets us update it for some reason
   const [age, setAge] = useState(null);
@@ -31,7 +36,7 @@ export default function Settings() {
 
   // handle functions set the states, this hook will make the DB update
   useEffect(()=> {
-    console.log(`age = ${age} size = ${size} trained = ${trained}`);
+    // console.log(`age = ${age} size = ${size} trained = ${trained}`);
     handleSettingsChange();
   },[age,size,trained]);
 
@@ -82,7 +87,7 @@ export default function Settings() {
           <Select
             labelId="age-select"
             id="demo-simple-select"
-            value={age}
+            value={prevAge}
             label="Age"
             type="age"
             className='settingsInput'
@@ -100,7 +105,7 @@ export default function Settings() {
           <Select
             labelId="size-select"
             id="demo-simple-select"
-            value={size}
+            value={prevSize}
             label="Size"
             className='settingsInput'
             onChange={handleSize}
@@ -116,7 +121,7 @@ export default function Settings() {
       <FormLabel component="legend"></FormLabel>
       <FormGroup aria-label="position" row>
         <FormControlLabel
-          value="start"
+          value={prevTrained}
           control={<Switch color="primary" />}
           label="House-trained"
           labelPlacement="start"
