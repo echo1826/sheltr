@@ -1,14 +1,11 @@
 import React from "react";
 import { useQuery } from "@apollo/client";
 //imports from material
-import { Grid } from '@mui/material';
-import Paper from "@mui/material/Paper";
-import Box from "@mui/material/Box";
 import Avatar from "@mui/material/Avatar";
 import Button from '@mui/material/Button'
 //imports from utils
 import Auth from "../utils/auth";
-import { QUERY_SINGLE_USER } from "../utils/queries";
+import { QUERY_SINGLE_USER, QUERY_ME } from "../utils/queries";
 import { Link } from "react-router-dom";
 import './Profile.css'
 
@@ -17,10 +14,18 @@ export default function Profile() {
   const { loading, data } = useQuery(QUERY_SINGLE_USER, {
     variables: { id: Auth.getProfileToken().data._id },
   });
+  const me = useQuery(QUERY_ME);
+  if(!me.loading) {
+    console.log(me.data?.me)
+  }
 
-  console.log('user = ',data?.user);
+  const date = Date(data?.user.createdAt)
+  const joinedDate = new Date(date)
+  const month = joinedDate.toLocaleString('default', { month: 'long' });
+  const year = joinedDate.toLocaleString('default', {year: 'numeric'});
 
-  const likedDogs = data?.user.pets || [];
+
+  const likedDogs = me.data?.me.pets || [];
 
   let profileDogs;
   if (!loading) {
@@ -36,12 +41,12 @@ export default function Profile() {
     return (
     
       <div className= "userProfile">
-        <h1>{data?.user.username}</h1>
-        <p align = "center" className="avatar">
+        <h1>{me.data?.me.username}</h1>
+        <div className="avatar">
         <Avatar alt="Avatar" src="https://avatarfiles.alphacoders.com/170/thumb-1920-170799.jpg" sx={{ width: 156, height: 156 }} />
-        <ul style={{ listStyleType: "none"}}>
-          <li>Location: Austin, TX</li>
-          <li>Member Since: 2021</li>
+        <ul>
+          <li>Location: {data?.user.location || 'N/A'}</li>
+          <li>Member Since: {month} {year}</li>
         </ul>
         </p>
       
@@ -65,7 +70,7 @@ export default function Profile() {
             )}
         </div>
         <div> 
-          <Link to="/likes" underline="none" className='profileLink'><Button variant = "contained">View all your liked dogs</Button></Link>
+          <Link to="/likes" underline="none" className='profileLink'><Button className='profileBtn' style={{backgroundColor: '#F2F2F2', color: '#000'}} variant = "contained">View all your liked dogs</Button></Link>
         </div>
       </div>);
   } else {

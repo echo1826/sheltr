@@ -3,32 +3,36 @@ import {gql} from "@apollo/client";
 
 export const QUERY_ME = gql`
 query me {
-    username
-    email
-    password
-    pets {
-        name
-        breed {
+    me{
+        username
+        email
+        password
+        pets {
+            _id
+            name
+            breed {
             primary
             secondary
             mixed
             unknown
-        }
-        age
-        size
-        photo {
+            }
+            age
+            size
+            gender
+            photo {
             small
             medium
             large
             full
+            }
+            url
+            location
+            description
+            spayed
+            house_trained
+            shots
+            organization
         }
-        url
-        location
-        description
-        spayed
-        house_trained
-        shots
-        organization
     }
 }
 `;
@@ -39,7 +43,10 @@ export const QUERY_SINGLE_USER = gql`
             username
             email
             password
+            createdAt
+            location
             pets {
+                _id
                 name
                 breed {
                 primary
