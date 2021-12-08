@@ -213,7 +213,7 @@ export default function Settings() {
       <FormGroup aria-label="position" row>
         <FormControlLabel
           value={prevTrained}
-          control={<Switch color="primary" />}
+          control={<Switch color="primary" checked={prevTrained}/>}
           label="House-trained"
           labelPlacement="start"
           className='settingsInput'
