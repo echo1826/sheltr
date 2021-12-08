@@ -41,6 +41,7 @@ export default function Likes() {
             <LikedCards likedDogs={likedDogs} />
           </Grid>
         </Grid>
+        
       </Box>
     );
   } else {

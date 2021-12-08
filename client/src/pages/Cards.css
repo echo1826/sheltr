@@ -36,12 +36,13 @@
 }
 
 .swipeImg {
-    width: 225px;
+    width: 290px;
     height: 250px;
-    object-fit: cover;
+    object-fit: contain;
     position: relative;
     margin: 0px;
-    border: solid 1px black;
+    border: solid black;
+    border-width: 0 1px 1px 1px;
     box-shadow: 4px 4px 4px rgb(195, 195, 195);
 }
 
