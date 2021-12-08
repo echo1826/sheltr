@@ -22,8 +22,8 @@ export default function LikedCards(props) {
         {props.likedDogs.map((dog) => {
            return ( 
             <Paper elevation = {6} style={{borderRadius: 15}} >
-                <button className='likesXBtn' ><img src='./images/x.png'></img></button>
                 <Grid item xs={4} key={dog._id} container ={true} className='likedDogsContainer' style={{ marginBottom:15, maxWidth:"90vw", alignItems:"center", justifyContent:"center", fontFamily:"Oxygen"}}>
+                <button className='likesXBtn'><img src='./images/x.png' className='likesXImg'></img></button>
                         <img src={dog.photo[0].medium} alt='dog' />
                         <div className='likedDogsEx'>
                             <h2>{dog.name}</h2>
