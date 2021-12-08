@@ -102,7 +102,7 @@ export default function Cardrender(props) {
                 <p className="swipeDogLocation">{dog.location}</p>
             </TinderCard>)
         })}
-        {lastDirection ? <h2>You swiped {lastDirection}</h2> : <h2></h2>}
+        {lastDirection ? <h2>You swiped {lastDirection}</h2> : <div></div>}
     </div>)
 }
 
