@@ -58,21 +58,13 @@ async function getDogDataFromPetfinderApi() {
 
 }
 
-const userSeed = {
-    username: 'Testing',
-    email: 'test@me.com',
-    password: '12345678',
-}
-
-
-
 db.once('open', async () => {
     try{
         const dogArray = await getDogDataFromPetfinderApi();
         await Dog.deleteMany({});
         await Dog.create(dogArray);
         await User.deleteMany({});
-        await User.create(userSeed);
+        // await User.create(userSeed);
         await Settings.deleteMany({});
         console.log("Seeded Data!");
         process.exit(0)

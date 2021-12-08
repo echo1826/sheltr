@@ -24,7 +24,7 @@ export default function Login() {
       setFlipState("content");
     }
   };
-  console.log(Auth.isLoggedIn());
+  
   if (Auth.isLoggedIn()) {
     return <Profile />;
   }
