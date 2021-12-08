@@ -74,8 +74,12 @@ const resolvers = {
         removeUser: async (parent, args) => {
             return await User.findOneAndDelete({_id: args._id})
         },
-        removeUserPets: async(parent, args, context) => {
-            return await User.updateOne({_id: context.user._id}, {$pull: {pets: {_id: args.dog}}})
+        removeUserPets: async(parent, args) => {
+            // console.log(args.dog);
+            await User.updateOne({_id: args.userId}, {$pull: {pets: args.dog}}, {new: true});
+            const user = await User.findOne({_id: args.userId}).populate('pets');
+            // console.log(user);
+            return user;
         }
     }
 };

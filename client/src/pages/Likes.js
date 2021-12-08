@@ -1,5 +1,5 @@
 import React from "react";
-import { useQuery } from "@apollo/client";
+import { useQuery, useMutation } from "@apollo/client";
 // import from components
 import LikedCards from "../components/LikedCards/index";
 // import from material
@@ -8,11 +8,13 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 // import from utils
 import { QUERY_ME } from "../utils/queries";
+import { REMOVE_USER_PETS } from "../utils/mutations";
 import Auth from "../utils/auth";
 import './Likes.css'
 
 export default function Likes() {
   const me = useQuery(QUERY_ME);
+  const [removeUserPets] = useMutation(REMOVE_USER_PETS);
   const likedDogs = me.data?.me.pets || [];
 
   const goLogin = (event) => {
@@ -38,7 +40,7 @@ export default function Likes() {
         
         <Grid container justifyContent="center" alignItems="center" spacing={2}>
           <Grid item>
-            <LikedCards likedDogs={likedDogs} />
+            {likedDogs.map((dog) => <LikedCards dog={dog} removeUserPets={removeUserPets}/>)}
           </Grid>
         </Grid>
         

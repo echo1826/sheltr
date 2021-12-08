@@ -94,8 +94,8 @@ export const REMOVE_USER = gql`
 `;
 
 export const REMOVE_USER_PETS = gql`
-  mutation removeUserPets($dog: ID!) {
-    removeUserPets(dog: $dog) {
+  mutation removeUserPets($userId: ID!, $dog: ID!) {
+    removeUserPets(userId: $userId, dog: $dog) {
       username
       email
       password

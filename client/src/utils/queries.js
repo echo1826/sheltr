@@ -8,6 +8,7 @@ query me {
         email
         password
         pets {
+            _id
             name
             breed {
             primary
@@ -43,6 +44,7 @@ export const QUERY_SINGLE_USER = gql`
             email
             password
             pets {
+                _id
                 name
                 breed {
                 primary
