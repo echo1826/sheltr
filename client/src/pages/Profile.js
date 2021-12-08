@@ -48,8 +48,7 @@ export default function Profile() {
           <li>Location: {data?.user.location || 'N/A'}</li>
           <li>Member Since: {month} {year}</li>
         </ul>
-        </p>
-      
+      </div>
         <div className="profileDogs">
 
             {loading ? (
