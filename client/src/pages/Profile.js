@@ -8,7 +8,7 @@ import Avatar from "@mui/material/Avatar";
 import Button from '@mui/material/Button'
 //imports from utils
 import Auth from "../utils/auth";
-import { QUERY_SINGLE_USER } from "../utils/queries";
+import { QUERY_SINGLE_USER, QUERY_ME } from "../utils/queries";
 import { Link } from "react-router-dom";
 import './Profile.css'
 
@@ -17,6 +17,10 @@ export default function Profile() {
   const { loading, data } = useQuery(QUERY_SINGLE_USER, {
     variables: { id: Auth.getProfileToken().data._id },
   });
+  const me = useQuery(QUERY_ME);
+  if(!me.loading) {
+    console.log(me.data?.me)
+  }
 
   const date = Date(data?.user.createdAt)
   const joinedDate = new Date(date)
@@ -24,7 +28,7 @@ export default function Profile() {
   const year = joinedDate.toLocaleString('default', {year: 'numeric'});
 
 
-  const likedDogs = data?.user.pets || [];
+  const likedDogs = me.data?.me.pets || [];
 
   let profileDogs;
   if (!loading) {
@@ -40,7 +44,7 @@ export default function Profile() {
     return (
     
       <div className= "userProfile">
-        <h1>{data?.user.username}</h1>
+        <h1>{me.data?.me.username}</h1>
         <div className="avatar">
         <Avatar alt="Avatar" src="https://avatarfiles.alphacoders.com/170/thumb-1920-170799.jpg" sx={{ width: 156, height: 156 }} />
         <ul>
