@@ -2,7 +2,7 @@
     width: 70%;
     margin: auto;
     margin-top: 50px;
-    padding: 25px;
+    padding: 20px;
 }
 
 
@@ -18,4 +18,21 @@
 .settingsInput {
     font-family: 'Oxygen', sans-serif;
     height: 60px;
+}
+
+.settingsFooter{
+    text-align: center;
+    margin-top: 100px;
+}
+
+.settingsFooter{
+    color: rgb(126, 126, 126);
+}
+
+.settingsLinks > a {
+    color: rgb(126, 126, 126);
+}
+
+.settingsLinks > a:hover {
+    text-decoration: none;
 }

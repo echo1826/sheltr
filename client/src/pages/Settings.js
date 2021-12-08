@@ -165,7 +165,7 @@ export default function Settings() {
         gridAutoColumns: '1fr',
         gap: 3,
         alignItems: 'center',
-        paddingBottom: 7,
+        paddingBottom: 0,
       }}
     > {loading ? <div>Loading settings...</div> :
       <React.Fragment>
@@ -225,6 +225,17 @@ export default function Settings() {
         
         <Button variant ='outlined' color='error'onClick={handleLogout} className='settingsLogout'>Logout</Button>
         <Button variant ='outlined' color='error'onClick={handleDelete} className='settingsLogout'>Delete Account</Button>
+        
+        <footer className='settingsFooter'>
+          <p>	&copy; 2021</p>
+          <p className='settingsLinks'>Developed by:  
+            <a href='https://github.com/echo1826' target='_blank'> Ethan Cho, </a>
+            <a href='https://github.com/suelee0308' target='_blank'>Sue Lee, </a>
+            <a href='https://github.com/mat-lundin' target='_blank'>Mat Lundin, </a>
+            <a href='https://github.com/chuck2076' target='_blank'>Chuck Stephens, </a>
+            <a href='https://github.com/PAW6063' target='_blank'>Phillip Welch</a>
+          </p>
+        </footer>
         </React.Fragment> 
       }
       </Box>
