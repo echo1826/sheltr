@@ -18,9 +18,11 @@ export default function Profile() {
     variables: { id: Auth.getProfileToken().data._id },
   });
 
-  const joinedDate = new Date(data?.user.createdAt)
-  console.log('date = ', joinedDate.toString())
-  // console.log('date = ',date.toISOString());
+  const date = Date(data?.user.createdAt)
+  const joinedDate = new Date(date)
+  const month = joinedDate.toLocaleString('default', { month: 'long' });
+  const year = joinedDate.toLocaleString('default', {year: 'numeric'});
+
 
   const likedDogs = data?.user.pets || [];
 
@@ -43,7 +45,7 @@ export default function Profile() {
         <Avatar alt="Avatar" src="https://avatarfiles.alphacoders.com/170/thumb-1920-170799.jpg" sx={{ width: 156, height: 156 }} />
         <ul>
           <li>Location: {data?.user.location || 'N/A'}</li>
-          <li>Member Since: {data?.user.createdAt}</li>
+          <li>Member Since: {month} {year}</li>
         </ul>
         </div>
       
