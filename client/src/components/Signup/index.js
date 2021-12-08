@@ -27,7 +27,7 @@ export default function Signup({flipChange}) {
 
     // attempt to create the user token
     const clickHandler = async (event)=>{
-        // console.log('clickHandler being hit')
+
         event.preventDefault();
         try {
             const { data } = await addUser({

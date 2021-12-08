@@ -23,17 +23,6 @@ export default function Settings() {
     useQuery(QUERY_SETTINGS, {
     variables: {userId: Auth.getProfileToken().data._id}
   });
-  // console.log('QUERY_SETTINGS = ',data?.settings);
-  let prevAge;
-  let prevSize;
-  let prevTrained;
-  if(!loading) {
-      prevAge = data?.settings.age;
-      prevSize = data?.settings.size;
-      prevTrained = data?.settings.house_trained;
-  }
-   
-  console.log('prevAge', prevAge, 'prevSize', prevSize, 'prevTrained', prevTrained);
 
   const [updateSettings] = useMutation(UPDATE_SETTINGS);
   const [removeUser] = useMutation(REMOVE_USER);
@@ -45,11 +34,19 @@ export default function Settings() {
   const [sizeFlag, setSizeFlag] = useState(false);
   const [trainedFlag, setTrainedFlag] = useState(false);
   const isMounted = useRef(false);
+  
+  let prevAge;
+  let prevSize;
+  let prevTrained;
+  if(!loading && data?.settings) {
+      prevAge = data?.settings.age;
+      prevSize = data?.settings.size;
+      prevTrained = data?.settings.house_trained;
+  }
 
   // handle functions set the states, this hook will make the DB update
   useEffect(()=> {
     if (isMounted.current){
-    // console.log(`age = ${age} size = ${size} trained = ${trained}`);
     handleSettingsChange();
     } else {
       isMounted.current = true
@@ -60,25 +57,16 @@ export default function Settings() {
     window.location.assign("/");
   };
   const handleAge = (event) => {
-    console.log('ageflag = ',ageFlag);
-    console.log('sizeFlag = ',sizeFlag);
-    console.log('trainedflag = ',trainedFlag);
     setAgeFlag(true);
     setAge(event.target.value);
     prevAge = age;
   };
   const handleSize = (event) => {
-    console.log('ageflag = ',ageFlag);
-    console.log('sizeFlag = ',sizeFlag);
-    console.log('trainedflag = ',trainedFlag);
     setSizeFlag(true);
     setSize(event.target.value);
     prevSize = size;
   };
   const handleTrained = () => {
-    console.log('ageflag = ',ageFlag);
-    console.log('sizeFlag = ',sizeFlag);
-    console.log('trainedflag = ',trainedFlag);
     setTrainedFlag(true);
     if(trained) {
       setTrained(null);
@@ -148,7 +136,6 @@ export default function Settings() {
           break;
         }
         default: {
-          console.error("default case firing");
           break;
         }
       }

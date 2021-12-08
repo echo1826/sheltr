@@ -39,7 +39,7 @@ const resolvers = {
         addUser: async (parent, args) => {
             const user = await User.create(args);
             await Settings.create({userId: user._id, age: null, size: null, house_trained: null});
-            // console.log(user);
+
             const token = signToken(user);
             return { token, user };
         },
@@ -67,7 +67,6 @@ const resolvers = {
         },
         updateSettings: async (parent, args) => {
             const res = await Settings.updateOne({userId:args.userId}, {age: args.age, size: args.size, house_trained: args.house_trained}, { upsert: true });
-            console.log(res);
             const settings = await Settings.findOne({userId: args.userId}).populate('userId');
             return settings;
         },
@@ -75,10 +74,8 @@ const resolvers = {
             return await User.findOneAndDelete({_id: args._id})
         },
         removeUserPets: async(parent, args) => {
-            // console.log(args.dog);
             await User.updateOne({_id: args.userId}, {$pull: {pets: args.dog}}, {new: true});
             const user = await User.findOne({_id: args.userId}).populate('pets');
-            // console.log(user);
             return user;
         }
     }

@@ -16,7 +16,6 @@ export default function Profile() {
   });
   const me = useQuery(QUERY_ME);
   if(!me.loading) {
-    console.log(me.data?.me)
   }
 
   const date = Date(data?.user.createdAt)
@@ -29,7 +28,6 @@ export default function Profile() {
 
   let profileDogs;
   if (!loading) {
-    console.log(data?.user.pets);
     profileDogs = likedDogs.slice(0, 3);
   }
 
