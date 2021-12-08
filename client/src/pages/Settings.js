@@ -172,7 +172,7 @@ export default function Settings() {
           </Select>
         </FormControl>
     
-        <FormControl fullWidth fullWidth style={{marginTop: '20px', marginBottom:'10px'}} className='settingsForm'>
+        <FormControl fullWidth style={{marginTop: '20px', marginBottom:'10px'}} className='settingsForm'>
           <InputLabel id="size-select">Size</InputLabel>
           <Select
             labelId="size-select"
