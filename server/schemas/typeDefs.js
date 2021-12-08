@@ -69,6 +69,7 @@ const typeDefs = gql`
         updateSettings(userId: ID!, age: String, size: String, house_trained: Boolean): Settings
         login(email: String!, password: String!): Auth
         removeUser(_id: ID!): User
+        removeUserPets( dog: ID!): User
       }
     `;
 

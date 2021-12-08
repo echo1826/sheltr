@@ -92,3 +92,38 @@ export const REMOVE_USER = gql`
     }
   }
 `;
+
+export const REMOVE_USER_PETS = gql`
+  mutation removeUserPets($dog: ID!) {
+    removeUserPets(dog: $dog) {
+      username
+      email
+      password
+      pets {
+          name
+          breed {
+            primary
+            secondary
+            mixed
+            unknown
+          }
+          age
+          size
+          gender
+          photo {
+            small
+            medium
+            large
+            full
+          }
+          url
+          location
+          description
+          spayed
+          house_trained
+          shots
+          organization
+      }
+    }
+  }
+`
