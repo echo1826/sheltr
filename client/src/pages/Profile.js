@@ -1,9 +1,6 @@
 import React from "react";
 import { useQuery } from "@apollo/client";
 //imports from material
-import { Grid } from '@mui/material';
-import Paper from "@mui/material/Paper";
-import Box from "@mui/material/Box";
 import Avatar from "@mui/material/Avatar";
 import Button from '@mui/material/Button'
 //imports from utils
@@ -51,8 +48,7 @@ export default function Profile() {
           <li>Location: {data?.user.location || 'N/A'}</li>
           <li>Member Since: {month} {year}</li>
         </ul>
-        </div>
-      
+      </div>
         <div className="profileDogs">
 
             {loading ? (
