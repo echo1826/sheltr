@@ -16,6 +16,7 @@ import Login from './pages/Login';
 import Profile from './pages/Profile';
 import Settings from './pages/Settings';
 import Likes from './pages/Likes';
+import NotLoggedIn from './pages/NotLoggedIn';
 // import from utils
 import Auth from "./utils/auth";
 // import from material
@@ -80,16 +81,16 @@ function App() {
               <Login/>
             </Route>
             <Route exact path="/sheltr">
-              <Cards />
+              {Auth.isLoggedIn() ? <Cards /> : <NotLoggedIn/>}
             </Route>
             <Route exact path="/profile">
-              <Profile />
+              {Auth.isLoggedIn() ? <Profile /> : <NotLoggedIn/>}
             </Route>
             <Route exact path="/likes">
-              <Likes />
+            {Auth.isLoggedIn() ? <Likes /> : <NotLoggedIn/>}
             </Route>
             <Route exact path="/settings">
-              <Settings />
+            {Auth.isLoggedIn() ? <Settings /> : <NotLoggedIn/>}
             </Route>
           </div>
           {Auth.isLoggedIn() && <Navbar />}

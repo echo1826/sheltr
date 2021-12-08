@@ -11,6 +11,7 @@ import './Profile.css'
 
 
 export default function Profile() {
+  
   const { loading, data } = useQuery(QUERY_SINGLE_USER, {
     variables: { id: Auth.getProfileToken().data._id },
   });
