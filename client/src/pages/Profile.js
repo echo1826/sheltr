@@ -18,8 +18,9 @@ export default function Profile() {
     variables: { id: Auth.getProfileToken().data._id },
   });
 
-  const date = data?.user.createdAt
-  console.log('date = ',date.getMonth());
+  const joinedDate = new Date(data?.user.createdAt)
+  console.log('date = ', joinedDate.toString())
+  // console.log('date = ',date.toISOString());
 
   const likedDogs = data?.user.pets || [];
 
