@@ -5,6 +5,15 @@
     margin: 20px;
 }
 
+.likesXBtn{
+    background-color: #F2F2F2;
+    border: none;
+}
+
+.likesXBtn:hover{
+    background-color: #A2A2A2;
+}
+
 .likedDogsContainer {
     padding-bottom: 20px;
 } 
