@@ -62,7 +62,7 @@ export default function Signup({flipChange}) {
                     Email
                 </InputLabel>
                 <Input 
-                    id="email"
+                    id="signUpEmail"
                     aria-describedby="my-helper-text"
                     name='email'
                     type='email'
@@ -70,7 +70,7 @@ export default function Signup({flipChange}) {
                     onChange={changeHandler}
                     className='inputField'
                 />
-                <FormHelperText id="email helper" className='helperFont'>
+                <FormHelperText id="emailHelper" className='helperFont'>
                     We'll never share your email.
                 </FormHelperText>
             </div>
@@ -97,7 +97,7 @@ export default function Signup({flipChange}) {
                     Password
                 </InputLabel>
                 <Input 
-                    id="password" 
+                    id="signUpPassword" 
                     required={true} 
                     aria-describedby="my-helper-text" 
                     name='password'

@@ -15,7 +15,7 @@ export default function LikedCards(props) {
         }
     }
     const removePet = async (dogId) => {
-        const {data} = await props.removeUserPets({
+        await props.removeUserPets({
             variables: {
                 userId: Auth.getProfileToken().data._id,
                 dog: dogId
@@ -27,7 +27,7 @@ export default function LikedCards(props) {
     return(<div>
             <Paper elevation = {6} style={{borderRadius: 15}} >
                 <Grid item xs={4} key={props.dog._id} container ={true} className='likedDogsContainer' style={{ marginBottom:15, maxWidth:"90vw", alignItems:"center", justifyContent:"center", fontFamily:"Oxygen"}}>
-                <button className='likesXBtn' onClick={() => removePet(props.dog._id)}><img src='./images/x.png' className='likesXImg'></img></button>
+                <button className='likesXBtn' onClick={() => removePet(props.dog._id)}><img src='./images/x.png' className='likesXImg' alt='x-out'></img></button>
                         <img src={props.dog.photo[0].medium} alt='dog' />
                         <div className='likedDogsEx'>
                             <h2>{props.dog.name}</h2>

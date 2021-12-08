@@ -7,7 +7,6 @@ import Profile from "./Profile.js";
 import LoginComp from "../components/Login/index.js";
 import Signup from "../components/Signup/index";
 // imported mui componets
-import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
 import { Grid } from "@mui/material";
