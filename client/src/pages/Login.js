@@ -23,7 +23,7 @@ export default function Login() {
       setFlipState("content");
     }
   };
-  console.log(Auth.isLoggedIn());
+  
   if (Auth.isLoggedIn()) {
     return <Profile />;
   }
@@ -53,18 +53,6 @@ export default function Login() {
               perfect rescue dog.
             </h2>
             <Grid item className="flippyCard">
-              {/* {renderState.comp ? <LoginComp /> : <Signup />}
-              {renderState.comp ? (
-                <p align="center" className='front'>
-                  Don't have an account?{" "}
-                  <Button onClick={handleChange}>Sign Up</Button>
-                </p>
-              ) : (
-                <p align="center" className='back'>
-                  Already have an account?{" "}
-                  <Button onClick={handleChange}>Log In</Button>
-                </p>
-              )} */}
               <div className={flipState}>
                 <LoginComp flipChange={flipChange}/>
                 <Signup flipChange={flipChange}/>
