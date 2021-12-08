@@ -227,7 +227,7 @@ export default function Settings() {
         <Button variant ='outlined' color='error'onClick={handleDelete} className='settingsLogout'>Delete Account</Button>
         
         <footer className='settingsFooter'>
-          <p>	&copy; 2021</p>
+          <p>	Copyright &copy; 2021</p>
           <p className='settingsLinks'>Developed by:  
             <a href='https://github.com/echo1826' target='_blank'> Ethan Cho, </a>
             <a href='https://github.com/suelee0308' target='_blank'>Sue Lee, </a>
