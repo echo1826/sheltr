@@ -39,8 +39,8 @@ export default function LikedCards(props) {
                                 <li>Shots: {yesNo(dog.shots)}</li>
                             </ul>
                         </div>
-                        <div>
-                            <h3 className='likedDogsMeet'>Meet {dog.name}!</h3>
+                        <div className='likedDogsMeet'>
+                            <h3>Meet {dog.name}!</h3>
                         </div>
                         <p>{dog.description}</p>
                         <a href={dog.url} target='_blank' rel="noreferrer noopener">Learn more...</a>
