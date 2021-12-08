@@ -28,10 +28,10 @@ const UserSchema = new Schema({
         required: true,
         default: Date.now()
     },
-    location: {
-        type: String,
-        required: true
-    },
+    // location: {
+    //     type: String,
+    //     required: true
+    // },
     pets: [
         {
             type: Schema.Types.ObjectId,
