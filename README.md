@@ -41,9 +41,9 @@ User can save a dog to their favorites list and view their saved dogs.\
 User can change their search parameters and logout from the app. \
 <img src="./client/public/images/sheltr-settings.gif" width="500" height="300" />
 
-## Link to Deployed App
+## Deployed App
 
-[![Deployed App](https://img.shields.io/badge/Deployed-App-blue)](https://sheltr-echo1826.herokuapp.com/)
+[![Deployed App](https://img.shields.io/badge/Deployed-App-blue)](https://sheltr-app.herokuapp.com/)
 
 ## Tech Stack
  > * MongoDB
