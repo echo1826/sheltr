@@ -18,51 +18,51 @@ export default function Cardrender(props) {
     if(loading) {
         return <div>Loading cards...</div>
     }
-    console.log(props.settings);
+
     if(data?.dogs.length !== 0) {
         switch(true) {
             case ((settings.age !== null) && (settings.size !== null) && (settings.house_trained !== null)): {
-                console.log("age, size, houseTrained firing")
+                
                 dogCardData = dogs.filter((dog) => (dog.age === settings.age) && (dog.size === settings.size) && (dog.house_trained === settings.house_trained));
                 break;
             }
             case ((settings.age !== null) && (settings.size !== null)): {
-                console.log("age, size firing");
+                
                 dogCardData = dogs.filter((dog) => (dog.age === settings.age) && (dog.size === settings.size));
                 break;
             }
             case ((settings.age !== null) && (settings.house_trained !== null)): {
-                console.log("age, houseTrained firing");
+               
                 dogCardData = dogs.filter((dog) => (dog.age === settings.age) && (dog.house_trained === settings.house_trained));
                 break;
             }
             case ((settings.age !== null)): {
-                console.log("settings.age case firing");
+                
                 dogCardData = dogs.filter((dog) => dog.age === settings.age);
                 break;
             }
             case((settings.size !== null) && (settings.house_trained !== null)): {
-                console.log("size, houseTrained firing");
+                
                 dogCardData = dogs.filter((dog) => (dog.size === settings.size) && (dog.house_trained === settings.house_trained));
                 break;
             }
             case((settings.size !== null)): {
-                console.log("size firing");
+                
                 dogCardData = dogs.filter((dog) => dog.size === settings.size);
                 break;
             }
             case((settings.house_trained !== null)): {
-                console.log("houseTrained firing");
+                
                 dogCardData = dogs.filter((dog) => dog.house_trained === settings.house_trained);
                 break;
             }
             case((settings.house_trained === null && settings.size === null && settings.age === null)): {
-                console.log("default case firing");
+                
                 dogCardData = dogs;
                 break;
             }
             default: {
-                console.error("Something went wrong");
+                
                 break;
             }
         }
@@ -75,7 +75,7 @@ export default function Cardrender(props) {
         setLastDirection(direction);
       }
     const outOfFrame = async (direction, id) => {
-        console.log("Dog id", id, "\nDirection", direction);
+        
         if(direction === 'right') {
             try {
                     await updateUserPets({
