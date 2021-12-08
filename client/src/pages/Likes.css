@@ -5,18 +5,33 @@
     margin: 20px;
 }
 
-.likesXBtn{
-    background-color: #F2F2F2;
-    border: none;
-}
-
-.likesXBtn:hover{
-    background-color: #A2A2A2;
-}
-
 .likedDogsContainer {
     padding-bottom: 20px;
+    position: relative;
 } 
+
+.likesXBtn{
+    background-color: transparent;
+    border: none;
+    position: absolute;
+    float: right;
+    top: -5px;
+    right: -10px;
+}
+
+.likesXImg {
+    height: 40px;
+    margin-top: -8px;
+    background-color: #d5d5d5;
+    box-shadow: 2px 2px 7px #888888;
+    border-radius: 50%;
+}
+
+.likesXImg:hover{
+    background-color: #b2b2b2;
+    border-radius: 50%;
+    cursor: pointer;
+}
 
 .likedDogsContainer h2{
     margin: 15px;

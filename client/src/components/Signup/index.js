@@ -20,7 +20,8 @@ export default function Signup({flipChange}) {
     const [formState, setFormState] = useState({ 
         username: '', 
         email: '', 
-        password: '' });
+        password: '',
+        location: '' });
 
     const [addUser] = useMutation(ADD_USER);
 
@@ -107,6 +108,24 @@ export default function Signup({flipChange}) {
                 />
                 <FormHelperText id="password helper" className='helperFont'>
                     Passwords must be at least 7 characters, alphanumeric only.
+                </FormHelperText>
+            </div>
+            <div className='locationCustom'>
+                <InputLabel htmlFor="my-input" className='labelFont'>
+                    Location
+                </InputLabel>
+                <Input 
+                    id="location" 
+                    required={true} 
+                    aria-describedby="my-helper-text" 
+                    name='location'
+                    type='text'
+                    onChange={changeHandler}
+                    value={formState.location}
+                    className='inputFeild'
+                />
+                <FormHelperText id="location helper" className='helperFont'>
+                    Where would you like to find a dog?
                 </FormHelperText>
             </div>
             <Button 

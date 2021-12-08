@@ -43,6 +43,8 @@ export const QUERY_SINGLE_USER = gql`
             username
             email
             password
+            createdAt
+            location
             pets {
                 _id
                 name

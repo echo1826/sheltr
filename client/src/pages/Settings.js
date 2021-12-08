@@ -19,7 +19,8 @@ import {QUERY_SETTINGS} from '../utils/queries';
 import {useQuery, useMutation} from '@apollo/client';
 
 export default function Settings() {
-  const {loading, data} = useQuery(QUERY_SETTINGS, {
+  const {loading, data} =
+    useQuery(QUERY_SETTINGS, {
     variables: {userId: Auth.getProfileToken().data._id}
   });
   // console.log('QUERY_SETTINGS = ',data?.settings);
@@ -49,7 +50,6 @@ export default function Settings() {
   useEffect(()=> {
     if (isMounted.current){
     // console.log(`age = ${age} size = ${size} trained = ${trained}`);
-    console.log('isMounted = ',isMounted)
     handleSettingsChange();
     } else {
       isMounted.current = true
@@ -60,16 +60,25 @@ export default function Settings() {
     window.location.assign("/");
   };
   const handleAge = (event) => {
+    console.log('ageflag = ',ageFlag);
+    console.log('sizeFlag = ',sizeFlag);
+    console.log('trainedflag = ',trainedFlag);
     setAgeFlag(true);
     setAge(event.target.value);
     prevAge = age;
   };
   const handleSize = (event) => {
+    console.log('ageflag = ',ageFlag);
+    console.log('sizeFlag = ',sizeFlag);
+    console.log('trainedflag = ',trainedFlag);
     setSizeFlag(true);
     setSize(event.target.value);
     prevSize = size;
   };
   const handleTrained = () => {
+    console.log('ageflag = ',ageFlag);
+    console.log('sizeFlag = ',sizeFlag);
+    console.log('trainedflag = ',trainedFlag);
     setTrainedFlag(true);
     if(trained) {
       setTrained(null);
@@ -146,7 +155,7 @@ export default function Settings() {
     }catch(err) {
       console.log(err);
     }
-  }
+  };
 
   if (Auth.isLoggedIn()) {
     return (

@@ -62,6 +62,7 @@ const userSeed = {
     username: 'Testing',
     email: 'test@me.com',
     password: '12345678',
+    location: 'Boston',
 }
 
 
