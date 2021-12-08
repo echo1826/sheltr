@@ -54,3 +54,7 @@ h1{
     height: 100px;
     margin: auto;
 }
+
+.profileBtn:hover {
+    border: solid 1px #000;
+}
