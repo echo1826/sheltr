@@ -14,7 +14,7 @@ import FormLabel from '@mui/material/FormLabel';
 // imports from utils
 import Auth from '../utils/auth';
 import './Settings.css'
-import {UPDATE_SETTINGS} from '../utils/mutations';
+import {UPDATE_SETTINGS, REMOVE_USER} from '../utils/mutations';
 import {QUERY_SETTINGS} from '../utils/queries';
 import {useQuery, useMutation} from '@apollo/client';
 
@@ -36,6 +36,7 @@ export default function Settings() {
   console.log('prevAge', prevAge, 'prevSize', prevSize, 'prevTrained', prevTrained);
 
   const [updateSettings] = useMutation(UPDATE_SETTINGS);
+  const [removeUser] = useMutation(REMOVE_USER);
   // initializing the state lets us update it for some reason
   const [age, setAge] = useState(null);
   const [size, setSize] = useState(null);
@@ -91,6 +92,15 @@ export default function Settings() {
   const handleLogout = () => {
     Auth.logout();
   };
+
+  const handleDelete = async (e) => {
+    await removeUser({
+      variables: {
+        _id: Auth.getProfileToken().data._id
+      }
+    });
+    Auth.logout();
+  }
 
   const handleSettingsChange = async() => {
     try{
@@ -181,7 +191,7 @@ export default function Settings() {
           </Select>
         </FormControl>
     
-        <FormControl fullWidth fullWidth style={{marginTop: '20px', marginBottom:'10px'}} className='settingsForm'>
+        <FormControl fullWidth style={{marginTop: '20px', marginBottom:'10px'}} className='settingsForm'>
           <InputLabel id="size-select">Size</InputLabel>
           <Select
             labelId="size-select"
@@ -214,7 +224,7 @@ export default function Settings() {
         </Paper>
         
         <Button variant ='outlined' color='error'onClick={handleLogout} className='settingsLogout'>Logout</Button>
-        {/* <Button variant ='outlined' color='error'onClick={handleDelete} className='settingsLogout'>Delete Account</Button> */}
+        <Button variant ='outlined' color='error'onClick={handleDelete} className='settingsLogout'>Delete Account</Button>
         </React.Fragment> 
       }
       </Box>

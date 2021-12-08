@@ -12,6 +12,11 @@ const {
 
 const resolvers = {
     Query: {
+        me: async (parent, args, context) => {
+            if(context.user) {
+                return User.findOne({_id: context.user._id}).populate('pets');
+            }
+        },
         dogs: async () => {
             return await Dog.find({});
         },
@@ -66,8 +71,15 @@ const resolvers = {
             const settings = await Settings.findOne({userId: args.userId}).populate('userId');
             return settings;
         },
-        removeUser: async (parent, { userid }) => {
-            return await User.findOneAndDelete({_id: userid})
+        removeUser: async (parent, args) => {
+            return await User.findOneAndDelete({_id: args._id})
+        },
+        removeUserPets: async(parent, args) => {
+            // console.log(args.dog);
+            await User.updateOne({_id: args.userId}, {$pull: {pets: args.dog}}, {new: true});
+            const user = await User.findOne({_id: args.userId}).populate('pets');
+            // console.log(user);
+            return user;
         }
     }
 };
