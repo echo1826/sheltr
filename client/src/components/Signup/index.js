@@ -13,7 +13,7 @@ import Button from '@mui/material/Button';
 import { ADD_USER } from '../../utils/mutations';
 import Auth from '../../utils/auth';
 
-export default function Signup() {
+export default function Signup({flipChange}) {
 
 //create a state to keep track of form values
 
@@ -50,37 +50,76 @@ export default function Signup() {
         console.log(formState)
     };
 
-    return (<div className="back">
-        <FormGroup>
-            <FormLabel align="center" fontFamily="Source San Pro" fontStyle="italic">Sign up to create a profile and start searching!</FormLabel>
-           <p></p>
-            <InputLabel htmlFor="my-input">Email</InputLabel>
-            <Input id="email" aria-describedby="my-helper-text"
-                name='email'
-                type='email'
-                value={formState.email}
-                onChange={changeHandler}
-                 />
-            <FormHelperText id="email helper">We'll never share your email.</FormHelperText>
-            <InputLabel htmlFor="my-input">Username</InputLabel>
-            <Input id="username" required={true} aria-describedby="my-helper-text"
-                name='username'
-                type='text'
-                onChange={changeHandler}
-                value={formState.username}/>
-            <FormHelperText id="username helper">Username helper text</FormHelperText>
-            <InputLabel htmlFor="my-input">Password</InputLabel>
-            <Input id="password" required={true} aria-describedby="my-helper-text" 
-                name='password'
-                type='password'
-                onChange={changeHandler}
-                value={formState.password}/>
-            <FormHelperText id="password helper">Passwords must be at least 7 characters, alphanumeric only.</FormHelperText>
-            <Button variant="contained" type="submit"
-             onClick={clickHandler}>
-                Sign Up
+    return (
+    <div className="back signupCard">
+        <FormGroup className='form-containerCustom'>
+            <FormLabel align="center" fontFamily="Source San Pro" fontStyle="italic" className='labelFont'>
+                Sign up to create a profile and start searching!
+            </FormLabel>
+            <div className='emailCustom'>
+                <InputLabel htmlFor="my-input" className='labelFont'>
+                    Email
+                </InputLabel>
+                <Input 
+                    id="email"
+                    aria-describedby="my-helper-text"
+                    name='email'
+                    type='email'
+                    value={formState.email}
+                    onChange={changeHandler}
+                    className='inputFeild'
+                />
+                <FormHelperText id="email helper" className='helperFont'>
+                    We'll never share your email.
+                </FormHelperText>
+            </div>
+            <div className='usernameCustom'>
+                <InputLabel htmlFor="my-input" className='labelFont'>
+                    Username
+                </InputLabel>
+                <Input 
+                    id="username" 
+                    required={true} 
+                    aria-describedby="my-helper-text"
+                    name='username'
+                    type='text'
+                    onChange={changeHandler}
+                    value={formState.username}
+                    className='inputFeild'
+                />
+                <FormHelperText id="username helper" className='helperFont'>
+                    Make your username something unique!
+                </FormHelperText>
+            </div>
+            <div className='passwordCustom'>
+                <InputLabel htmlFor="my-input" className='labelFont'>
+                    Password
+                </InputLabel>
+                <Input 
+                    id="password" 
+                    required={true} 
+                    aria-describedby="my-helper-text" 
+                    name='password'
+                    type='password'
+                    onChange={changeHandler}
+                    value={formState.password}
+                    className='inputFeild'
+                />
+                <FormHelperText id="password helper" className='helperFont'>
+                    Passwords must be at least 7 characters, alphanumeric only.
+                </FormHelperText>
+            </div>
+            <Button 
+                variant="contained" 
+                type="submit"
+                onClick={clickHandler}
+                style={{marginTop: '5vh', width: '35%', maxWidth: '175px', alignItems: 'center',}}>
+                  Sign Up
             </Button>
+            <p align="center" className="labelFont">
+                Already have an account?{" "}
+                <Button onClick={flipChange} className="labelFont">Log In</Button>
+            </p>
         </FormGroup>
-        
     </div>);
 };
