@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 // imports from material
 import Box from "@mui/material/Box";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -39,6 +38,7 @@ export default function Navbar() {
         <BottomNavigation
           showlabels="true"
           value={value}
+          sx={{alignItems:'center'}}
           onChange={(event, newValue) => {
             setValue(newValue);
           }}

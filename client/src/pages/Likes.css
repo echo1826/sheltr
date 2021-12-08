@@ -2,34 +2,68 @@
     font-family: 'Source Sans Pro', sans-serif;
     font-size: 35px;
     text-align: center;
-    margin-bottom: 0;
+    margin: 20px;
 }
 
 .likedDogsContainer {
     padding-bottom: 20px;
+    position: relative;
 } 
 
-.likedDogsContainer h2 {
+.likesXBtn{
+    background-color: transparent;
+    border: none;
+    position: absolute;
+    float: right;
+    top: -5px;
+    right: -10px;
+}
+
+.likesXImg {
+    height: 40px;
+    margin-top: -8px;
+    background-color: #d5d5d5;
+    box-shadow: 2px 2px 7px #888888;
+    border-radius: 50%;
+}
+
+.likesXImg:hover{
+    background-color: #b2b2b2;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.likedDogsContainer h2{
     margin: 15px;
 }
 
-.likedDogsContainer p {
+.likedDogsContainer p{
     margin: 15px;
-} 
+}
 
-.likedDogsContainer img {
+.likedDogsContainer img{
     margin: 15px;
-} 
+}
 
 .likedDogsEx {
     line-height: 18px;
 }
 
 .likedDogsMeet {
-    margin: 0;
+    display: flex;
+    justify-content: center;
     width: 100%;
 }
 
+.likedDogsMeet h3 {
+    margin: 0px;
+}
+
+@media screen and (min-width: 1200px) {
+    .likesHeader{
+        margin: 35px;
+    }
+}
 
 
 

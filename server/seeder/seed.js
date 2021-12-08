@@ -58,6 +58,15 @@ async function getDogDataFromPetfinderApi() {
 
 }
 
+const userSeed = {
+    username: 'Testing',
+    email: 'test@me.com',
+    password: '12345678',
+    location: 'Boston',
+}
+
+
+
 db.once('open', async () => {
     try{
         const dogArray = await getDogDataFromPetfinderApi();

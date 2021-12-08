@@ -1,45 +1,60 @@
+.userProfile {
+    padding-bottom: 35px;
+}
 
 h1{
     font-family: 'Source Sans Pro', sans-serif;
+    font-size: 35px;
     text-align: center;
 }
 
 .avatar{
-    display:inline-flex;
+    display:flex;
     justify-content: center;
     align-items: center;
     margin-bottom: 20px;
-    margin-left: 40%;
+    margin-left: 3%;
 }
 
 .profileDogs {
-    display: inline-flex;
-    flex-direction: row;
+    display: flex;
     flex-wrap: wrap;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
     margin-top: 10px;
 }
 
 .dogCard {
+    width: 250px;
     background-color: #F2F2F2;
     border: 1px solid;
     border-radius: 15px;
     object-fit: cover;
     position: relative;
-    margin: 30px;
+    margin: 25px;
     box-shadow: 4px 4px 4px rgb(195, 195, 195);
     justify-content: center;
     align-items: center;
     text-align: center;
     padding: 5px;
-
 }
+
+.profileLink {
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+}
+
 
 .dogImage {
     object-fit: cover;
     border: 1px solid;
     box-shadow: 4px 4px 4px rgb(195, 195, 195);
     width: 100px;
-    height: 100px
+    height: 100px;
+    margin: auto;
+}
+
+.profileBtn:hover {
+    border: solid 1px #000;
 }

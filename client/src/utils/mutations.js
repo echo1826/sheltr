@@ -18,11 +18,13 @@ export const ADD_USER = gql `
     $username: String!
     $email: String!
     $password: String!
+    $location: String!
   ) {
     addUser(
       username: $username
       email: $email
       password: $password
+      location: $location
     ) {
       token
       user {
@@ -92,3 +94,38 @@ export const REMOVE_USER = gql`
     }
   }
 `;
+
+export const REMOVE_USER_PETS = gql`
+  mutation removeUserPets($userId: ID!, $dog: ID!) {
+    removeUserPets(userId: $userId, dog: $dog) {
+      username
+      email
+      password
+      pets {
+          name
+          breed {
+            primary
+            secondary
+            mixed
+            unknown
+          }
+          age
+          size
+          gender
+          photo {
+            small
+            medium
+            large
+            full
+          }
+          url
+          location
+          description
+          spayed
+          house_trained
+          shots
+          organization
+      }
+    }
+  }
+`

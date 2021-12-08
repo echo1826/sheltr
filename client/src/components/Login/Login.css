@@ -10,7 +10,8 @@
 
 .emailCustom,
 .passwordCustom,
-.usernameCustom {
+.usernameCustom,
+.locationCustom {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -22,7 +23,8 @@
 
 .emailCustom *,
 .passwordCustom *,
-.usernameCustom * {
+.usernameCustom *,
+.locationCustom * {
   text-align: center;
   width: 70%;
   max-width: 720px;
@@ -47,14 +49,7 @@
     font-size: 10px !important;
   }
   
-  /* .emailCustom,
-  .passwordCustom,
-  .usernameCustom {
-    margin-top: 0;
-    margin-bottom: 0;
-  } */
-
-  .inputFeild {
+  .inputField {
     height: 17px;
   }
 }

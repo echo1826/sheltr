@@ -7,7 +7,6 @@ import Profile from "./Profile.js";
 import LoginComp from "../components/Login/index.js";
 import Signup from "../components/Signup/index";
 // imported mui componets
-import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
 import { Grid } from "@mui/material";
@@ -54,18 +53,6 @@ export default function Login() {
               perfect rescue dog.
             </h2>
             <Grid item className="flippyCard">
-              {/* {renderState.comp ? <LoginComp /> : <Signup />}
-              {renderState.comp ? (
-                <p align="center" className='front'>
-                  Don't have an account?{" "}
-                  <Button onClick={handleChange}>Sign Up</Button>
-                </p>
-              ) : (
-                <p align="center" className='back'>
-                  Already have an account?{" "}
-                  <Button onClick={handleChange}>Log In</Button>
-                </p>
-              )} */}
               <div className={flipState}>
                 <LoginComp flipChange={flipChange}/>
                 <Signup flipChange={flipChange}/>
