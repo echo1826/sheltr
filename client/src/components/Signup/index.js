@@ -48,7 +48,6 @@ export default function Signup({flipChange}) {
             ...formState,
             [name]: value,
         });
-        console.log(formState)
     };
 
     return (
