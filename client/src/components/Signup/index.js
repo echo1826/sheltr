@@ -68,7 +68,7 @@ export default function Signup({flipChange}) {
                     type='email'
                     value={formState.email}
                     onChange={changeHandler}
-                    className='inputFeild'
+                    className='inputField'
                 />
                 <FormHelperText id="email helper" className='helperFont'>
                     We'll never share your email.
@@ -86,7 +86,7 @@ export default function Signup({flipChange}) {
                     type='text'
                     onChange={changeHandler}
                     value={formState.username}
-                    className='inputFeild'
+                    className='inputField'
                 />
                 <FormHelperText id="username helper" className='helperFont'>
                     Make your username something unique!
@@ -104,7 +104,7 @@ export default function Signup({flipChange}) {
                     type='password'
                     onChange={changeHandler}
                     value={formState.password}
-                    className='inputFeild'
+                    className='inputField'
                 />
                 <FormHelperText id="password helper" className='helperFont'>
                     Passwords must be at least 7 characters, alphanumeric only.
@@ -122,7 +122,7 @@ export default function Signup({flipChange}) {
                     type='text'
                     onChange={changeHandler}
                     value={formState.location}
-                    className='inputFeild'
+                    className='inputField'
                 />
                 <FormHelperText id="location helper" className='helperFont'>
                     Where would you like to find a dog?
