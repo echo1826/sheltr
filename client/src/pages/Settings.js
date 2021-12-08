@@ -208,13 +208,13 @@ export default function Settings() {
           labelPlacement="start"
           className='settingsInput'
           onChange={handleTrained}
-          checked={prevTrained}
         />
         </FormGroup>
       </FormControl>
         </Paper>
         
         <Button variant ='outlined' color='error'onClick={handleLogout} className='settingsLogout'>Logout</Button>
+        {/* <Button variant ='outlined' color='error'onClick={handleDelete} className='settingsLogout'>Delete Account</Button> */}
         </React.Fragment> 
       }
       </Box>

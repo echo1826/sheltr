@@ -2,34 +2,44 @@
     font-family: 'Source Sans Pro', sans-serif;
     font-size: 35px;
     text-align: center;
-    margin-bottom: 0;
+    margin: 20px;
 }
 
 .likedDogsContainer {
     padding-bottom: 20px;
 } 
 
-.likedDogsContainer h2 {
+.likedDogsContainer h2{
     margin: 15px;
 }
 
-.likedDogsContainer p {
+.likedDogsContainer p{
     margin: 15px;
-} 
+}
 
-.likedDogsContainer img {
+.likedDogsContainer img{
     margin: 15px;
-} 
+}
 
 .likedDogsEx {
     line-height: 18px;
 }
 
 .likedDogsMeet {
-    margin: 0;
+    display: flex;
+    justify-content: center;
     width: 100%;
 }
 
+.likedDogsMeet h3 {
+    margin: 0px;
+}
+
+@media screen and (min-width: 1200px) {
+    .likesHeader{
+        margin: 35px;
+    }
+}
 
 
 

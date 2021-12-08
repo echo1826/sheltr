@@ -14,7 +14,7 @@ import Button from '@mui/material/Button';
 // imported custom css
 import './Login.css';
 
-export default function LoginComp() {
+export default function LoginComp({flipChange}) {
   const [loginState, setLoginState] = useState({ email: "", password: "" });
   const [login, { error, data }] = useMutation(LOGIN);
 
@@ -49,18 +49,18 @@ export default function LoginComp() {
   };
 
   return (
-    <div className="front" >
+    <div className="front loginCard" >
       {data ? (
         <p>
           Success!
         </p>
     ) : (
       <FormGroup className='form-containerCustom'>
-          <FormLabel align="center" fontFamily="Source San Pro" fontStyle="italic">
+          <FormLabel align="center" fontFamily="Source San Pro" fontStyle="italic" className='labelFont'>
               Login to continue where you left off!
           </FormLabel>
           <div className='emailCustom'>
-            <InputLabel htmlFor="my-input">
+            <InputLabel htmlFor="my-input" className='labelFont'>
               Email
             </InputLabel>
             <Input 
@@ -70,10 +70,11 @@ export default function LoginComp() {
                 type='email'
                 value={loginState.email}
                 onChange={handleChange}
+                className='inputFeild'
             />
           </div>
           <div className='passwordCustom'>
-            <InputLabel htmlFor="my-input">
+            <InputLabel htmlFor="my-input" className='labelFont'>
               Password
             </InputLabel>
             <Input 
@@ -84,8 +85,9 @@ export default function LoginComp() {
                 type='password'
                 onChange={handleChange}
                 value={loginState.password}
+                className='inputFeild'
             />
-            <FormHelperText id="password helper">
+            <FormHelperText id="password helper" className='helperFont'>
               Forgot your password?
             </FormHelperText>
           </div>
@@ -93,9 +95,14 @@ export default function LoginComp() {
             variant="contained" 
             type="submit"
             onClick={handleFormSubmit}
-            style={{marginTop: '5vh', width: '35%', maxWidth: '175px', alignItems: 'center',}}>
+            style={{marginTop: '5vh', width: '35%', maxWidth: '175px', alignItems: 'center',}}
+            className='labelFont'>
               Login
           </Button>
+          <p align="center" className="labelFont">
+          Don't have an account?{" "}
+            <Button onClick={flipChange} className="labelFont">Sign Up</Button>
+          </p>
       </FormGroup>
       )}
       {error && (
