@@ -23,17 +23,6 @@ export default function Settings() {
     useQuery(QUERY_SETTINGS, {
     variables: {userId: Auth.getProfileToken().data._id}
   });
-  // console.log('QUERY_SETTINGS = ',data?.settings);
-  let prevAge;
-  let prevSize;
-  let prevTrained;
-  if(!loading) {
-      prevAge = data?.settings.age;
-      prevSize = data?.settings.size;
-      prevTrained = data?.settings.house_trained;
-  }
-   
-  console.log('prevAge', prevAge, 'prevSize', prevSize, 'prevTrained', prevTrained);
 
   const [updateSettings] = useMutation(UPDATE_SETTINGS);
   const [removeUser] = useMutation(REMOVE_USER);
@@ -45,11 +34,19 @@ export default function Settings() {
   const [sizeFlag, setSizeFlag] = useState(false);
   const [trainedFlag, setTrainedFlag] = useState(false);
   const isMounted = useRef(false);
+  
+  let prevAge;
+  let prevSize;
+  let prevTrained;
+  if(!loading && data?.settings) {
+      prevAge = data?.settings.age;
+      prevSize = data?.settings.size;
+      prevTrained = data?.settings.house_trained;
+  }
 
   // handle functions set the states, this hook will make the DB update
   useEffect(()=> {
     if (isMounted.current){
-    // console.log(`age = ${age} size = ${size} trained = ${trained}`);
     handleSettingsChange();
     } else {
       isMounted.current = true
@@ -60,25 +57,16 @@ export default function Settings() {
     window.location.assign("/");
   };
   const handleAge = (event) => {
-    console.log('ageflag = ',ageFlag);
-    console.log('sizeFlag = ',sizeFlag);
-    console.log('trainedflag = ',trainedFlag);
     setAgeFlag(true);
     setAge(event.target.value);
     prevAge = age;
   };
   const handleSize = (event) => {
-    console.log('ageflag = ',ageFlag);
-    console.log('sizeFlag = ',sizeFlag);
-    console.log('trainedflag = ',trainedFlag);
     setSizeFlag(true);
     setSize(event.target.value);
     prevSize = size;
   };
   const handleTrained = () => {
-    console.log('ageflag = ',ageFlag);
-    console.log('sizeFlag = ',sizeFlag);
-    console.log('trainedflag = ',trainedFlag);
     setTrainedFlag(true);
     if(trained) {
       setTrained(null);
@@ -148,7 +136,6 @@ export default function Settings() {
           break;
         }
         default: {
-          console.error("default case firing");
           break;
         }
       }
@@ -165,7 +152,7 @@ export default function Settings() {
         gridAutoColumns: '1fr',
         gap: 3,
         alignItems: 'center',
-        paddingBottom: 7,
+        paddingBottom: 0,
       }}
     > {loading ? <div>Loading settings...</div> :
       <React.Fragment>
@@ -225,6 +212,17 @@ export default function Settings() {
         
         <Button variant ='outlined' color='error'onClick={handleLogout} className='settingsLogout'>Logout</Button>
         <Button variant ='outlined' color='error'onClick={handleDelete} className='settingsLogout'>Delete Account</Button>
+        
+        <footer className='settingsFooter'>
+          <p>	Copyright &copy; 2021</p>
+          <p className='settingsLinks'>Developed by:  
+            <a href='https://github.com/echo1826' target='_blank'> Ethan Cho, </a>
+            <a href='https://github.com/suelee0308' target='_blank'>Sue Lee, </a>
+            <a href='https://github.com/mat-lundin' target='_blank'>Mat Lundin, </a>
+            <a href='https://github.com/chuck2076' target='_blank'>Chuck Stephens, </a>
+            <a href='https://github.com/PAW6063' target='_blank'>Phillip Welch</a>
+          </p>
+        </footer>
         </React.Fragment> 
       }
       </Box>

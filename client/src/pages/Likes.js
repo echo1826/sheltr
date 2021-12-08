@@ -31,9 +31,6 @@ export default function Likes() {
       return <h3>No liked dogs yet!</h3>;
     }
 
-    console.log(likedDogs);
-
-
     return (
       <Box>
         <h2 className='likesHeader'>Your Liked Dogs</h2>
