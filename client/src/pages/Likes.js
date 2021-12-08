@@ -20,7 +20,6 @@ export default function Likes() {
   const goLogin = (event) => {
     window.location.assign("/");
   };
-
   
   if (Auth.isLoggedIn()) {
     
@@ -34,9 +33,11 @@ export default function Likes() {
 
     console.log(likedDogs);
 
+
     return (
       <Box>
         <h2 className='likesHeader'>Your Liked Dogs</h2>
+        
         <Grid container justifyContent="center" alignItems="center" spacing={2}>
           <Grid item>
             <LikedCards likedDogs={likedDogs} />

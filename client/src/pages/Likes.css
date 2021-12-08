@@ -9,7 +9,15 @@
     padding-bottom: 20px;
 } 
 
-.likedDogsContainer h2, p, img {
+.likedDogsContainer h2{
+    margin: 15px;
+}
+
+.likedDogsContainer p{
+    margin: 15px;
+}
+
+.likedDogsContainer img {
     margin: 15px;
 }
 
