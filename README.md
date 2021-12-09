@@ -64,4 +64,4 @@ Ethan Cho
  [https://github.com/echo1826](https://github.com/echo1826) 
 
 Feel free to get in touch! 
- [ethan.cho@gmail.com](mailto:ethan.cho@gmail.com)
+ [ethan.cho1826@gmail.com](mailto:ethan.cho1826@gmail.com)
