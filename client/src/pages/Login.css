@@ -46,3 +46,8 @@
 .flipComp {
   bottom: 0;
 }
+
+.loginError {
+  color: red;
+  text-align: center;
+}

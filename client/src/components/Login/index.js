@@ -91,6 +91,9 @@ export default function LoginComp({flipChange}) {
               Forgot your password?
             </FormHelperText>
           </div>
+          {error && (
+        <div className="my-3 p-3 bg-danger text-white loginError">{error.message}</div>
+      )}
           <Button 
             variant="contained" 
             type="submit"
@@ -99,14 +102,12 @@ export default function LoginComp({flipChange}) {
             className='labelFont'>
               Login
           </Button>
+          
           <p align="center" className="labelFont">
           Don't have an account?{" "}
             <Button onClick={flipChange} className="labelFont">Sign Up</Button>
           </p>
       </FormGroup>
-      )}
-      {error && (
-        <div className="my-3 p-3 bg-danger text-white">{error.message}</div>
       )}
     </div>
   );
