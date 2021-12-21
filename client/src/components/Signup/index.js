@@ -124,7 +124,7 @@ export default function Signup({flipChange}) {
                     className='inputField'
                 />
                 <FormHelperText id="location helper" className='helperFont'>
-                    Where would you like to find a dog?
+                    Where would you like to find a pet?
                 </FormHelperText>
             </div>
             <Button 

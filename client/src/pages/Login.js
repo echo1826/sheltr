@@ -50,7 +50,7 @@ export default function Login() {
               className='titleFont'
             >
               Search hundreds of animal rescue organizations to find your
-              perfect rescue dog.
+              perfect rescue pet.
             </h2>
             <Grid item className="flippyCard">
               <div className={flipState}>

@@ -7,6 +7,9 @@ const SettingsSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'User'
     },
+    animals: {
+        type: String
+    },
     age: {
         type: String
     },

@@ -27,18 +27,22 @@ export default function Settings() {
   const [updateSettings] = useMutation(UPDATE_SETTINGS);
   const [removeUser] = useMutation(REMOVE_USER);
   // initializing the state lets us update it for some reason
+  const [animals, setAnimals] = useState(null);
   const [age, setAge] = useState(null);
   const [size, setSize] = useState(null);
   const [trained, setTrained] = useState(null);
+  const [animalsFlag, setAnimalsFlag] = useState(null);
   const [ageFlag, setAgeFlag] = useState(false);
   const [sizeFlag, setSizeFlag] = useState(false);
   const [trainedFlag, setTrainedFlag] = useState(false);
   const isMounted = useRef(false);
   
+  let prevAnimals;
   let prevAge;
   let prevSize;
   let prevTrained;
   if(!loading && data?.settings) {
+      prevAnimals = data?.settings.animals;
       prevAge = data?.settings.age;
       prevSize = data?.settings.size;
       prevTrained = data?.settings.house_trained;
@@ -51,10 +55,15 @@ export default function Settings() {
     } else {
       isMounted.current = true
     }
-  },[age,size,trained]);
+  },[animals,age,size,trained]);
 
   const goLogin = (event) => {
     window.location.assign("/");
+  };
+  const handleAnimals = (event) => {
+    setAnimalsFlag(true);
+    setAnimals(event.target.value);
+    prevAnimals = animals;
   };
   const handleAge = (event) => {
     setAgeFlag(true);
@@ -158,7 +167,23 @@ export default function Settings() {
       <React.Fragment>
       <Paper className='settingsContainer' elevation = {6} >
           <h2 align="center">User Settings</h2>
-  
+          <FormControl fullWidth style={{marginBottom: '20px'}} className='settingsForm'>
+          <InputLabel id="demo-simple-select-label">Animals</InputLabel>
+          <Select
+            labelId="demo-simple-select-label"
+            id="demo-simple-select-label"
+            value={prevAge}
+            label="animals"
+            type="animals"
+            className='settingsInput'
+            onChange={handleAnimals}
+          >
+            <MenuItem value={null}>No Preference</MenuItem>
+            <MenuItem value={'Dogs'}>Dogs</MenuItem>
+            <MenuItem value={'Cats'}>Cats</MenuItem>
+          </Select>
+        </FormControl>
+
         <FormControl fullWidth style={{marginBottom: '20px'}} className='settingsForm'>
           <InputLabel id="demo-simple-select-label">Age</InputLabel>
           <Select

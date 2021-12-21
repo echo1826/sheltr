@@ -76,6 +76,7 @@ const typeDefs = gql`
         me: User
         user(_id: ID!): User
         dogs: [Dog]
+        cats: [Cat]
         settings(userId: ID!): Settings
     }
 

@@ -68,7 +68,7 @@ export default function Profile() {
             )}
         </div>
         <div> 
-          <Link to="/likes" underline="none" className='profileLink'><Button className='profileBtn' style={{backgroundColor: '#F2F2F2', color: '#000'}} variant = "contained">View all your liked dogs</Button></Link>
+          <Link to="/likes" underline="none" className='profileLink'><Button className='profileBtn' style={{backgroundColor: '#F2F2F2', color: '#000'}} variant = "contained">View all your liked pets</Button></Link>
         </div>
       </div>);
   } else {
