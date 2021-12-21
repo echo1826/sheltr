@@ -32,6 +32,23 @@ const typeDefs = gql`
         organization: String
     }
 
+    type Cat {
+        _id: ID
+        name: String
+        breed: Breed
+        age: String
+        size: String
+        gender: String
+        photo: [Photo]
+        url: String
+        location: String
+        description: String
+        spayed: Boolean
+        house_trained: Boolean
+        shots: Boolean
+        organization: String
+    }
+
     type User {
         _id: ID
         username: String

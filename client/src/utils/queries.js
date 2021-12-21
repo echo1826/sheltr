@@ -107,6 +107,38 @@ export const QUERY_ALL_DOGS = gql`
 }
 `;
 
+export const QUERY_ALL_CATS = gql`
+    query getAllCats {
+        cats{
+        _id
+        name
+        breed {
+        primary
+        secondary
+        mixed
+        unknown
+        }
+        age
+        gender
+        size
+        gender
+        photo {
+        small
+        medium
+        large
+        full
+        }
+        url
+        location
+        description
+        spayed
+        house_trained
+        shots
+        organization
+    }
+}
+`;
+
 export const QUERY_SETTINGS = gql`
     query getSettings($userId: ID!) {
         settings(userId: $userId) {
