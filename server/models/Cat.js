@@ -66,4 +66,8 @@ const CatSchema = new Schema({
     organization: {
         type: String
     }
-})
+});
+
+const Cat = mongoose.model("Cat", CatSchema);
+
+module.exports = Cat;
