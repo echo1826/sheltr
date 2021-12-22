@@ -61,7 +61,8 @@ export default function Signup({flipChange}) {
                     Email
                 </InputLabel>
                 <Input 
-                    inputRef={(element)=> element?.focus?.()}
+                // this overrides the login focus. make it conditional on whether this component is rendered
+                    // inputRef={(element)=> element?.focus?.()}
                     id="signUpEmail"
                     aria-describedby="my-helper-text"
                     name='email'
