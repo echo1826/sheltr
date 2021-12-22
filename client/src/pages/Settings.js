@@ -27,18 +27,22 @@ export default function Settings() {
   const [updateSettings] = useMutation(UPDATE_SETTINGS);
   const [removeUser] = useMutation(REMOVE_USER);
   // initializing the state lets us update it for some reason
+  const [animals, setAnimals] = useState(null);
   const [age, setAge] = useState(null);
   const [size, setSize] = useState(null);
   const [trained, setTrained] = useState(null);
+  const [animalsFlag, setAnimalsFlag] = useState(null);
   const [ageFlag, setAgeFlag] = useState(false);
   const [sizeFlag, setSizeFlag] = useState(false);
   const [trainedFlag, setTrainedFlag] = useState(false);
   const isMounted = useRef(false);
   
+  let prevAnimals;
   let prevAge;
   let prevSize;
   let prevTrained;
   if(!loading && data?.settings) {
+      prevAnimals = data?.settings.animals;
       prevAge = data?.settings.age;
       prevSize = data?.settings.size;
       prevTrained = data?.settings.house_trained;
@@ -51,10 +55,15 @@ export default function Settings() {
     } else {
       isMounted.current = true
     }
-  },[age,size,trained]);
+  },[animals,age,size,trained]);
 
   const goLogin = (event) => {
     window.location.assign("/");
+  };
+  const handleAnimals = (event) => {
+    setAnimalsFlag(true);
+    setAnimals(event.target.value);
+    prevAnimals = animals;
   };
   const handleAge = (event) => {
     setAgeFlag(true);
@@ -93,45 +102,93 @@ export default function Settings() {
   const handleSettingsChange = async() => {
     try{
       switch(true) {
-        case (ageFlag && sizeFlag && trainedFlag): {
+        case (animalsFlag && ageFlag && sizeFlag && trainedFlag): {
           await updateSettings({
-            variables: {userId:Auth.getProfileToken().data._id, age, size, house_trained: trained}
+            variables: {userId:Auth.getProfileToken().data._id, animals, age, size, house_trained: trained}
           });
           break;
         } 
+        case (animalsFlag && sizeFlag && trainedFlag): {
+          await updateSettings({
+            variables: {userId:Auth.getProfileToken().data._id, animals, age:prevAge, size, house_trained: trained}
+          });
+          break;
+        } 
+        case (animalsFlag && ageFlag && trainedFlag): {
+          await updateSettings({
+            variables: {userId:Auth.getProfileToken().data._id, animals, age, size:prevSize, house_trained: trained}
+          });
+          break;
+        } 
+        case (animalsFlag && sizeFlag && ageFlag): {
+          await updateSettings({
+            variables: {userId:Auth.getProfileToken().data._id, animals, age:prevAge ,size, house_trained: trained}
+          });
+          break;
+        } 
+        case (ageFlag && sizeFlag && trainedFlag): {
+          await updateSettings({
+            variables: {userId:Auth.getProfileToken().data._id, animals:prevAnimals, age, size, house_trained: trained}
+          });
+          break;
+        } 
+        case (animalsFlag && ageFlag): {
+          await updateSettings({
+            variables: {userId:Auth.getProfileToken().data._id, animals, age, size:prevSize, house_trained: trained}
+          });
+          break;
+        }
+        case (animalsFlag && trainedFlag): {
+          await updateSettings({
+            variables: {userId:Auth.getProfileToken().data._id, animals, age:prevAge, size:prevSize, house_trained: trained}
+          });
+          break;
+        }
+        case (animalsFlag && sizeFlag): {
+          await updateSettings({
+            variables: {userId:Auth.getProfileToken().data._id, animals, age:prevAge, size, house_trained: trained}
+          });
+          break;
+        }
         case (ageFlag && trainedFlag): {
           await updateSettings({
-            variables: {userId:Auth.getProfileToken().data._id, age, size:prevSize, house_trained: trained}
+            variables: {userId:Auth.getProfileToken().data._id, animals:prevAnimals, age, size:prevSize, house_trained: trained}
           });
           break;
         }
         case (trainedFlag && sizeFlag): {
           await updateSettings({
-            variables: {userId:Auth.getProfileToken().data._id, age:prevAge, size, house_trained: trained}
+            variables: {userId:Auth.getProfileToken().data._id, animals:prevAnimals, age:prevAge, size, house_trained: trained}
           });
           break;
         }
         case(ageFlag && sizeFlag): {
           await updateSettings({
-            variables: {userId:Auth.getProfileToken().data._id, age, size, house_trained: prevTrained}
+            variables: {userId:Auth.getProfileToken().data._id, animals:prevAnimals, age, size, house_trained: prevTrained}
+          });
+          break;
+        }
+        case(animalsFlag): {
+          await updateSettings({
+            variables: {userId:Auth.getProfileToken().data._id, animals, age:prevAge, size:prevSize, house_trained: prevTrained}
           });
           break;
         }
         case(ageFlag): {
           await updateSettings({
-            variables: {userId:Auth.getProfileToken().data._id, age, size:prevSize, house_trained: prevTrained}
+            variables: {userId:Auth.getProfileToken().data._id, animals:prevAnimals, age, size:prevSize, house_trained: prevTrained}
           });
           break;
         }
         case(sizeFlag): {
           await updateSettings({
-            variables: {userId:Auth.getProfileToken().data._id, age:prevAge, size, house_trained: prevTrained}
+            variables: {userId:Auth.getProfileToken().data._id, animals:prevAnimals, age:prevAge, size, house_trained: prevTrained}
           });
           break;
         }
         case(trainedFlag): {
           await updateSettings({
-            variables: {userId:Auth.getProfileToken().data._id, age:prevAge, size: prevSize, house_trained: trained}
+            variables: {userId:Auth.getProfileToken().data._id, animals:prevAnimals, age:prevAge, size: prevSize, house_trained: trained}
           });
           break;
         }
@@ -158,7 +215,23 @@ export default function Settings() {
       <React.Fragment>
       <Paper className='settingsContainer' elevation = {6} >
           <h2 align="center">User Settings</h2>
-  
+          <FormControl fullWidth style={{marginBottom: '20px'}} className='settingsForm'>
+          <InputLabel id="demo-simple-select-label">Animals</InputLabel>
+          <Select
+            labelId="demo-simple-select-label"
+            id="demo-simple-select-label"
+            value={prevAnimals}
+            label="animals"
+            type="animals"
+            className='settingsInput'
+            onChange={handleAnimals}
+          >
+            <MenuItem value={null}>No Preference</MenuItem>
+            <MenuItem value={'Dogs'}>Dogs</MenuItem>
+            <MenuItem value={'Cats'}>Cats</MenuItem>
+          </Select>
+        </FormControl>
+
         <FormControl fullWidth style={{marginBottom: '20px'}} className='settingsForm'>
           <InputLabel id="demo-simple-select-label">Age</InputLabel>
           <Select
