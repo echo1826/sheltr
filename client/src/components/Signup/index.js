@@ -61,6 +61,7 @@ export default function Signup({flipChange}) {
                     Email
                 </InputLabel>
                 <Input 
+                    inputRef={(element)=> element?.focus?.()}
                     id="signUpEmail"
                     aria-describedby="my-helper-text"
                     name='email'
@@ -68,6 +69,7 @@ export default function Signup({flipChange}) {
                     value={formState.email}
                     onChange={changeHandler}
                     className='inputField'
+                    
                 />
                 <FormHelperText id="emailHelper" className='helperFont'>
                     We'll never share your email.
