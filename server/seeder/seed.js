@@ -1,6 +1,6 @@
 const db = require('../config/connection');
 const {
-    Dog, User, Settings
+    Dog, Cat, User, Settings
 } = require('../models');
 const axios = require('axios');
 require('dotenv').config();
@@ -56,6 +56,59 @@ async function getDogDataFromPetfinderApi() {
         console.log(err);
     }
 
+};
+
+async function getCatDataFromPetfinderApi() {
+    try {
+        const securityResponse = await axios({
+            url: "https://api.petfinder.com/v2/oauth2/token",
+            method: "POST",
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded"
+            },
+            data: `grant_type=client_credentials&client_id=${process.env.CLIENT_ID}&client_secret=${process.env.CLIENT_SECRET}`
+        });
+        const token = securityResponse.data.access_token;
+        const catResponse = await axios({
+            url: "https://api.petfinder.com/v2/animals?type=cat&location=78727&distance=10&limit=100",
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        });
+        const catSeedArray = [];
+        const catArray = catResponse.data.animals;
+
+        for (let cat of catArray) {
+
+            let organizationResponse = await axios({
+                url: `https://api.petfinder.com${cat._links.organization.href}`,
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            });
+            const catObject = {
+                name: cat.name,
+                breed: cat.breeds,
+                age: cat.age,
+                size: cat.size,
+                photo: cat.photos,
+                gender: cat.gender,
+                url: cat.url,
+                location: `${cat.contact.address.city}, ${cat.contact.address.state}`,
+                description: cat.description,
+                spayed: cat.attributes.spayed_neutered,
+                house_trained: cat.attributes.house_trained,
+                shots: cat.attributes.shots_current,
+                description: cat.description,
+                organization: organizationResponse.data.organization.name
+            }
+            catSeedArray.push(catObject);
+        }
+        return catSeedArray;
+    } catch (err) {
+        console.log(err);
+    }
+
 }
 
 const userSeed = {
@@ -63,15 +116,18 @@ const userSeed = {
     email: 'test@me.com',
     password: '12345678',
     location: 'Boston',
-}
+};
 
 
 
 db.once('open', async () => {
     try{
         const dogArray = await getDogDataFromPetfinderApi();
+        const catArray = await getCatDataFromPetfinderApi();
         await Dog.deleteMany({});
         await Dog.create(dogArray);
+        await Cat.deleteMany({});
+        await Cat.create(catArray);
         await User.deleteMany({});
         // await User.create(userSeed);
         await Settings.deleteMany({});

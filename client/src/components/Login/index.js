@@ -64,6 +64,7 @@ export default function LoginComp({flipChange}) {
               Email
             </InputLabel>
             <Input 
+                inputRef={(element)=> element?.focus?.()}
                 id="email" 
                 aria-describedby="my-helper-text"
                 name='email'
@@ -71,6 +72,7 @@ export default function LoginComp({flipChange}) {
                 value={loginState.email}
                 onChange={handleChange}
                 className='inputField'
+                
             />
           </div>
           <div className='passwordCustom'>
