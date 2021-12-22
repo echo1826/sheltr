@@ -50,12 +50,13 @@ mutation addSettings($userId: ID!, $age: String, $size: String, $house_trained: 
 `;
 
 export const UPDATE_SETTINGS = gql `
-mutation updateSettings($userId: ID!, $age:String, $size:String,$house_trained:Boolean) {
-  updateSettings(userId: $userId, age: $age, size: $size, house_trained: $house_trained) {
+mutation updateSettings($userId: ID!, $animals:String, $age:String, $size:String,$house_trained:Boolean) {
+  updateSettings(userId: $userId, animals:$animals, age: $age, size: $size, house_trained: $house_trained) {
     _id
     userId {
       username
     }
+    animals
     age
     size
     house_trained

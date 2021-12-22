@@ -173,6 +173,7 @@ export const QUERY_SETTINGS = gql`
                 organization
             }
         }
+        animals
         age
         size
         house_trained

@@ -70,7 +70,7 @@ const resolvers = {
             return await Settings.create(args);
         },
         updateSettings: async (parent, args) => {
-            const res = await Settings.updateOne({userId:args.userId}, {age: args.age, size: args.size, house_trained: args.house_trained}, { upsert: true });
+            const res = await Settings.updateOne({userId:args.userId}, {animals: args.animals, age: args.age, size: args.size, house_trained: args.house_trained}, { upsert: true });
             const settings = await Settings.findOne({userId: args.userId}).populate('userId');
             return settings;
         },

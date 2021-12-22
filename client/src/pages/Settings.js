@@ -102,45 +102,93 @@ export default function Settings() {
   const handleSettingsChange = async() => {
     try{
       switch(true) {
-        case (ageFlag && sizeFlag && trainedFlag): {
+        case (animalsFlag && ageFlag && sizeFlag && trainedFlag): {
           await updateSettings({
-            variables: {userId:Auth.getProfileToken().data._id, age, size, house_trained: trained}
+            variables: {userId:Auth.getProfileToken().data._id, animals, age, size, house_trained: trained}
           });
           break;
         } 
+        case (animalsFlag && sizeFlag && trainedFlag): {
+          await updateSettings({
+            variables: {userId:Auth.getProfileToken().data._id, animals, age:prevAge, size, house_trained: trained}
+          });
+          break;
+        } 
+        case (animalsFlag && ageFlag && trainedFlag): {
+          await updateSettings({
+            variables: {userId:Auth.getProfileToken().data._id, animals, age, size:prevSize, house_trained: trained}
+          });
+          break;
+        } 
+        case (animalsFlag && sizeFlag && ageFlag): {
+          await updateSettings({
+            variables: {userId:Auth.getProfileToken().data._id, animals, age:prevAge ,size, house_trained: trained}
+          });
+          break;
+        } 
+        case (ageFlag && sizeFlag && trainedFlag): {
+          await updateSettings({
+            variables: {userId:Auth.getProfileToken().data._id, animals:prevAnimals, age, size, house_trained: trained}
+          });
+          break;
+        } 
+        case (animalsFlag && ageFlag): {
+          await updateSettings({
+            variables: {userId:Auth.getProfileToken().data._id, animals, age, size:prevSize, house_trained: trained}
+          });
+          break;
+        }
+        case (animalsFlag && trainedFlag): {
+          await updateSettings({
+            variables: {userId:Auth.getProfileToken().data._id, animals, age:prevAge, size:prevSize, house_trained: trained}
+          });
+          break;
+        }
+        case (animalsFlag && sizeFlag): {
+          await updateSettings({
+            variables: {userId:Auth.getProfileToken().data._id, animals, age:prevAge, size, house_trained: trained}
+          });
+          break;
+        }
         case (ageFlag && trainedFlag): {
           await updateSettings({
-            variables: {userId:Auth.getProfileToken().data._id, age, size:prevSize, house_trained: trained}
+            variables: {userId:Auth.getProfileToken().data._id, animals:prevAnimals, age, size:prevSize, house_trained: trained}
           });
           break;
         }
         case (trainedFlag && sizeFlag): {
           await updateSettings({
-            variables: {userId:Auth.getProfileToken().data._id, age:prevAge, size, house_trained: trained}
+            variables: {userId:Auth.getProfileToken().data._id, animals:prevAnimals, age:prevAge, size, house_trained: trained}
           });
           break;
         }
         case(ageFlag && sizeFlag): {
           await updateSettings({
-            variables: {userId:Auth.getProfileToken().data._id, age, size, house_trained: prevTrained}
+            variables: {userId:Auth.getProfileToken().data._id, animals:prevAnimals, age, size, house_trained: prevTrained}
+          });
+          break;
+        }
+        case(animalsFlag): {
+          await updateSettings({
+            variables: {userId:Auth.getProfileToken().data._id, animals, age:prevAge, size:prevSize, house_trained: prevTrained}
           });
           break;
         }
         case(ageFlag): {
           await updateSettings({
-            variables: {userId:Auth.getProfileToken().data._id, age, size:prevSize, house_trained: prevTrained}
+            variables: {userId:Auth.getProfileToken().data._id, animals:prevAnimals, age, size:prevSize, house_trained: prevTrained}
           });
           break;
         }
         case(sizeFlag): {
           await updateSettings({
-            variables: {userId:Auth.getProfileToken().data._id, age:prevAge, size, house_trained: prevTrained}
+            variables: {userId:Auth.getProfileToken().data._id, animals:prevAnimals, age:prevAge, size, house_trained: prevTrained}
           });
           break;
         }
         case(trainedFlag): {
           await updateSettings({
-            variables: {userId:Auth.getProfileToken().data._id, age:prevAge, size: prevSize, house_trained: trained}
+            variables: {userId:Auth.getProfileToken().data._id, animals:prevAnimals, age:prevAge, size: prevSize, house_trained: trained}
           });
           break;
         }
