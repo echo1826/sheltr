@@ -220,7 +220,7 @@ export default function Settings() {
           <Select
             labelId="demo-simple-select-label"
             id="demo-simple-select-label"
-            value={prevAge}
+            value={prevAnimals}
             label="animals"
             type="animals"
             className='settingsInput'
