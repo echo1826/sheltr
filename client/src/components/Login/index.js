@@ -64,7 +64,7 @@ export default function LoginComp({flipChange}) {
               Email
             </InputLabel>
             <Input 
-                inputRef={(element)=> element?.focus?.()}
+                // inputRef={(element)=> element?.focus?.()}
                 id="email" 
                 aria-describedby="my-helper-text"
                 name='email'
