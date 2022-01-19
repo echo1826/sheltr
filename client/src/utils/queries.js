@@ -117,6 +117,7 @@ export const QUERY_SETTINGS = gql`
             username
             pets {
                 _id
+                type
                 name
                 breed {
                 primary
