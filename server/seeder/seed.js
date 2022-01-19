@@ -1,6 +1,6 @@
 const db = require('../config/connection');
 const {
-    Dog, Cat, User, Settings
+    Animal, User, Settings
 } = require('../models');
 const axios = require('axios');
 require('dotenv').config();
@@ -35,6 +35,7 @@ async function getDogDataFromPetfinderApi() {
             });
             const dogObject = {
                 name: dog.name,
+                type: dog.type,
                 breed: dog.breeds,
                 age: dog.age,
                 size: dog.size,
@@ -51,6 +52,7 @@ async function getDogDataFromPetfinderApi() {
             }
             dogSeedArray.push(dogObject);
         }
+        console.log(`dogSeedArray = ${dogSeedArray[0].type}`)
         return dogSeedArray;
     } catch (err) {
         console.log(err);
@@ -88,6 +90,7 @@ async function getCatDataFromPetfinderApi() {
             });
             const catObject = {
                 name: cat.name,
+                type: cat.type,
                 breed: cat.breeds,
                 age: cat.age,
                 size: cat.size,
@@ -104,33 +107,26 @@ async function getCatDataFromPetfinderApi() {
             }
             catSeedArray.push(catObject);
         }
+        console.log(`catSeedArray= ${catSeedArray[0].type}`)
         return catSeedArray;
     } catch (err) {
         console.log(err);
     }
 
-}
-
-const userSeed = {
-    username: 'Testing',
-    email: 'test@me.com',
-    password: '12345678',
-    location: 'Boston',
 };
-
 
 
 db.once('open', async () => {
     try{
         const dogArray = await getDogDataFromPetfinderApi();
         const catArray = await getCatDataFromPetfinderApi();
-        await Dog.deleteMany({});
-        await Dog.create(dogArray);
-        await Cat.deleteMany({});
-        await Cat.create(catArray);
-        await User.deleteMany({});
+        await Animal.deleteMany({});
+        await Animal.create(dogArray);
+        // await Cat.deleteMany({});
+        await Animal.create(catArray);
+        // await User.deleteMany({});
         // await User.create(userSeed);
-        await Settings.deleteMany({});
+        // await Settings.deleteMany({});
         console.log("Seeded Data!");
         process.exit(0)
     }catch(err) {

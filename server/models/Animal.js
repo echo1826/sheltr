@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const AnimalSchema = new Schema({
-    animalType: {
+    type: {
         type: String
     },
     name: {
@@ -71,6 +71,6 @@ const AnimalSchema = new Schema({
     }
 });
 
-const Cat = mongoose.model("Cat", CatSchema);
+const Animal = mongoose.model("Animal", AnimalSchema);
 
-module.exports = Cat;
+module.exports = Animal;
