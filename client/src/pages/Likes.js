@@ -15,7 +15,7 @@ import './Likes.css'
 export default function Likes() {
   const me = useQuery(QUERY_ME);
   const [removeUserPets] = useMutation(REMOVE_USER_PETS);
-  const likedDogs = me.data?.me.pets || [];
+  const likedanimals = me.data?.me.pets || [];
 
   const goLogin = (event) => {
     window.location.assign("/");
@@ -27,17 +27,17 @@ export default function Likes() {
       return <div>...loading</div>;
     }
 
-    if (!likedDogs.length) {
-      return <h3>No liked dogs yet!</h3>;
+    if (!likedanimals.length) {
+      return <h3>No liked animals yet!</h3>;
     }
 
     return (
       <Box>
-        <h2 className='likesHeader'>Your Liked Dogs</h2>
+        <h2 className='likesHeader'>Your Liked animals</h2>
         
         <Grid container justifyContent="center" alignItems="center" spacing={2}>
           <Grid item>
-            {likedDogs.map((dog) => <LikedCards dog={dog} removeUserPets={removeUserPets}/>)}
+            {likedanimals.map((animal) => <LikedCards animal={animal} removeUserPets={removeUserPets}/>)}
           </Grid>
         </Grid>
         

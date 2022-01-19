@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import TinderCard from 'react-tinder-card';
 import { 
-    QUERY_ALL_DOGS, 
+    QUERY_ALL_ANIMALS, 
 } from "../../utils/queries";
 import {UPDATE_USER_PETS} from "../../utils/mutations";
 import { useQuery, useMutation } from "@apollo/client";
@@ -11,54 +11,54 @@ export default function Cardrender(props) {
     const [lastDirection, setLastDirection] = useState();
     
     const settings = props.settings;
-    const {loading, data} = useQuery(QUERY_ALL_DOGS);
+    const {loading, data} = useQuery(QUERY_ALL_ANIMALS);
     const [updateUserPets] = useMutation(UPDATE_USER_PETS);
-    const dogs = data?.dogs;
-    let dogCardData;
+    const animals = data?.animals;
+    let cardData;
     if(loading) {
         return <div>Loading cards...</div>
     }
 
-    if(data?.dogs.length !== 0) {
+    if(data?.animals.length !== 0) {
         switch(true) {
             case ((settings.age !== null) && (settings.size !== null) && (settings.house_trained !== null)): {
                 
-                dogCardData = dogs.filter((dog) => (dog.age === settings.age) && (dog.size === settings.size) && (dog.house_trained === settings.house_trained));
+                cardData = animals.filter((animal) => (animal.age === settings.age) && (animal.size === settings.size) && (animal.house_trained === settings.house_trained));
                 break;
             }
             case ((settings.age !== null) && (settings.size !== null)): {
                 
-                dogCardData = dogs.filter((dog) => (dog.age === settings.age) && (dog.size === settings.size));
+                cardData = animals.filter((animal) => (animal.age === settings.age) && (animal.size === settings.size));
                 break;
             }
             case ((settings.age !== null) && (settings.house_trained !== null)): {
                
-                dogCardData = dogs.filter((dog) => (dog.age === settings.age) && (dog.house_trained === settings.house_trained));
+                cardData = animals.filter((animal) => (animal.age === settings.age) && (animal.house_trained === settings.house_trained));
                 break;
             }
             case ((settings.age !== null)): {
                 
-                dogCardData = dogs.filter((dog) => dog.age === settings.age);
+                cardData = animals.filter((animal) => animal.age === settings.age);
                 break;
             }
             case((settings.size !== null) && (settings.house_trained !== null)): {
                 
-                dogCardData = dogs.filter((dog) => (dog.size === settings.size) && (dog.house_trained === settings.house_trained));
+                cardData = animals.filter((animal) => (animal.size === settings.size) && (animal.house_trained === settings.house_trained));
                 break;
             }
             case((settings.size !== null)): {
                 
-                dogCardData = dogs.filter((dog) => dog.size === settings.size);
+                cardData = animals.filter((animal) => animal.size === settings.size);
                 break;
             }
             case((settings.house_trained !== null)): {
                 
-                dogCardData = dogs.filter((dog) => dog.house_trained === settings.house_trained);
+                cardData = animals.filter((animal) => animal.house_trained === settings.house_trained);
                 break;
             }
             case((settings.house_trained === null && settings.size === null && settings.age === null)): {
                 
-                dogCardData = dogs;
+                cardData = animals;
                 break;
             }
             default: {
@@ -67,9 +67,9 @@ export default function Cardrender(props) {
             }
         }
     }
-    const dogsToFilter = props.likedDogs.map((dog) => dog._id);
-    const finalDogData = dogCardData.filter((dog) => {
-        return !dogsToFilter.includes(dog._id);
+    const animalsToFilter = props.likedanimals.map((animal) => animal._id);
+    const finalanimalData = cardData.filter((animal) => {
+        return !animalsToFilter.includes(animal._id);
     });
     const swiped = async (direction) => {
         setLastDirection(direction);
@@ -79,27 +79,27 @@ export default function Cardrender(props) {
         if(direction === 'right') {
             try {
                     await updateUserPets({
-                    variables: {_id: Auth.getProfileToken().data._id, dog: id}
+                    variables: {_id: Auth.getProfileToken().data._id, animal: id}
                 })
             }catch(err) {
                 console.log(err);
             }
         }
     }
-    if(dogCardData.length === 0) {
+    if(cardData.length === 0) {
         return (
-            <div>No Dogs Found! Change your filter settings to get more dogs!</div>
+            <div>No animals Found! Change your filter settings to get more animals!</div>
         )
     }
 
     return(<div className='tinderContainer'>
-        {finalDogData.map((dog) => {
+        {finalanimalData.map((animal) => {
 
             return(
-            <TinderCard className='swipe' key={dog._id} onSwipe={(direction) => swiped(direction)} onCardLeftScreen={(direction) => outOfFrame(direction, dog._id)}>
-                <img src={dog.photo[0].medium} alt={dog.name} className = "swipeImg"/>
-                <h2 className="swipeDogName">{dog.name}</h2>
-                <p className="swipeDogLocation">{dog.location}</p>
+            <TinderCard className='swipe' key={animal._id} onSwipe={(direction) => swiped(direction)} onCardLeftScreen={(direction) => outOfFrame(direction, animal._id)}>
+                <img src={animal.photo[0].medium} alt={animal.name} className = "swipeImg"/>
+                <h2 className="swipeanimalName">{animal.name}</h2>
+                <p className="swipeanimalLocation">{animal.location}</p>
             </TinderCard>)
         })}
         {lastDirection ? <h2>You swiped {lastDirection}</h2> : <div></div>}

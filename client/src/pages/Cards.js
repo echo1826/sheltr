@@ -14,12 +14,12 @@ export default function Cards() {
       variables: {userId: Auth.getProfileToken().data._id}
   });
   let settings;
-  let likedDogs;
+  let likedAnimals;
   if(loading) {
       return <div>Loading settings...</div>
   } else {
       settings = data?.settings;
-      likedDogs = data?.settings.userId.pets;
+      likedAnimals = data?.settings.userId.pets;
   }
 
   const goLogin = (event) => {
@@ -29,7 +29,7 @@ export default function Cards() {
   if (Auth.isLoggedIn()) {
     return (
       <div className="tinderCards">
-        <Cardrender settings={settings} likedDogs={likedDogs}/>
+        <Cardrender settings={settings} likedAnimals={likedAnimals}/>
       </div>
     );
   } else {

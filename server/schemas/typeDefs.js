@@ -44,7 +44,7 @@ const typeDefs = gql`
         password: String
         createdAt: String
         location: String
-        pets: [Dog] 
+        pets: [Animal] 
     }
     
     type Auth {

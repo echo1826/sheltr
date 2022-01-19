@@ -17,12 +17,6 @@ const resolvers = {
                 return User.findOne({_id: context.user._id}).populate('pets');
             }
         },
-        dogs: async () => {
-            return await Dog.find({});
-        },
-        cats: async () => {
-            return await Cat.find({});
-        },
         animals: async () => {
             return await Animal.find({});
         },
@@ -49,8 +43,8 @@ const resolvers = {
             const token = signToken(user);
             return { token, user };
         },
-        updateUserPets: async (parent,{ _id, dog }) => {
-            return await User.findByIdAndUpdate(_id, {$push: {pets: dog}}, { new:true }).populate('pets');
+        updateUserPets: async (parent,{ _id, animal }) => {
+            return await User.findByIdAndUpdate(_id, {$push: {pets: animal}}, { new:true }).populate('pets');
         },
         login: async (parent, { email, password }, context) => {
             const user = await User.findOne({email});
@@ -80,7 +74,7 @@ const resolvers = {
             return await User.findOneAndDelete({_id: args._id})
         },
         removeUserPets: async(parent, args) => {
-            await User.updateOne({_id: args.userId}, {$pull: {pets: args.dog}}, {new: true});
+            await User.updateOne({_id: args.userId}, {$pull: {pets: args.animal}}, {new: true});
             const user = await User.findOne({_id: args.userId}).populate('pets');
             return user;
         }
