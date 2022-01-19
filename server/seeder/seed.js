@@ -52,7 +52,6 @@ async function getDogDataFromPetfinderApi() {
             }
             dogSeedArray.push(dogObject);
         }
-        console.log(`dogSeedArray = ${dogSeedArray[0].type}`)
         return dogSeedArray;
     } catch (err) {
         console.log(err);
@@ -107,7 +106,6 @@ async function getCatDataFromPetfinderApi() {
             }
             catSeedArray.push(catObject);
         }
-        console.log(`catSeedArray= ${catSeedArray[0].type}`)
         return catSeedArray;
     } catch (err) {
         console.log(err);
@@ -115,14 +113,34 @@ async function getCatDataFromPetfinderApi() {
 
 };
 
+function shuffle(array) {
+    let currentIndex = array.length;
+    let randomIndex;
+  
+    // While there remain elements to shuffle...
+    while (currentIndex !== 0) {
+  
+      // Pick a remaining element...
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex--;
+  
+      // And swap it with the current element.
+      [array[currentIndex], array[randomIndex]] = [
+        array[randomIndex], array[currentIndex]];
+    }
+  
+    return array;
+  };
+
 
 db.once('open', async () => {
     try{
         const dogArray = await getDogDataFromPetfinderApi();
         const catArray = await getCatDataFromPetfinderApi();
+        const animalArray = shuffle(dogArray+catArray);
         await Animal.deleteMany({});
-        await Animal.create(dogArray);
-        await Animal.create(catArray);
+        await Animal.create(animalArray);
+        // await Animal.create(catArray);
         await User.deleteMany({});
         await Settings.deleteMany({});
         console.log("Seeded Data!");

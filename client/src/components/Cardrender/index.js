@@ -13,7 +13,7 @@ export default function Cardrender(props) {
     const settings = props.settings;
     const {loading, data} = useQuery(QUERY_ALL_ANIMALS);
     const [updateUserPets] = useMutation(UPDATE_USER_PETS);
-    const animals = data?.animals;
+    let animals = data?.animals;
     let cardData;
     if(loading) {
         return <div>Loading cards...</div>
@@ -67,6 +67,7 @@ export default function Cardrender(props) {
             }
         }
     }
+
     const animalsToFilter = props.likedAnimals.map((animal) => animal._id);
     const finalanimalData = cardData.filter((animal) => {
         return !animalsToFilter.includes(animal._id);
