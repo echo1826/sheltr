@@ -1,7 +1,6 @@
 const {
     User,
-    Cat,
-    Dog,
+    Animal,
     Settings
 } = require("../models");
 const {
@@ -23,6 +22,9 @@ const resolvers = {
         },
         cats: async () => {
             return await Cat.find({});
+        },
+        animals: async () => {
+            return await Animal.find({});
         },
         user: async (parent, args) => {
             const user = await User.findOne({ _id: args._id}).populate('pets');

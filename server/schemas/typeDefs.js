@@ -15,25 +15,13 @@ const typeDefs = gql`
         full: String
     }
 
-    type Dog {
-        _id: ID
+    type Type {
         name: String
-        breed: Breed
-        age: String
-        size: String
-        gender: String
-        photo: [Photo]
-        url: String
-        location: String
-        description: String
-        spayed: Boolean
-        house_trained: Boolean
-        shots: Boolean
-        organization: String
     }
 
-    type Cat {
+    type Animal {
         _id: ID
+        type: [Type]
         name: String
         breed: Breed
         age: String
