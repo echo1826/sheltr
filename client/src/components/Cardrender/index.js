@@ -67,7 +67,7 @@ export default function Cardrender(props) {
             }
         }
     }
-    const animalsToFilter = props.likedanimals.map((animal) => animal._id);
+    const animalsToFilter = props.likedAnimals.map((animal) => animal._id);
     const finalanimalData = cardData.filter((animal) => {
         return !animalsToFilter.includes(animal._id);
     });
@@ -88,7 +88,7 @@ export default function Cardrender(props) {
     }
     if(cardData.length === 0) {
         return (
-            <div>No animals Found! Change your filter settings to get more animals!</div>
+            <div>No animals found! Change your filter settings to get more animals!</div>
         )
     }
 
