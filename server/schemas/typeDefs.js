@@ -67,11 +67,11 @@ const typeDefs = gql`
     type Mutation {
         addUser(username: String!, email: String!,location: String!, password: String!): Auth
         addSettings(userId: ID!, animals: String,age: String, size: String, house_trained: Boolean): Settings
-        updateUserPets(_id: ID!, dog: ID!): User
+        updateUserPets(_id: ID!, animal: ID!): User
         updateSettings(userId: ID!, animals: String, age: String, size: String, house_trained: Boolean): Settings
         login(email: String!, password: String!): Auth
         removeUser(_id: ID!): User
-        removeUserPets( userId: ID!, dog: ID!): User
+        removeUserPets( userId: ID!, animal: ID!): User
       }
     `;
 

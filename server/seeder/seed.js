@@ -122,14 +122,12 @@ db.once('open', async () => {
         const catArray = await getCatDataFromPetfinderApi();
         await Animal.deleteMany({});
         await Animal.create(dogArray);
-        // await Cat.deleteMany({});
         await Animal.create(catArray);
-        // await User.deleteMany({});
-        // await User.create(userSeed);
-        // await Settings.deleteMany({});
+        await User.deleteMany({});
+        await Settings.deleteMany({});
         console.log("Seeded Data!");
         process.exit(0)
     }catch(err) {
         console.log(err);
     }
-})
+});
