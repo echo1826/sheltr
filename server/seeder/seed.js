@@ -137,9 +137,10 @@ db.once('open', async () => {
     try{
         const dogArray = await getDogDataFromPetfinderApi();
         const catArray = await getCatDataFromPetfinderApi();
-        const animalArray = shuffle(dogArray+catArray);
+        const animalsArray = dogArray.concat(catArray);
+        const shuf = shuffle(animalsArray);
         await Animal.deleteMany({});
-        await Animal.create(animalArray);
+        await Animal.create(shuf);
         // await Animal.create(catArray);
         await User.deleteMany({});
         await Settings.deleteMany({});
