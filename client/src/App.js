@@ -12,7 +12,7 @@ import Header from './components/Header';
 import Navbar from './components/Navbar';
 // import from pages
 import Cards  from './pages/Cards';
-// import Login from './pages/Login';
+import Login from './pages/Login';
 import Profile from './pages/Profile';
 import Settings from './pages/Settings';
 import Likes from './pages/Likes';
@@ -80,6 +80,9 @@ function App() {
           <div>
             <Route exact path="/">
               <Landing />
+            </Route>
+            <Route exact path="/login">
+              <Login />
             </Route>
             <Route exact path="/sheltr">
               {Auth.isLoggedIn() ? <Cards /> : <NotLoggedIn/>}
