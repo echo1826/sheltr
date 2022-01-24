@@ -1,0 +1,21 @@
+.landingHeader{
+    position: relative;
+}
+
+.landingHeaderH2 {
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    margin: 170px 0 200px 0;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 55px;
+    color: #fff;
+    text-shadow: 2px 2px rgb(42, 42, 42);
+}
+
+.landingHeadImg {
+    height: 520px;
+    width: 100%;
+    object-fit: cover;
+    object-position: 0px -350px;
+}
