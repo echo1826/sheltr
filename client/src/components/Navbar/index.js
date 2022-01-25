@@ -36,7 +36,7 @@ export default function Navbar() {
         elevation={3}
       >
         <BottomNavigation
-          showlabels="true"
+          showlabel="true"
           value={value}
           sx={{alignItems:'center'}}
           onChange={(event, newValue) => {

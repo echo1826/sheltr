@@ -48,7 +48,6 @@ h1{
 
 .dogImage {
     object-fit: cover;
-    border: 1px solid;
     box-shadow: 4px 4px 4px rgb(195, 195, 195);
     width: 100px;
     height: 100px;

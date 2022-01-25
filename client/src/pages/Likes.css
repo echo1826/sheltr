@@ -43,6 +43,7 @@
 
 .likedDogsContainer img{
     margin: 15px;
+    box-shadow: 4px 4px 4px rgb(195, 195, 195);
 }
 
 .likedDogsEx {
