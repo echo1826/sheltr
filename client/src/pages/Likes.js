@@ -28,12 +28,12 @@ export default function Likes() {
     }
 
     if (!likedanimals.length) {
-      return <h3>No liked animals yet!</h3>;
+      return <h3>No liked animals yet, get swiping!</h3>;
     }
 
     return (
       <Box>
-        <h2 className='likesHeader'>Your Liked animals</h2>
+        <h2 className='likesHeader'>Your Liked Animals</h2>
         
         <Grid container justifyContent="center" alignItems="center" spacing={2}>
           <Grid item>
