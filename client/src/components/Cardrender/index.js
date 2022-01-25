@@ -21,46 +21,102 @@ export default function Cardrender(props) {
 
     if(data?.animals.length !== 0) {
         switch(true) {
+            case ((settings.age !== null) && (settings.size !== null) && (settings.house_trained !== null) && (settings.animals !== null)): {
+                
+                cardData = animals.filter((animal) => (animal.age === settings.age) && (animal.size === settings.size) && (animal.house_trained === settings.house_trained) && (animal.type === settings.animals));
+                break;
+            }
+
             case ((settings.age !== null) && (settings.size !== null) && (settings.house_trained !== null)): {
                 
                 cardData = animals.filter((animal) => (animal.age === settings.age) && (animal.size === settings.size) && (animal.house_trained === settings.house_trained));
                 break;
             }
+
+            case ((settings.age !== null) && (settings.size !== null) && (settings.animals !== null)): {
+                
+                cardData = animals.filter((animal) => (animal.age === settings.age) && (animal.size === settings.size) && (animal.type === settings.animals));
+                break;
+            }
+
+            case ((settings.age !== null) && (settings.house_trained !== null) && (settings.animals !== null)): {
+                
+                cardData = animals.filter((animal) => (animal.age === settings.age) && (animal.house_trained === settings.house_trained) && (animal.type === settings.animals));
+                break;
+            }
+
+            case ((settings.size !== null) && (settings.house_trained !== null) && (settings.animals !== null)): {
+                
+                cardData = animals.filter((animal) => (animal.size === settings.size) && (animal.house_trained === settings.house_trained) && (animal.type === settings.animals));
+                break;
+            }
+
             case ((settings.age !== null) && (settings.size !== null)): {
                 
                 cardData = animals.filter((animal) => (animal.age === settings.age) && (animal.size === settings.size));
                 break;
             }
+
             case ((settings.age !== null) && (settings.house_trained !== null)): {
                
                 cardData = animals.filter((animal) => (animal.age === settings.age) && (animal.house_trained === settings.house_trained));
                 break;
             }
-            case ((settings.age !== null)): {
-                
-                cardData = animals.filter((animal) => animal.age === settings.age);
-                break;
-            }
+
             case((settings.size !== null) && (settings.house_trained !== null)): {
                 
                 cardData = animals.filter((animal) => (animal.size === settings.size) && (animal.house_trained === settings.house_trained));
                 break;
             }
+
+            case ((settings.age !== null) && (settings.animals !== null)): {
+               
+                cardData = animals.filter((animal) => (animal.age === settings.age) && (animal.type === settings.animals));
+                break;
+            }
+
+            case ((settings.house_trained !== null) && (settings.animals !== null)): {
+               
+                cardData = animals.filter((animal) => (animal.house_trained === settings.house_trained) && (animal.type === settings.animals));
+                break;
+            }
+
+            case ((settings.size !== null) && (settings.animals !== null)): {
+               
+                cardData = animals.filter((animal) => (animal.size === settings.size) && (animal.type === settings.animals));
+                break;
+            }
+            
+            case ((settings.age !== null)): {
+                
+                cardData = animals.filter((animal) => animal.age === settings.age);
+                break;
+            }
+
             case((settings.size !== null)): {
                 
                 cardData = animals.filter((animal) => animal.size === settings.size);
                 break;
             }
+
             case((settings.house_trained !== null)): {
                 
                 cardData = animals.filter((animal) => animal.house_trained === settings.house_trained);
                 break;
             }
-            case((settings.house_trained === null && settings.size === null && settings.age === null)): {
+
+            case((settings.animals !== null)): {
                 
+                cardData = animals.filter((animal) => animal.type === settings.animals);
+                break;
+            }
+
+            case((settings.house_trained === null && settings.size === null && settings.age === null && settings.animals === null)): {
+                console.log(`animals = ${animals[0].house_trained}`)
                 cardData = animals;
                 break;
             }
+            
             default: {
                 
                 break;
