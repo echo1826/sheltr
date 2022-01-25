@@ -2,7 +2,7 @@
     position: relative;
 }
 
-.landingHeaderH2 {
+.landingH2 {
     position: absolute;
     text-align: center;
     width: 100%;
@@ -18,4 +18,31 @@
     width: 100%;
     object-fit: cover;
     object-position: 0px -350px;
+}
+
+.landingH3 {
+    text-align: center;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 30px;
+}
+
+.landingDesc {
+    display: flex;
+    justify-content: center;
+}
+
+.landingList {
+    list-style: none;
+    text-align: center;
+    font-family: 'Oxygen', sans-serif;
+    font-size: 18px;
+    display: inline-flex;
+    width: 20%;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+.landingIcon {
+    width: 100px;
+    margin: auto;
 }
