@@ -17,7 +17,7 @@ const typeDefs = gql`
 
     type Animal {
         _id: ID
-        type: {type: String}
+        type: String
         name: String
         breed: Breed
         age: String

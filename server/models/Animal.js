@@ -9,7 +9,7 @@ const AnimalSchema = new Schema({
     name: {
         type: String
     },
-    breeds: {
+    breed: {
         primary: {
             type: String,
             trim: true
