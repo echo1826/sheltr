@@ -31,6 +31,7 @@ export default function LikedCards(props) {
                         <img src={props.animal.photo[0].medium} alt='dog' />
                         <div className='likedDogsEx'>
                             <h2>{props.animal.name}</h2>
+                            <p>{props.animal.breed.primary}</p>
                             <p>{props.animal.size} | {props.animal.gender} | {props.animal.age}</p>
                         </div>
                         <div>
