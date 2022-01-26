@@ -14,11 +14,11 @@ export default function LikedCards(props) {
             return 'No'
         }
     }
-    const removePet = async (dogId) => {
+    const removePet = async (animalId) => {
         await props.removeUserPets({
             variables: {
                 userId: Auth.getProfileToken().data._id,
-                dog: dogId
+                animal: animalId
             }
         });
         window.location.reload();
@@ -26,28 +26,28 @@ export default function LikedCards(props) {
 
     return(<div>
             <Paper elevation = {6} style={{borderRadius: 15}} >
-                <Grid item xs={4} key={props.dog._id} container ={true} className='likedDogsContainer' style={{ marginBottom:15, maxWidth:"90vw", alignItems:"center", justifyContent:"center", fontFamily:"Oxygen"}}>
-                <button className='likesXBtn' onClick={() => removePet(props.dog._id)}><img src='./images/x.png' className='likesXImg' alt='x-out'></img></button>
-                        <img src={props.dog.photo[0].medium} alt='dog' />
+                <Grid item xs={4} key={props.animal._id} container ={true} className='likedDogsContainer' style={{ marginBottom:15, maxWidth:"90vw", alignItems:"center", justifyContent:"center", fontFamily:"Oxygen"}}>
+                <button className='likesXBtn' onClick={() => removePet(props.animal._id)}><img src='./images/x.png' className='likesXImg' alt='x-out'></img></button>
+                        <img src={props.animal.photo[0].medium} alt='dog' />
                         <div className='likedDogsEx'>
-                            <h2>{props.dog.name}</h2>
-                            <p>{props.dog.breed.primary}</p>
-                            <p>{props.dog.size} | {props.dog.gender} | {props.dog.age}</p>
+                            <h2>{props.animal.name}</h2>
+                            <p>{props.animal.breed.primary}</p>
+                            <p>{props.animal.size} | {props.animal.gender} | {props.animal.age}</p>
                         </div>
                         <div>
                             <ul>
-                                <li>Shelter/Organization: {props.dog.organization}</li>
-                                <li>Location: {props.dog.location}</li>
-                                <li>Spayed: {yesNo(props.dog.spayed)}</li>
-                                <li>House Trained: {yesNo(props.dog.house_trained)}</li>
-                                <li>Shots: {yesNo(props.dog.shots)}</li>
+                                <li>Shelter/Organization: {props.animal.organization}</li>
+                                <li>Location: {props.animal.location}</li>
+                                <li>Spayed: {yesNo(props.animal.spayed)}</li>
+                                <li>House Trained: {yesNo(props.animal.house_trained)}</li>
+                                <li>Shots: {yesNo(props.animal.shots)}</li>
                             </ul>
                         </div>
                         <div className='likedDogsMeet'>
-                            <h3>Meet {props.dog.name}!</h3>
+                            <h3>Meet {props.animal.name}!</h3>
                         </div>
-                        <p>{props.dog.description}</p>
-                        <a href={props.dog.url} target='_blank' rel="noreferrer noopener">Learn more...</a>
+                        <p>{props.animal.description}</p>
+                        <a href={props.animal.url} target='_blank' rel="noreferrer noopener">Learn more...</a>
                     </Grid>
                 </Paper>
     </div>);

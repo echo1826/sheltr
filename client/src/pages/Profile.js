@@ -25,11 +25,11 @@ export default function Profile() {
   const year = joinedDate.toLocaleString('default', {year: 'numeric'});
 
 
-  const likedDogs = me.data?.me.pets || [];
+  const likedAnimals = me.data?.me.pets || [];
 
-  let profileDogs;
+  let profileAnimals;
   if (!loading) {
-    profileDogs = likedDogs.slice(0, 3);
+    profileAnimals = likedAnimals.slice(0, 3);
   }
 
   const goLogin = () => {
@@ -53,14 +53,14 @@ export default function Profile() {
             {loading ? (
               <React.Fragment></React.Fragment>
             ) : (
-              profileDogs.map((dog) => {
+              profileAnimals.map((animal) => {
                 return (
-                  <div key={dog._id} className = "dogCard">
-                          <img className="dogImage" src={dog.photo[0].small} alt={dog.name} />
-                          <h2>{dog.name}</h2>
-                          <p>{dog.breed.primary}</p>
+                  <div key={animal._id} className = "dogCard">
+                          <img className="dogImage" src={animal.photo[0].small} alt={animal.name} />
+                          <h2>{animal.name}</h2>
+                          <p>{animal.breed.primary}</p>
                           <p>
-                            {dog.size} | {dog.gender} | {dog.age}
+                            {animal.size} | {animal.gender} | {animal.age}
                           </p>
                           </div>
                 );

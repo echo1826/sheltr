@@ -1,11 +1,9 @@
-const Dog = require('./Dog');
 const User = require('./User');
 const Settings = require('./Settings');
-const Cat = require('./Cat');
+const Animal = require ('./Animal')
 
 module.exports = {
-    Dog,
-    Cat,
+    Animal,
     User,
     Settings
 };

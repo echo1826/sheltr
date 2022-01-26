@@ -2,7 +2,10 @@ const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
-const DogSchema = new Schema({
+const AnimalSchema = new Schema({
+    type: {
+        type: String
+    },
     name: {
         type: String
     },
@@ -12,7 +15,7 @@ const DogSchema = new Schema({
             trim: true
         },
         secondary: {
-            type: String,
+            type: String, 
             trim: true
         },
         mixed: {
@@ -22,11 +25,20 @@ const DogSchema = new Schema({
             type: Boolean
         }
     },
-    age: {
+    age:{
         type: String
     },
     size: {
         type: String
+    },
+    house_trained: {
+        type: Boolean
+    },
+    declawed: {
+        type: Boolean
+    },
+    shots: {
+        type: Boolean
     },
     photo: [
         {
@@ -48,33 +60,23 @@ const DogSchema = new Schema({
             }
         }
     ],
-    url: {
-        type: String,
-        trim: true
+    gender: {
+        type: String
     },
     location: {
         type: String
     },
-    description: {
-        type: String
-    },
-    spayed: {
-        type: Boolean
-    },
-    house_trained: {
-        type: Boolean
-    },
-    shots: {
-        type: Boolean
-    },
-    gender: {
-        type: String
-    },
     organization: {
+        type: String
+    },
+    url: {
+        type: String
+    },
+    description: {
         type: String
     }
 });
 
-const Dog = mongoose.model("Dog", DogSchema);
+const Animal = mongoose.model("Animal", AnimalSchema);
 
-module.exports = Dog;
+module.exports = Animal;

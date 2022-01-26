@@ -227,8 +227,8 @@ export default function Settings() {
             onChange={handleAnimals}
           >
             <MenuItem value={null}>No Preference</MenuItem>
-            <MenuItem value={'Dogs'}>Dogs</MenuItem>
-            <MenuItem value={'Cats'}>Cats</MenuItem>
+            <MenuItem value={'Dog'}>Dogs</MenuItem>
+            <MenuItem value={'Cat'}>Cats</MenuItem>
           </Select>
         </FormControl>
 

@@ -68,11 +68,11 @@ mutation updateSettings($userId: ID!, $animals: String, $age:String, $size:Strin
 export const UPDATE_USER_PETS = gql `
   mutation updateUserPets(
     $_id: ID!
-    $dog: ID!
+    $animal: ID!
   ) {
       updateUserPets (
           _id: $_id
-          dog: $dog
+          animal: $animal
       ) {
         username
         email
@@ -98,8 +98,8 @@ export const REMOVE_USER = gql`
 `;
 
 export const REMOVE_USER_PETS = gql`
-  mutation removeUserPets($userId: ID!, $dog: ID!) {
-    removeUserPets(userId: $userId, dog: $dog) {
+  mutation removeUserPets($userId: ID!, $animal: ID!) {
+    removeUserPets(userId: $userId, animal: $animal) {
       username
       email
       password

@@ -15,25 +15,9 @@ const typeDefs = gql`
         full: String
     }
 
-    type Dog {
+    type Animal {
         _id: ID
-        name: String
-        breed: Breed
-        age: String
-        size: String
-        gender: String
-        photo: [Photo]
-        url: String
-        location: String
-        description: String
-        spayed: Boolean
-        house_trained: Boolean
-        shots: Boolean
-        organization: String
-    }
-
-    type Cat {
-        _id: ID
+        type: String
         name: String
         breed: Breed
         age: String
@@ -56,7 +40,7 @@ const typeDefs = gql`
         password: String
         createdAt: String
         location: String
-        pets: [Dog] 
+        pets: [Animal] 
     }
     
     type Auth {
@@ -76,19 +60,18 @@ const typeDefs = gql`
     type Query {
         me: User
         user(_id: ID!): User
-        dogs: [Dog]
-        cats: [Cat]
+        animals: [Animal]
         settings(userId: ID!): Settings
     }
 
     type Mutation {
         addUser(username: String!, email: String!,location: String!, password: String!): Auth
         addSettings(userId: ID!, animals: String,age: String, size: String, house_trained: Boolean): Settings
-        updateUserPets(_id: ID!, dog: ID!): User
+        updateUserPets(_id: ID!, animal: ID!): User
         updateSettings(userId: ID!, animals: String, age: String, size: String, house_trained: Boolean): Settings
         login(email: String!, password: String!): Auth
         removeUser(_id: ID!): User
-        removeUserPets( userId: ID!, dog: ID!): User
+        removeUserPets( userId: ID!, animal: ID!): User
       }
     `;
 
