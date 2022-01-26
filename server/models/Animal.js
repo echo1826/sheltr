@@ -68,6 +68,12 @@ const AnimalSchema = new Schema({
     },
     organization: {
         type: String
+    },
+    url: {
+        type: String
+    },
+    description: {
+        type: String
     }
 });
 
