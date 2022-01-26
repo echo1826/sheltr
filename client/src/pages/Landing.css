@@ -42,10 +42,10 @@
     width: 32rem;
     height: 17rem;
     object-fit: cover;
-    border-radius: 20px;
+    border-radius: 2em;
     margin: 3em;
     display: inline-flex;
-    box-shadow: 8px 8px 5px rgb(82, 82, 82);
+    box-shadow: .5em .5em .5em rgb(82, 82, 82);
 }
 
 .landingList {
@@ -77,6 +77,23 @@
     }
 }
 
+@media screen and (max-width: 1000px) {
+    .landingCards {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .landingH3 {
+       justify-content: center;
+       margin: 0;
+    }
+
+    .landingH3Img{
+        margin-bottom: 10px;
+    }
+}
+
 @media screen and (max-width: 720px) {
     .landingList {
         flex-direction: column;
@@ -94,5 +111,16 @@
     .landingIcon {
         width: 270px;
         padding: 20px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .landingH3{
+        width: 15em;
+        font-size: 1.5em;
+    }
+    
+    .landingH3Img {
+        width: 24em;
     }
 }
