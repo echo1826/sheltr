@@ -4,6 +4,7 @@ const {
 } = require('../models');
 const axios = require('axios');
 require('dotenv').config();
+const limit = '1'
 
 async function getDogDataFromPetfinderApi() {
     try {
@@ -17,7 +18,7 @@ async function getDogDataFromPetfinderApi() {
         });
         const token = securityResponse.data.access_token;
         const dogResponse = await axios({
-            url: "https://api.petfinder.com/v2/animals?type=dog&location=78727&distance=10&limit=100",
+            url: `https://api.petfinder.com/v2/animals?type=dog&location=78727&distance=10&limit=${limit}`,
             headers: {
                 'Authorization': `Bearer ${token}`
             }
@@ -47,7 +48,6 @@ async function getDogDataFromPetfinderApi() {
                 spayed: dog.attributes.spayed_neutered,
                 house_trained: dog.attributes.house_trained,
                 shots: dog.attributes.shots_current,
-                description: dog.description,
                 organization: organizationResponse.data.organization.name
             }
             dogSeedArray.push(dogObject);
@@ -71,7 +71,7 @@ async function getCatDataFromPetfinderApi() {
         });
         const token = securityResponse.data.access_token;
         const catResponse = await axios({
-            url: "https://api.petfinder.com/v2/animals?type=cat&location=78727&distance=10&limit=100",
+            url: `https://api.petfinder.com/v2/animals?type=cat&location=78727&distance=10&limit=${limit}`,
             headers: {
                 'Authorization': `Bearer ${token}`
             }
@@ -101,11 +101,11 @@ async function getCatDataFromPetfinderApi() {
                 spayed: cat.attributes.spayed_neutered,
                 house_trained: cat.attributes.house_trained,
                 shots: cat.attributes.shots_current,
-                description: cat.description,
                 organization: organizationResponse.data.organization.name
             }
             catSeedArray.push(catObject);
         }
+        
         return catSeedArray;
     } catch (err) {
         console.log(err);
@@ -114,6 +114,7 @@ async function getCatDataFromPetfinderApi() {
 };
 
 function shuffle(array) {
+    console.log(`animals array url = ${array[0].url}`)
     let currentIndex = array.length;
     let randomIndex;
   
@@ -141,7 +142,7 @@ db.once('open', async () => {
         const shuf = shuffle(animalsArray);
         await Animal.deleteMany({});
         await Animal.create(shuf);
-        // await Animal.create(catArray);
+        // await Animal.insertMany(shuf);
         await User.deleteMany({});
         await Settings.deleteMany({});
         console.log("Seeded Data!");
