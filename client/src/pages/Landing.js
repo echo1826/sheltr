@@ -16,7 +16,7 @@ export default function Landing() {
             </div>
             <div className="landingCards">    
                 <img className="landingH3Img" src="./images/bestfriend.jpg" alt="adopted dog"/>
-                <h3 className="landingH3">Easily matching you to your new best friend!</h3>
+                <h3 className="landingH3">Matching you to your new best friend!</h3>
             </div>
 
             <ul className="landingList">
