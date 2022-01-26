@@ -33,7 +33,7 @@ export default function Profile() {
   }
 
   const goLogin = () => {
-    window.location.assign("/");
+    window.location.assign("/login");
   };
 
   if (Auth.isLoggedIn()) {

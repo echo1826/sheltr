@@ -1,0 +1,126 @@
+.landingHeader{
+    position: relative;
+}
+
+.landingH2 {
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    margin: 170px 0 200px 0;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 55px;
+    color: #fff;
+    text-shadow: 2px 2px rgb(42, 42, 42);
+}
+
+.landingHeadImg {
+    height: 37rem;
+    width: 100%;
+    object-fit: cover;
+    /* object-position: 0rem -20rem; */
+    z-index: -100;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.landingCards {
+    display: flex;
+    justify-content: center;
+}
+
+.landingH3 {
+    font-family: 'Oxygen', sans-serif;
+    font-size: 25px;
+    width: 35rem;
+    display: flex;
+    align-items: center;
+}
+
+.landingH3Img {
+    width: 32rem;
+    height: 17rem;
+    object-fit: cover;
+    border-radius: 2em;
+    margin: 3em;
+    display: inline-flex;
+    box-shadow: .5em .5em .5em rgb(82, 82, 82);
+}
+
+.landingList {
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    margin-top: 3rem;
+}
+
+.landingItem {
+    list-style: none;
+    text-align: center;
+    font-family: 'Oxygen', sans-serif;
+    font-size: 18px;
+    width: 20%;
+    margin: 15px;
+}
+
+.landingIcon {
+    display: block;
+    width: 170px;
+    margin: auto;
+    padding: 20px;
+}
+
+@media screen and (min-width: 1200px) {
+    .landingHeadImg {
+        object-position: 0vh -20vw;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .landingCards {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .landingH3 {
+       justify-content: center;
+       margin: 0;
+    }
+
+    .landingH3Img{
+        margin-bottom: 10px;
+    }
+}
+
+@media screen and (max-width: 720px) {
+    .landingList {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .landingItem {
+        text-align: center;
+        font-size: 25px;
+        width: 70%;
+        margin: 15px;
+    }
+    
+    .landingIcon {
+        width: 270px;
+        padding: 20px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .landingH3{
+        width: 15em;
+        font-size: 1.5em;
+    }
+    
+    .landingH3Img {
+        width: 24em;
+    }
+}
