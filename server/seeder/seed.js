@@ -114,7 +114,7 @@ async function getCatDataFromPetfinderApi() {
 };
 
 function shuffle(array) {
-    console.log(`animals array url = ${array[0].url}`)
+
     let currentIndex = array.length;
     let randomIndex;
   
