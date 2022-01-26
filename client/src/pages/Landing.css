@@ -14,35 +14,65 @@
 }
 
 .landingHeadImg {
-    height: 520px;
+    height: 30rem;
     width: 100%;
     object-fit: cover;
-    object-position: 0px -350px;
+    object-position: 0rem -20rem;
+    z-index: -100;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-.landingH3 {
-    text-align: center;
-    font-family: 'Source Sans Pro', sans-serif;
-    font-size: 30px;
-}
-
-.landingDesc {
+.landingCards {
     display: flex;
     justify-content: center;
 }
 
+.landingH3 {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 25px;
+    width: 30rem;
+    display: flex;
+    align-items: center;
+}
+
+.landingH3Img {
+    width: 30rem;
+    height: 15rem;
+    object-fit: cover;
+    border-radius: 20px;
+    margin: 3em;
+    display: inline-flex;
+    box-shadow: 8px 8px 5px rgb(82, 82, 82);
+}
+
 .landingList {
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    margin-top: 3rem;
+}
+
+.landingItem {
     list-style: none;
     text-align: center;
     font-family: 'Oxygen', sans-serif;
     font-size: 18px;
-    display: inline-flex;
     width: 20%;
-    flex-wrap: wrap;
-    flex-direction: column;
+    margin: 15px;
 }
 
 .landingIcon {
-    width: 100px;
+    display: block;
+    width: 170px;
     margin: auto;
+    padding: 20px;
+}
+
+@media screen and (min-width: 1100px) {
+    .landingHeadImg {
+        height: 40rem;
+    }
 }
