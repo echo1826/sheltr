@@ -4,7 +4,7 @@ const {
 } = require('../models');
 const axios = require('axios');
 require('dotenv').config();
-const limit = '1'
+const limit = '100'
 
 async function getDogDataFromPetfinderApi() {
     try {
