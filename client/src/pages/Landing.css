@@ -17,7 +17,7 @@
     height: 37rem;
     width: 100%;
     object-fit: cover;
-    object-position: 0rem -20rem;
+    /* object-position: 0rem -20rem; */
     z-index: -100;
     display: flex;
     flex-direction: column;
@@ -71,10 +71,9 @@
     padding: 20px;
 }
 
-@media screen and (max-width: 1100px) {
+@media screen and (min-width: 1200px) {
     .landingHeadImg {
-        height: 50rem;
-        width: 100%;
+        object-position: 0vh -20vw;
     }
 }
 
