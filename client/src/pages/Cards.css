@@ -1,6 +1,6 @@
 .tinderCards {
     width: 100vw;
-    height: 70vh;
+    height: 100vh;
     overflow: hidden;
     display: flex;
     flex-direction: column;
@@ -21,30 +21,31 @@
 
 .swipe {
     background-color: #F2F2F2;
-    border: 1px solid;
+    border: 1px groove;
     border-radius: 15px;
-    box-shadow: 4px 4px 4px rgb(195, 195, 195);
+    box-shadow: 1px rgb(195, 195, 195);
     position: absolute;
     top: 15%;
     margin-top: -30px;
     z-index: 2;
-    width: 100%;
     text-align: center;
     display: inline-block;
     width: 90vw;
+    height: 100vw;
     max-width: 400px;
+    max-height: 600px;
 
 }
 
 .swipeImg {
     width: 290px;
     height: 250px;
-    object-fit: contain;
+    object-fit: cover;
     position: relative;
     margin: 0px;
-    border: solid black;
-    border-width: 0 1px 1px 1px;
-    box-shadow: 4px 4px 4px rgb(195, 195, 195);
+    border: none;
+    border-width: 1px;
+    box-shadow: 4px 4px 4px 4px rgb(195, 195, 195);
 }
 
 .swipeDogName {
@@ -52,11 +53,28 @@
     margin: 0;
     text-align: center;
     border-bottom: 1px outset #8C8B8B;
+
+}
+
+.swipeDogAge {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 15px;
+    margin: 0;
+    text-align: right;
+
 }
 
 .swipeDogLocation {
     font-family: 'Oxygen', sans-serif;
     text-align: center;
+    font-weight: bold;
+}
+
+.swipeDogOrg {
+    font-family: 'Oxygen', sans-serif;
+    text-align: center;
+    font-weight: normal;
+    font-style: italic;
 }
 
 

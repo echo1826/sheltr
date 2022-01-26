@@ -55,8 +55,8 @@ export default function Profile() {
             ) : (
               profileAnimals.map((animal) => {
                 return (
-                  <div key={animal._id} container className = "animalCard">
-                          <img class="animalImage" src={animal.photo[0].small} alt={animal.name} />
+                  <div key={animal._id} className = "dogCard">
+                          <img className="dogImage" src={animal.photo[0].small} alt={animal.name} />
                           <h2>{animal.name}</h2>
                           <p>{animal.breed.primary}</p>
                           <p>
