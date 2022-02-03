@@ -72,6 +72,7 @@ export default function LoginComp({flipChange}) {
                 value={loginState.email}
                 onChange={handleChange}
                 className='inputField'
+                placeholder='Enter Email'
                 
             />
           </div>
@@ -88,6 +89,7 @@ export default function LoginComp({flipChange}) {
                 onChange={handleChange}
                 value={loginState.password}
                 className='inputField'
+                placeholder='Enter Password'
             />
             <FormHelperText id="password helper" className='helperFont'>
               Forgot your password?
