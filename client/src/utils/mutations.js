@@ -131,3 +131,15 @@ export const REMOVE_USER_PETS = gql`
     }
   }
 `
+export const REMOVE_SETTINGS = gql`
+  mutation removeSettings(
+    $userId: ID!
+  ) {
+    removeSettings (
+      userId: $userId
+    ){
+      _id
+      userId
+    }
+  }
+`;
