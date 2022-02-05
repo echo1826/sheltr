@@ -62,14 +62,15 @@ export default function Signup({flipChange}) {
                 </InputLabel>
                 <Input 
                 // this overrides the login focus. make it conditional on whether this component is rendered
-                    // inputRef={(element)=> element?.focus?.()}
+                    // inputRef={(element)=> element?.focus?.()
                     id="signUpEmail"
-                    aria-describedby="my-helper-text"
+                    aria-describedby="email-field"
                     name='email'
                     type='email'
                     value={formState.email}
                     onChange={changeHandler}
                     className='inputField'
+                    placeholder='Enter Email'
                     
                 />
                 <FormHelperText id="emailHelper" className='helperFont'>
@@ -83,12 +84,13 @@ export default function Signup({flipChange}) {
                 <Input 
                     id="username" 
                     required={true} 
-                    aria-describedby="my-helper-text"
+                    aria-describedby="username-field"
                     name='username'
                     type='text'
                     onChange={changeHandler}
                     value={formState.username}
                     className='inputField'
+                    placeholder='Create Username'
                 />
                 <FormHelperText id="username helper" className='helperFont'>
                     Make your username something unique!
@@ -101,12 +103,13 @@ export default function Signup({flipChange}) {
                 <Input 
                     id="signUpPassword" 
                     required={true} 
-                    aria-describedby="my-helper-text" 
+                    aria-describedby="password-field" 
                     name='password'
                     type='password'
                     onChange={changeHandler}
                     value={formState.password}
                     className='inputField'
+                    placeholder='Create Password'
                 />
                 <FormHelperText id="password helper" className='helperFont'>
                     Passwords must be at least 7 characters, alphanumeric only.
@@ -119,12 +122,13 @@ export default function Signup({flipChange}) {
                 <Input 
                     id="location" 
                     required={true} 
-                    aria-describedby="my-helper-text" 
+                    aria-describedby="location-field" 
                     name='location'
                     type='text'
                     onChange={changeHandler}
                     value={formState.location}
                     className='inputField'
+                    placeholder='e.g. Austin, TX'
                 />
                 <FormHelperText id="location helper" className='helperFont'>
                     Where would you like to find a pet?

@@ -154,7 +154,7 @@ export default function Cardrender(props) {
 
             return(
             <TinderCard className='swipe' key={animal._id} onSwipe={(direction) => swiped(direction)} onCardLeftScreen={(direction) => outOfFrame(direction, animal._id)}>
-                <img src={animal.photo[0].medium} alt={animal.name} className = "swipeImg"/>
+                <img src={animal.photo[0].medium} onerror="this.onerror=null; this.src='sheltr_logo2.png'" alt={animal.name} className = "swipeImg"/>
                <h2 className="swipeDogName">{animal.name} <i className="swipeDogAge">{animal.age}</i></h2>
 
                 <p className="swipeDogLocation">{animal.organization}<div className="swipeDogOrg">{animal.location}</div></p>
