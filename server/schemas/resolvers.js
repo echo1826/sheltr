@@ -71,7 +71,9 @@ const resolvers = {
             return settings;
         },
         removeUser: async (parent, args) => {
-            return await User.findOneAndDelete({_id: args._id})
+            const deletedUser =  await User.findOneAndDelete({_id: args._id});
+            await Settings.deleteOne({userId: args._id});
+            return deletedUser;
         },
         removeUserPets: async(parent, args) => {
             await User.updateOne({_id: args.userId}, {$pull: {pets: args.animal}}, {new: true});
