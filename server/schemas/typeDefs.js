@@ -72,6 +72,7 @@ const typeDefs = gql`
         login(email: String!, password: String!): Auth
         removeUser(_id: ID!): User
         removeUserPets( userId: ID!, animal: ID!): User
+        removeSettings(userId: ID!): Settings
       }
     `;
 
