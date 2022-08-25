@@ -128,6 +128,7 @@ export default function Cardrender(props) {
     const finalanimalData = cardData.filter((animal) => {
         return !animalsToFilter.includes(animal._id);
     });
+    console.log(finalanimalData);
     const swiped = async (direction) => {
         setLastDirection(direction);
       }
@@ -151,14 +152,22 @@ export default function Cardrender(props) {
 
     return(<div className='tinderContainer'>
         {finalanimalData.map((animal) => {
-
+            if(animal.photo[0]) {
+                return(
+                    <TinderCard className='swipe' key={animal._id} onSwipe={(direction) => swiped(direction)} onCardLeftScreen={(direction) => outOfFrame(direction, animal._id)}>
+                        <img src={animal.photo[0].medium} onerror="this.onerror=null; this.src='sheltr_logo2.png'" alt={animal.name} className = "swipeImg"/>
+                       <h2 className="swipeDogName">{animal.name} <i className="swipeDogAge">{animal.age}</i></h2>
+        
+                        <p className="swipeDogLocation">{animal.organization}<div className="swipeDogOrg">{animal.location}</div></p>
+                    </TinderCard>)
+            }
             return(
-            <TinderCard className='swipe' key={animal._id} onSwipe={(direction) => swiped(direction)} onCardLeftScreen={(direction) => outOfFrame(direction, animal._id)}>
-                <img src={animal.photo[0].medium} onerror="this.onerror=null; this.src='sheltr_logo2.png'" alt={animal.name} className = "swipeImg"/>
-               <h2 className="swipeDogName">{animal.name} <i className="swipeDogAge">{animal.age}</i></h2>
-
-                <p className="swipeDogLocation">{animal.organization}<div className="swipeDogOrg">{animal.location}</div></p>
-            </TinderCard>)
+                <TinderCard className='swipe' key={animal._id} onSwipe={(direction) => swiped(direction)} onCardLeftScreen={(direction) => outOfFrame(direction, animal._id)}>
+                    <img src="" onerror="this.onerror=null; this.src='sheltr_logo2.png'" alt={animal.name} className = "swipeImg"/>
+                   <h2 className="swipeDogName">{animal.name} <i className="swipeDogAge">{animal.age}</i></h2>
+    
+                    <p className="swipeDogLocation">{animal.organization}<div className="swipeDogOrg">{animal.location}</div></p>
+                </TinderCard>)
         })}
         {lastDirection ? <h2>You swiped {lastDirection}</h2> : <div></div>}
     </div>)
