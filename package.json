@@ -1,40 +1,35 @@
 {
-  "name": "sheltr",
+  "name": "mern-server",
   "version": "1.0.0",
   "description": "",
-  "main": "server/server.js",
+  "main": "server.js",
   "devDependencies": {
     "concurrently": "^5.1.0",
     "eslint": "^7.12.1",
     "eslint-config-prettier": "^6.15.0",
-    "prettier": "^2.1.2"
+    "prettier": "^2.1.2",
+    "nodemon": "^2.0.3"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "cd server && npm run start",
-    "develop": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
-    "install": "cd server && npm i && cd ../client && npm i",
-    "seed": "cd server && npm run seed",
+    "start": "node server.js",
+    "watch": "nodemon",
+    "seed": "node seeder/seed.js",
+    "develop": "concurrently \"npm start\" \"cd client && npm start\"",
+    "install": "cd client && npm i",
     "build": "npm run install && cd client && npm run build",
     "render-postbuild": "cd client && npm run build"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/echo1826/sheltr.git"
-  },
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/echo1826/sheltr/issues"
-  },
-  "homepage": "https://github.com/echo1826/sheltr#readme",
   "dependencies": {
-    "@emotion/react": "^11.7.0",
-    "@emotion/styled": "^11.6.0",
-    "@mui/material": "^5.2.2",
-    "webpack": "^5.64.4"
-  },
-  "engines": {
-    "node": ">=16.0.0 <17.0.0"
+    "apollo-server-express": "^2.19.0",
+    "axios": "^0.24.0",
+    "bcrypt": "^5.0.1",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "graphql": "^14.6.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.3.16",
+    "morgan": "^1.10.0"
   }
 }
