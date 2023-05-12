@@ -44,7 +44,7 @@ const resolvers = {
             return { token, user };
         },
         updateUserPets: async (parent,{ _id, animal }) => {
-            return await User.findByIdAndUpdate(_id, {$push: {pets: animal}}, { new:true }).populate('pets');
+            return await User.findByIdAndUpdate(_id, {$addToSet: {pets: animal}}, { new:true }).populate('pets');
         },
         login: async (parent, { email, password }, context) => {
             const user = await User.findOne({email});
