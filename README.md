@@ -43,7 +43,7 @@ User can change their search parameters and logout from the app. \
 
 ## Deployed App
 
-[![Deployed App](https://img.shields.io/badge/Deployed-App-blue)](https://sheltr-app.herokuapp.com/)
+[![Deployed App](https://img.shields.io/badge/Deployed-App-blue)](https://sheltr.onrender.com)
 
 ## Tech Stack
  > * MongoDB
