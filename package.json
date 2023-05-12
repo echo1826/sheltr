@@ -5,9 +5,6 @@
   "main": "server.js",
   "devDependencies": {
     "concurrently": "^5.1.0",
-    "eslint": "^7.12.1",
-    "eslint-config-prettier": "^6.15.0",
-    "prettier": "^2.1.2",
     "nodemon": "^2.0.3"
   },
   "scripts": {
