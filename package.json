@@ -16,7 +16,7 @@
     "seed": "node seeder/seed.js",
     "develop": "concurrently \"npm start\" \"cd client && npm start\"",
     "install": "cd client && npm i",
-    "build": "npm run install && cd client && npm run build",
+    "build": "npm install && cd client && npm run build",
     "render-postbuild": "cd client && npm run build"
   },
   "author": "",
